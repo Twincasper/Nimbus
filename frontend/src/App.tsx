@@ -1,35 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import { UserContext } from './context/UserContext';
+import { checkForLoggedInUser } from './utils/auth';
 
-function App() {
-  const [count, setCount] = useState(0)
+// Components and Pages
+import Home from './pages/Home';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
+// import UsersPage from './pages/UsersPage';
+// import UserPage from './pages/UserPage';
+import NotFoundPage from './pages/NotFoundPage';
+// import ResourcesPage from './pages/ResourcesPage';
+// import PostsPage from './pages/PostsPage';
+// import ForumCategoryPage from './pages/ForumCategoryPage';
+// import PostDetailPage from './pages/PostDetailPage';
+// import Footer from './components/Footer';
+// import SiteHeadingAndNav from './components/SiteHeadingAndNav';
+
+export default function App() {
+  const location = useLocation(); // to check current path
+
+  // WHen we establish current user state, we'll use this to check if user is logged in
+  // const { setCurrentUser } = useContext(UserContext);
+
+  // useEffect(() => {
+  //   checkForLoggedInUser().then(setCurrentUser);
+  // }, [setCurrentUser]);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      {/* Conditional Nav */}
+      {/* We can use the current path to show or hide navigation when we want the navbar to show on every page except certain pages */}
+      {/* {location.pathname !== '/' && <SiteHeadingAndNav />} */}
+      <main>
+        <Routes>
+          {/* Basic Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
+          {/* <Route path="/resources" element={<ResourcesPage />} /> */}
 
-export default App
+          {/* Community Pages */}
+          {/* <Route path="/users" element={<UsersPage />} />
+          <Route path="/users/:id" element={<UserPage />} /> */}
+
+          {/* Forums */}
+          {/* <Route path="/forums/:category" element={<ForumCategoryPage />} /> */}
+
+          {/* Posts */}
+          {/* <Route path="/posts" element={<PostsPage />} />
+          <Route path="/posts/:id" element={<PostDetailPage />} /> */}
+
+          {/* 404 */}
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
+      <Footer />
+    </>
+  );
+}
