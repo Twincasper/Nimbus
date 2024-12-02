@@ -4,8 +4,8 @@ import { UserContext } from './context/UserContext';
 import { checkForLoggedInUser } from './utils/auth';
 
 // Components and Pages
-import Home from './pages/Home';
-import LoginPage from './pages/LoginPage';
+// import Home from './pages/Home';
+// import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 // import UsersPage from './pages/UsersPage';
 // import UserPage from './pages/UserPage';
@@ -18,7 +18,7 @@ import NotFoundPage from './pages/NotFoundPage';
 // import SiteHeadingAndNav from './components/SiteHeadingAndNav';
 
 export default function App() {
-  const location = useLocation(); // to check current path
+ // const location = useLocation(); to check current path
 
   // WHen we establish current user state, we'll use this to check if user is logged in
   // const { setCurrentUser } = useContext(UserContext);
@@ -35,8 +35,8 @@ export default function App() {
       <main>
         <Routes>
           {/* Basic Routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<LoginPage />} />
+          {/* {<Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginPage />} /> */}
           <Route path="/sign-up" element={<SignUpPage />} />
           {/* <Route path="/resources" element={<ResourcesPage />} /> */}
 
@@ -55,7 +55,7 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
