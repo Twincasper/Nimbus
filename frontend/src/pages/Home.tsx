@@ -1,8 +1,8 @@
 export default function Home() {
   return (
     <>
-      <input type="text" placeholder="Type here" className="input w-full max-w-xs" />
-      <button className="button w-25 mt-4">Search</button>
+     {/* Hero Section, or perhaps a generic banner to signify this is the home page. Something welcoming to serve as a general hub for the website */}
+      <h1>Home Page</h1>
     </>
   )
 }
