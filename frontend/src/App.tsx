@@ -4,7 +4,7 @@ import { UserContext } from './context/UserContext';
 import { checkForLoggedInUser } from './utils/auth';
 
 // Components and Pages
-// import Home from './pages/Home';
+import Home from './pages/Home';
 // import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 // import UsersPage from './pages/UsersPage';
@@ -14,7 +14,8 @@ import NotFoundPage from './pages/NotFoundPage';
 // import PostsPage from './pages/PostsPage';
 // import ForumCategoryPage from './pages/ForumCategoryPage';
 // import PostDetailPage from './pages/PostDetailPage';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 // import SiteHeadingAndNav from './components/SiteHeadingAndNav';
 
 export default function App() {
@@ -28,15 +29,16 @@ export default function App() {
   // }, [setCurrentUser]);
 
   return (
-    <>
+    <div className='flex flex-col min-h-screen'>
       {/* Conditional Nav */}
       {/* We can use the current path to show or hide navigation when we want the navbar to show on every page except certain pages */}
-      {/* {location.pathname !== '/' && <SiteHeadingAndNav />} */}
-      <main>
+      {/* {location.pathname !== '/' && <Navbar />} */}
+      <Navbar />
+      <main className='flex-grow'>
         <Routes>
           {/* Basic Routes */}
-          {/* {<Route path="/" element={<Home />} />
-          <Route path="/login" element={<LoginPage />} /> */}
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/login" element={<LoginPage />} /> */}
           <Route path="/sign-up" element={<SignUpPage />} />
           {/* <Route path="/resources" element={<ResourcesPage />} /> */}
 
@@ -55,7 +57,7 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
-      {/* <Footer /> */}
-    </>
+      <Footer />
+    </div>
   );
 }
