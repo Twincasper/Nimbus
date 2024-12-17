@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
-import { UserContext } from './context/UserContext';
-import { checkForLoggedInUser } from './utils/auth';
+import CurrentUserContext from './context/current-user-context';
+// Need to import checkForLoggedInUser function here from auth adapter or some other way to check if user is logged in
 
 // Components and Pages
 import Home from './pages/Home';

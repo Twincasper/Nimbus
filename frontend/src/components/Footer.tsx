@@ -7,7 +7,7 @@ interface NavigationItem {
 const navigation: NavigationItem[] = [
   {
     name: 'GitHub',
-    href: 'https://github.com/Team10MLS/TheLighthouse',
+    href: '', // Replace with actual GitHub URL
     icon: (props) => (
       <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
         <path
