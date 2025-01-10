@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig" reUseTableSchema="true">
+    <option name="reLastEntityCreationPackage" value="backend/src/main/java/com/nimbus/backend/model" />
+    <option name="reverseEngineeringLastDbConnectionId" value="9bea7b96-0e8a-444a-9bcf-a70dfcf5179e" />
+  </component>
+</project>
