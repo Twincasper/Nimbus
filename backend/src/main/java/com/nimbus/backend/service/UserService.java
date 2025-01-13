@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface UserService {
     User createUser(String username, String password);
+    Optional<User> findByUsername(String username);
+    boolean usernameExists(String username);
 }
