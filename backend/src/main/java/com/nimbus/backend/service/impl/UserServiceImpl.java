@@ -43,6 +43,11 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+    @Override
+    public Optional<User> getUserById(Integer id) {
+        return userRepository.findById(id);
+    }
+
     public User updateUser(Integer id, User userDetails) {
         User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User not found"));
 
@@ -52,5 +57,10 @@ public class UserServiceImpl implements UserService {
             user.setPasswordHash(userDetails.getPasswordHash());
         }
         return userRepository.save(user);
+    }
+
+    @Override
+    public void deleteUser(Integer id) {
+        userRepository.deleteById(id);
     }
 }
