@@ -8,5 +8,6 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Integer> {
 //    This extension inherits several utility methods from JpaRepository such as save, findById, findAll, delete, etc.
     Optional<User> findByUsername(String username);
-    boolean usernameExists(String username); // to check if a username already exists
+    boolean existsByUsername(String username); // to check if a username already exists
 }
+
