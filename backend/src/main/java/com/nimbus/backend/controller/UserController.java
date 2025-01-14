@@ -1,11 +1,14 @@
 package com.nimbus.backend.controller;
 
+import com.nimbus.backend.dto.CreateUserDTO;
+import com.nimbus.backend.dto.UserResponseDTO;
 import com.nimbus.backend.model.User;
 import com.nimbus.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/users")  // Add this to specify the base path
@@ -17,25 +20,40 @@ public class UserController {
         this.userService = userService;
     }
 
+    private UserResponseDTO convertToDTO(User user) {
+        return new UserResponseDTO(user.getId(), user.getUsername());
+    }
+
+    private User convertToEntity(CreateUserDTO dto) {
+        return new User(dto.getUsername(), dto.getPassword());
+    }
+
     @PostMapping
-    public User createUser(@RequestBody User user) {  // Change to accept a User object from request body
-        return userService.createUser(user.getUsername(), user.getPasswordHash());
+    public UserResponseDTO createUser(@RequestBody CreateUserDTO createUserDTO) {
+        User user = userService.createUser(
+                createUserDTO.getUsername(),
+                createUserDTO.getPassword()
+        );
+        return convertToDTO(user);
     }
 
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public List<UserResponseDTO> getAllUsers() {
+        return userService.getAllUsers().stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Integer id) {
-        return userService.getUserById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    public UserResponseDTO getUserById(@PathVariable Integer id) {
+         User foundUser = userService.getUserById(id).orElseThrow(() -> new RuntimeException("User not found"));
+         return convertToDTO(foundUser);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Integer id, @RequestBody User userDetails) {
-        return userService.updateUser(id, userDetails);
+    public UserResponseDTO updateUser(@PathVariable Integer id, @RequestBody CreateUserDTO userDTO) {
+        User updatingUser = userService.updateUser(id, convertToEntity(userDTO));
+        return convertToDTO(updatingUser);
     }
 
     @DeleteMapping("/{id}")
