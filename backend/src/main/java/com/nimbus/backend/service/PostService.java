@@ -1,6 +1,5 @@
 package com.nimbus.backend.service;
 
-import com.nimbus.backend.model.Category;
 import com.nimbus.backend.model.Post;
 
 import java.util.List;
