@@ -1,5 +1,6 @@
 package com.nimbus.backend.service;
 
+import com.nimbus.backend.model.Category;
 import com.nimbus.backend.model.Post;
 
 import java.util.List;
@@ -16,7 +17,9 @@ public interface PostService {
 
     List<Post> getAllPosts();
 
-    List<Post> getPostsByUserId(Integer userId);
+    List<Post> getPostsByUser(Integer userId);
 
-    List<Post> getPostsByCategoryId(Integer categoryId);
+    List<Post> getPostsByCategory(Integer categoryId);
+
+    List<Post> getPostsByTitle(String title);
 }
