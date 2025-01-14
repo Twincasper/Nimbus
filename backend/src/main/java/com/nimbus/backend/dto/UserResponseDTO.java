@@ -11,5 +11,4 @@ public class UserResponseDTO {
     private String username;
 
     public UserResponseDTO() {} // could use NoArgsConstructor from Lombok too
-
 }

@@ -17,5 +17,4 @@ public class CreateUserDTO {
         this.username = username;
         this.password = password;
     }
-
 }
