@@ -45,7 +45,8 @@ public class PostController {
         Post post = postService.createPost(
                 createPostDTO.getTitle(),
                 createPostDTO.getBody(),
-                createPostDTO.getUserId()
+                createPostDTO.getUserId(),
+                createPostDTO.getCategoryId()
         );
         return convertToDTO(post);
     }

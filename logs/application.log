@@ -2843,3 +2843,402 @@ This generated password is for development use only. Your security configuration
 2025-01-15T14:37:33.531-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
 2025-01-15T14:37:33.534-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Started BackendApplication in 0.688 seconds (process running for 48488.213)
 2025-01-15T14:37:33.534-05:00  INFO 12830 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-15T15:25:28.034-05:00  INFO 12830 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 3 deletions, 0 modifications)
+2025-01-15T15:25:28.038-05:00  INFO 12830 --- [backend] [Thread-568] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-15T15:25:28.042-05:00  INFO 12830 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-15T15:25:28.046-05:00  INFO 12830 --- [backend] [Thread-568] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T15:25:28.049-05:00  INFO 12830 --- [backend] [Thread-568] com.zaxxer.hikari.HikariDataSource       : HikariPool-143 - Shutdown initiated...
+2025-01-15T15:25:28.054-05:00  INFO 12830 --- [backend] [Thread-568] com.zaxxer.hikari.HikariDataSource       : HikariPool-143 - Shutdown completed.
+2025-01-15T15:25:28.318-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Starting BackendApplication using Java 22.0.2 with PID 12830 (/Users/justinwatson/personal-projects/PS-Capstone/backend/target/classes started by justinwatson in /Users/justinwatson/personal-projects/PS-Capstone)
+2025-01-15T15:25:28.318-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-01-15T15:25:28.625-05:00  INFO 12830 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-15T15:25:28.644-05:00  INFO 12830 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 6 JPA repository interfaces.
+2025-01-15T15:25:28.809-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-15T15:25:28.811-05:00  INFO 12830 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-15T15:25:28.811-05:00  INFO 12830 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-01-15T15:25:28.825-05:00  INFO 12830 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat-5].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-15T15:25:28.825-05:00  INFO 12830 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 500 ms
+2025-01-15T15:25:28.844-05:00 DEBUG 12830 --- [backend] [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'logFilter' configured for use
+2025-01-15T15:25:28.903-05:00  INFO 12830 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-15T15:25:28.906-05:00  INFO 12830 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-15T15:25:28.924-05:00  INFO 12830 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-15T15:25:28.926-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-144 - Starting...
+2025-01-15T15:25:28.938-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-144 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1be0d418
+2025-01-15T15:25:28.938-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-144 - Start completed.
+2025-01-15T15:25:28.938-05:00  WARN 12830 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-15T15:25:28.939-05:00  WARN 12830 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-01-15T15:25:28.939-05:00  INFO 12830 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-144)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-15T15:25:29.060-05:00  INFO 12830 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-15T15:25:29.113-05:00  INFO 12830 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T15:25:29.294-05:00  WARN 12830 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-15T15:25:29.448-05:00  WARN 12830 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 9e05cd01-50c8-49b8-97c5-632997f7c9ab
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-01-15T15:25:29.449-05:00  INFO 12830 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-01-15T15:25:29.488-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-15T15:25:29.507-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-15T15:25:29.512-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Started BackendApplication in 1.258 seconds (process running for 51364.19)
+2025-01-15T15:25:29.513-05:00  INFO 12830 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-15T15:26:10.163-05:00  INFO 12830 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-01-15T15:26:10.164-05:00  INFO 12830 --- [backend] [Thread-572] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-15T15:26:10.166-05:00  INFO 12830 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-15T15:26:10.168-05:00  INFO 12830 --- [backend] [Thread-572] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T15:26:10.169-05:00  INFO 12830 --- [backend] [Thread-572] com.zaxxer.hikari.HikariDataSource       : HikariPool-144 - Shutdown initiated...
+2025-01-15T15:26:10.172-05:00  INFO 12830 --- [backend] [Thread-572] com.zaxxer.hikari.HikariDataSource       : HikariPool-144 - Shutdown completed.
+2025-01-15T15:26:10.245-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Starting BackendApplication using Java 22.0.2 with PID 12830 (/Users/justinwatson/personal-projects/PS-Capstone/backend/target/classes started by justinwatson in /Users/justinwatson/personal-projects/PS-Capstone)
+2025-01-15T15:26:10.245-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-01-15T15:26:10.445-05:00  INFO 12830 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-15T15:26:10.462-05:00  INFO 12830 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 6 JPA repository interfaces.
+2025-01-15T15:26:10.591-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-15T15:26:10.592-05:00  INFO 12830 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-15T15:26:10.592-05:00  INFO 12830 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-01-15T15:26:10.608-05:00  INFO 12830 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat-5].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-15T15:26:10.608-05:00  INFO 12830 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 362 ms
+2025-01-15T15:26:10.625-05:00 DEBUG 12830 --- [backend] [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'logFilter' configured for use
+2025-01-15T15:26:10.658-05:00  INFO 12830 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-15T15:26:10.661-05:00  INFO 12830 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-15T15:26:10.671-05:00  INFO 12830 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-15T15:26:10.672-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-145 - Starting...
+2025-01-15T15:26:10.685-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-145 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7ef82748
+2025-01-15T15:26:10.685-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-145 - Start completed.
+2025-01-15T15:26:10.685-05:00  WARN 12830 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-15T15:26:10.686-05:00  WARN 12830 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-01-15T15:26:10.686-05:00  INFO 12830 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-145)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-15T15:26:10.813-05:00  INFO 12830 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-15T15:26:10.874-05:00  INFO 12830 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T15:26:11.019-05:00  WARN 12830 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-15T15:26:11.188-05:00  WARN 12830 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 6722a642-5a21-47b0-8bee-1db1711a1322
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-01-15T15:26:11.190-05:00  INFO 12830 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-01-15T15:26:11.234-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-15T15:26:11.249-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-15T15:26:11.253-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Started BackendApplication in 1.03 seconds (process running for 51405.932)
+2025-01-15T15:26:11.255-05:00  INFO 12830 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-15T15:26:40.831-05:00  INFO 12830 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-01-15T15:26:40.833-05:00  INFO 12830 --- [backend] [Thread-576] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-15T15:26:40.835-05:00  INFO 12830 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-15T15:26:40.838-05:00  INFO 12830 --- [backend] [Thread-576] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T15:26:40.838-05:00  INFO 12830 --- [backend] [Thread-576] com.zaxxer.hikari.HikariDataSource       : HikariPool-145 - Shutdown initiated...
+2025-01-15T15:26:40.842-05:00  INFO 12830 --- [backend] [Thread-576] com.zaxxer.hikari.HikariDataSource       : HikariPool-145 - Shutdown completed.
+2025-01-15T15:26:40.927-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Starting BackendApplication using Java 22.0.2 with PID 12830 (/Users/justinwatson/personal-projects/PS-Capstone/backend/target/classes started by justinwatson in /Users/justinwatson/personal-projects/PS-Capstone)
+2025-01-15T15:26:40.928-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-01-15T15:26:41.124-05:00  INFO 12830 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-15T15:26:41.139-05:00  INFO 12830 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 6 JPA repository interfaces.
+2025-01-15T15:26:41.254-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-15T15:26:41.255-05:00  INFO 12830 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-15T15:26:41.255-05:00  INFO 12830 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-01-15T15:26:41.266-05:00  INFO 12830 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat-5].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-15T15:26:41.266-05:00  INFO 12830 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 337 ms
+2025-01-15T15:26:41.276-05:00 DEBUG 12830 --- [backend] [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'logFilter' configured for use
+2025-01-15T15:26:41.299-05:00  INFO 12830 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-15T15:26:41.300-05:00  INFO 12830 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-15T15:26:41.307-05:00  INFO 12830 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-15T15:26:41.308-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-146 - Starting...
+2025-01-15T15:26:41.318-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-146 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2111685a
+2025-01-15T15:26:41.318-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-146 - Start completed.
+2025-01-15T15:26:41.318-05:00  WARN 12830 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-15T15:26:41.318-05:00  WARN 12830 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-01-15T15:26:41.319-05:00  INFO 12830 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-146)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-15T15:26:41.398-05:00  INFO 12830 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-15T15:26:41.440-05:00  INFO 12830 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T15:26:41.570-05:00  WARN 12830 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-15T15:26:41.688-05:00  WARN 12830 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: eddd7c4c-6644-4a2c-81be-4ac6d6c876d8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-01-15T15:26:41.689-05:00  INFO 12830 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-01-15T15:26:41.724-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-15T15:26:41.737-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-15T15:26:41.749-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Started BackendApplication in 0.847 seconds (process running for 51436.427)
+2025-01-15T15:26:41.750-05:00  INFO 12830 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-15T15:26:43.137-05:00  INFO 12830 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-01-15T15:26:43.139-05:00  INFO 12830 --- [backend] [Thread-580] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-15T15:26:43.142-05:00  INFO 12830 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-15T15:26:43.144-05:00  INFO 12830 --- [backend] [Thread-580] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T15:26:43.145-05:00  INFO 12830 --- [backend] [Thread-580] com.zaxxer.hikari.HikariDataSource       : HikariPool-146 - Shutdown initiated...
+2025-01-15T15:26:43.148-05:00  INFO 12830 --- [backend] [Thread-580] com.zaxxer.hikari.HikariDataSource       : HikariPool-146 - Shutdown completed.
+2025-01-15T15:26:43.215-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Starting BackendApplication using Java 22.0.2 with PID 12830 (/Users/justinwatson/personal-projects/PS-Capstone/backend/target/classes started by justinwatson in /Users/justinwatson/personal-projects/PS-Capstone)
+2025-01-15T15:26:43.216-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-01-15T15:26:43.328-05:00  INFO 12830 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-15T15:26:43.347-05:00  INFO 12830 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 6 JPA repository interfaces.
+2025-01-15T15:26:43.448-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-15T15:26:43.449-05:00  INFO 12830 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-15T15:26:43.449-05:00  INFO 12830 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-01-15T15:26:43.456-05:00  INFO 12830 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat-5].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-15T15:26:43.456-05:00  INFO 12830 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 239 ms
+2025-01-15T15:26:43.466-05:00 DEBUG 12830 --- [backend] [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'logFilter' configured for use
+2025-01-15T15:26:43.488-05:00  INFO 12830 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-15T15:26:43.490-05:00  INFO 12830 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-15T15:26:43.495-05:00  INFO 12830 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-15T15:26:43.496-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-147 - Starting...
+2025-01-15T15:26:43.505-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-147 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2f93feab
+2025-01-15T15:26:43.505-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-147 - Start completed.
+2025-01-15T15:26:43.506-05:00  WARN 12830 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-15T15:26:43.506-05:00  WARN 12830 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-01-15T15:26:43.506-05:00  INFO 12830 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-147)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-15T15:26:43.565-05:00  INFO 12830 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-15T15:26:43.603-05:00  INFO 12830 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T15:26:43.704-05:00  WARN 12830 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-15T15:26:43.823-05:00  WARN 12830 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 906808b7-0295-46dc-8835-66bd6c1d7882
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-01-15T15:26:43.823-05:00  INFO 12830 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-01-15T15:26:43.848-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-15T15:26:43.857-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-15T15:26:43.859-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Started BackendApplication in 0.663 seconds (process running for 51438.538)
+2025-01-15T15:26:43.860-05:00  INFO 12830 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-15T15:57:14.984-05:00  INFO 12830 --- [backend] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 30 class path changes (0 additions, 30 deletions, 0 modifications)
+2025-01-15T15:57:14.990-05:00  INFO 12830 --- [backend] [Thread-584] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-15T15:57:14.998-05:00  INFO 12830 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-15T15:57:15.008-05:00  INFO 12830 --- [backend] [Thread-584] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T15:57:15.015-05:00  INFO 12830 --- [backend] [Thread-584] com.zaxxer.hikari.HikariDataSource       : HikariPool-147 - Shutdown initiated...
+2025-01-15T15:57:15.021-05:00  INFO 12830 --- [backend] [Thread-584] com.zaxxer.hikari.HikariDataSource       : HikariPool-147 - Shutdown completed.
+2025-01-15T15:57:17.764-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Starting BackendApplication using Java 22.0.2 with PID 12830 (/Users/justinwatson/personal-projects/PS-Capstone/backend/target/classes started by justinwatson in /Users/justinwatson/personal-projects/PS-Capstone)
+2025-01-15T15:57:17.764-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-01-15T15:57:18.117-05:00  INFO 12830 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-15T15:57:18.151-05:00  INFO 12830 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 6 JPA repository interfaces.
+2025-01-15T15:57:18.328-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-15T15:57:18.330-05:00  INFO 12830 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-15T15:57:18.330-05:00  INFO 12830 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-01-15T15:57:18.349-05:00  INFO 12830 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat-6].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-01-15T15:57:18.349-05:00  INFO 12830 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 582 ms
+2025-01-15T15:57:18.368-05:00 DEBUG 12830 --- [backend] [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'logFilter' configured for use
+2025-01-15T15:57:18.414-05:00  INFO 12830 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-15T15:57:18.418-05:00  INFO 12830 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-15T15:57:18.439-05:00  INFO 12830 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-15T15:57:18.441-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-148 - Starting...
+2025-01-15T15:57:18.468-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-148 - Added connection com.mysql.cj.jdbc.ConnectionImpl@109012e5
+2025-01-15T15:57:18.468-05:00  INFO 12830 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-148 - Start completed.
+2025-01-15T15:57:18.469-05:00  WARN 12830 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-15T15:57:18.469-05:00  WARN 12830 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-01-15T15:57:18.470-05:00  INFO 12830 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-148)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-15T15:57:18.647-05:00  INFO 12830 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-15T15:57:18.743-05:00  INFO 12830 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T15:57:18.961-05:00  WARN 12830 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-15T15:57:19.199-05:00  WARN 12830 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 9ce9fdf9-0802-47b3-a55e-f297875a69d6
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-01-15T15:57:19.200-05:00  INFO 12830 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-01-15T15:57:19.250-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-15T15:57:19.264-05:00  INFO 12830 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-15T15:57:19.269-05:00  INFO 12830 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Started BackendApplication in 1.541 seconds (process running for 53273.928)
+2025-01-15T15:57:19.271-05:00  INFO 12830 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-01-15T15:59:14.178-05:00  INFO 31318 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Starting BackendApplication using Java 22.0.2 with PID 31318 (/Users/justinwatson/personal-projects/PS-Capstone/backend/target/classes started by justinwatson in /Users/justinwatson/personal-projects/PS-Capstone)
+2025-01-15T15:59:14.180-05:00  INFO 31318 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-01-15T15:59:14.242-05:00  INFO 31318 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-15T15:59:14.243-05:00  INFO 31318 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-15T15:59:14.931-05:00  INFO 31318 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-15T15:59:15.010-05:00  INFO 31318 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 6 JPA repository interfaces.
+2025-01-15T15:59:15.610-05:00  INFO 31318 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-15T15:59:15.624-05:00  INFO 31318 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-15T15:59:15.624-05:00  INFO 31318 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-01-15T15:59:15.666-05:00  INFO 31318 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-15T15:59:15.666-05:00  INFO 31318 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1422 ms
+2025-01-15T15:59:15.723-05:00 DEBUG 31318 --- [backend] [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'logFilter' configured for use
+2025-01-15T15:59:15.838-05:00  INFO 31318 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-15T15:59:15.882-05:00  INFO 31318 --- [backend] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2025-01-15T15:59:15.919-05:00  INFO 31318 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-15T15:59:16.197-05:00  INFO 31318 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-15T15:59:16.224-05:00  INFO 31318 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-15T15:59:16.569-05:00  INFO 31318 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6122d39a
+2025-01-15T15:59:16.571-05:00  INFO 31318 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-15T15:59:16.638-05:00  WARN 31318 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-15T15:59:16.641-05:00  WARN 31318 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-01-15T15:59:16.658-05:00  INFO 31318 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-15T15:59:17.461-05:00  INFO 31318 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-15T15:59:17.588-05:00  INFO 31318 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T15:59:18.000-05:00  WARN 31318 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-15T15:59:18.336-05:00  WARN 31318 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 3476220b-aadb-4a63-8670-f86e6405799a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-01-15T15:59:18.348-05:00  INFO 31318 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-01-15T15:59:18.487-05:00  WARN 31318 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-01-15T15:59:18.507-05:00  WARN 31318 --- [backend] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-01-15T15:59:18.509-05:00  INFO 31318 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T15:59:18.512-05:00  INFO 31318 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-15T15:59:18.521-05:00  INFO 31318 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-15T15:59:18.533-05:00  INFO 31318 --- [backend] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-01-15T15:59:18.552-05:00 ERROR 31318 --- [backend] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2025-01-15T15:59:31.913-05:00  INFO 12830 --- [backend] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-01-15T15:59:31.920-05:00  INFO 12830 --- [backend] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-01-15T15:59:31.927-05:00  INFO 12830 --- [backend] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T15:59:31.932-05:00  INFO 12830 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-148 - Shutdown initiated...
+2025-01-15T15:59:31.943-05:00  INFO 12830 --- [backend] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-148 - Shutdown completed.
+2025-01-15T16:01:52.720-05:00  INFO 31586 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Starting BackendApplication using Java 22.0.2 with PID 31586 (/Users/justinwatson/personal-projects/PS-Capstone/backend/target/classes started by justinwatson in /Users/justinwatson/personal-projects/PS-Capstone)
+2025-01-15T16:01:52.722-05:00  INFO 31586 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-01-15T16:01:52.781-05:00  INFO 31586 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-15T16:01:52.782-05:00  INFO 31586 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-15T16:01:53.560-05:00  INFO 31586 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-15T16:01:53.641-05:00  INFO 31586 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71 ms. Found 6 JPA repository interfaces.
+2025-01-15T16:01:54.345-05:00  INFO 31586 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-15T16:01:54.363-05:00  INFO 31586 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-15T16:01:54.363-05:00  INFO 31586 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-01-15T16:01:54.414-05:00  INFO 31586 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-15T16:01:54.414-05:00  INFO 31586 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1631 ms
+2025-01-15T16:01:54.470-05:00 DEBUG 31586 --- [backend] [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'logFilter' configured for use
+2025-01-15T16:01:54.597-05:00  INFO 31586 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-15T16:01:54.643-05:00  INFO 31586 --- [backend] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2025-01-15T16:01:54.675-05:00  INFO 31586 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-15T16:01:54.966-05:00  INFO 31586 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-15T16:01:54.994-05:00  INFO 31586 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-15T16:01:55.365-05:00  INFO 31586 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@490c9244
+2025-01-15T16:01:55.367-05:00  INFO 31586 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-15T16:01:55.412-05:00  WARN 31586 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-15T16:01:55.413-05:00  WARN 31586 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-01-15T16:01:55.430-05:00  INFO 31586 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-15T16:01:56.259-05:00  INFO 31586 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-15T16:01:56.386-05:00  INFO 31586 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T16:01:56.808-05:00  WARN 31586 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-15T16:01:57.180-05:00  WARN 31586 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: ae16664c-eee1-4d67-aea2-ded14eb9a462
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-01-15T16:01:57.198-05:00  INFO 31586 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-01-15T16:01:57.371-05:00  INFO 31586 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-15T16:01:57.402-05:00  INFO 31586 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-15T16:01:57.413-05:00  INFO 31586 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Started BackendApplication in 5.27 seconds (process running for 5.915)
+2025-01-15T16:06:05.230-05:00  INFO 31705 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Starting BackendApplication using Java 22.0.2 with PID 31705 (/Users/justinwatson/personal-projects/PS-Capstone/backend/target/classes started by justinwatson in /Users/justinwatson/personal-projects/PS-Capstone)
+2025-01-15T16:06:05.233-05:00  INFO 31705 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-01-15T16:06:05.293-05:00  INFO 31705 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-15T16:06:05.294-05:00  INFO 31705 --- [backend] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-15T16:06:05.929-05:00  INFO 31705 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-15T16:06:06.011-05:00  INFO 31705 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 6 JPA repository interfaces.
+2025-01-15T16:06:06.622-05:00  INFO 31705 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-15T16:06:06.638-05:00  INFO 31705 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-15T16:06:06.639-05:00  INFO 31705 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-01-15T16:06:06.688-05:00  INFO 31705 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-15T16:06:06.689-05:00  INFO 31705 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1394 ms
+2025-01-15T16:06:06.742-05:00 DEBUG 31705 --- [backend] [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'logFilter' configured for use
+2025-01-15T16:06:06.877-05:00  INFO 31705 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-15T16:06:06.922-05:00  INFO 31705 --- [backend] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2025-01-15T16:06:06.957-05:00  INFO 31705 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-15T16:06:07.243-05:00  INFO 31705 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-15T16:06:07.271-05:00  INFO 31705 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-15T16:06:07.642-05:00  INFO 31705 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@732716b6
+2025-01-15T16:06:07.644-05:00  INFO 31705 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-15T16:06:07.685-05:00  WARN 31705 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-15T16:06:07.686-05:00  WARN 31705 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-01-15T16:06:07.702-05:00  INFO 31705 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-01-15T16:06:08.481-05:00  INFO 31705 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-15T16:06:08.602-05:00  INFO 31705 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T16:06:09.033-05:00  WARN 31705 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-15T16:06:09.411-05:00  WARN 31705 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 402e5634-a902-4830-8182-765a69fc1548
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-01-15T16:06:09.426-05:00  INFO 31705 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-01-15T16:06:09.587-05:00  WARN 31705 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-01-15T16:06:09.614-05:00  WARN 31705 --- [backend] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-01-15T16:06:09.618-05:00  INFO 31705 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-15T16:06:09.623-05:00  INFO 31705 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-15T16:06:09.636-05:00  INFO 31705 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-15T16:06:09.652-05:00  INFO 31705 --- [backend] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-01-15T16:06:09.677-05:00 ERROR 31705 --- [backend] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+

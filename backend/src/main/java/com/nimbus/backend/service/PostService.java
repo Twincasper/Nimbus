@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PostService {
-    Post createPost(String title, String body, Integer userId);
+    Post createPost(String title, String body, Integer userId, Integer categoryId);
 
     Post updatePost(Integer id, Post postDetails);
 
