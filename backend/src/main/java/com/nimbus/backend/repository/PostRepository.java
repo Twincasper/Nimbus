@@ -12,7 +12,7 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<Post, Integer> {
     List<Post> findByUser(User user);
 
-    List<Post> findByTitle(String title); // ideally this would ignore casing
+    List<Post> findByTitleContainingIgnoreCase(String title); // Custom query method
 
     List<Post> findByCategory(Category category);
 }

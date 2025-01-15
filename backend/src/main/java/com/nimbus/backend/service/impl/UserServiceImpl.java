@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PostRepository postRepository;
@@ -27,6 +26,7 @@ public class UserServiceImpl implements UserService {
         this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
+    @Transactional
     @Override
     public User createUser(String username, String password) {
         if (userRepository.findByUsername(username).isPresent()) {
@@ -36,26 +36,31 @@ public class UserServiceImpl implements UserService {
         User user = new User(username, hashedPassword); // Either hash here or in the User constructor, but prob here
         return userRepository.save(user);
     }
-
+    @Transactional(readOnly = true)
     @Override
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public boolean usernameExists(String username) {
         return userRepository.findByUsername(username).isPresent();
     }
 
+    @Transactional(readOnly = true)
+    @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<User> getUserById(Integer id) {
         return userRepository.findById(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Post> getPostsByUser(Integer userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("User not found"));

@@ -7,6 +7,7 @@ import com.nimbus.backend.repository.PostRepository;
 import com.nimbus.backend.repository.UserRepository;
 import com.nimbus.backend.service.PostService;
 import com.nimbus.backend.model.Post;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,7 @@ public class PostServiceImpl implements PostService {
         this.categoryRepository = categoryRepository;
     }
 
+    @Transactional
     @Override
     public Post createPost(String title, String body, Integer userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
@@ -37,7 +39,7 @@ public class PostServiceImpl implements PostService {
 
         return postRepository.save(createdPost);
     }
-
+    @Transactional
     @Override
     public Post updatePost(Integer id, Post postDetails) {
         Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
@@ -48,11 +50,13 @@ public class PostServiceImpl implements PostService {
         return postRepository.save(post);
     }
 
+    @Transactional
     @Override
     public void deletePost(Integer id) {
         postRepository.deleteById(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Optional<Post> getPostById(Integer id) {
         return postRepository.findById(id);
@@ -78,6 +82,6 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> getPostsByTitle(String title) {
-        return postRepository.findByTitle(title);
+        return postRepository.findByTitleContainingIgnoreCase(title);
     }
 }

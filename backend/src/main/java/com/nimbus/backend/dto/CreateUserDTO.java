@@ -1,6 +1,5 @@
 package com.nimbus.backend.dto;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
