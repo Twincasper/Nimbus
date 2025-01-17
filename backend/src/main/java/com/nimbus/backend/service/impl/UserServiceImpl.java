@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Username already exists");
         }
         String hashedPassword = passwordEncoder.encode(password);
-        User user = new User(username, hashedPassword); // Either hash here or in the User constructor, but prob here
+        User user = new User(username, hashedPassword); // Probably should salt
         return userRepository.save(user);
     }
     @Transactional(readOnly = true)

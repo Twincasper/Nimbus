@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/users")  // Add this to specify the base path
+@RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
 
@@ -61,7 +61,7 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-    @GetMapping("/check/{username}")  // Fix path variable syntax
+    @GetMapping("/check/{username}")
     public boolean checkUsernameExists(@PathVariable String username) {
         return userService.usernameExists(username);
     }
