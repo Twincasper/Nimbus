@@ -1,10 +1,10 @@
 export default function Navbar() {
   return (
-    <div className="navbar bg-base-100 mr-auto">
+    <div className="navbar mr-auto">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl">Nimbus</a>
       </div>
-      
+
       {/* Middle section, may want to recolor this list's li's later */}
       <div className="flex-1 justify-center navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
