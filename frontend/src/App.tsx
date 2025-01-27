@@ -6,7 +6,7 @@ import CurrentUserContext from './context/current-user-context';
 // Components and Pages
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
-import SignUpPage from './pages/SignUpPage';
+// import SignUpPage from './pages/SignUpPage';
 // import UsersPage from './pages/UsersPage';
 // import UserPage from './pages/UserPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -32,13 +32,14 @@ export default function App() {
       {/* Conditional Nav */}
       {/* We can use the current path to show or hide navigation when we want the navbar to show on every page except certain pages */}
       {/* {location.pathname !== '/' && <Navbar />} */}
-      <Navbar />
+
+      {location.pathname !== '/login' && <Navbar />}
       <main className='flex-grow'>
         <Routes>
           {/* Basic Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/sign-up" element={<SignUpPage />} />
+          {/*<Route path="/sign-up" element={<SignUpPage />} />*/}
           {/* <Route path="/resources" element={<ResourcesPage />} /> */}
 
           {/* Community Pages */}
@@ -56,7 +57,7 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
-      <Footer />
+      {location.pathname !== '/login' && <Footer />}
     </div>
   );
 }

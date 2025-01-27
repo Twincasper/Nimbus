@@ -15,5 +15,5 @@ module.exports = {
   		colors: {}
   	}
   },
-  plugins: [require("daisyui"), require("tailwindcss-animate")],
+  plugins: [require("daisyui"), require("tailwindcss-animate"), require('@tailwindcss/forms')],
 }

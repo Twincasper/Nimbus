@@ -1,108 +1,170 @@
+/*
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+*/
 export default function LoginPage() {
     return (
-        <div className="max-w-md w-full" style={{ opacity: 1, transform: "none" }}>
-            <button className="mb-8 flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">
-                <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round"
-                     strokeLinejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-                Back to home
-            </button>
-            <div className="text-center mb-8">
-                <div className="flex justify-center mb-4" style={{ transform: "none" }}>
-                    <div className="relative md" tabIndex={0}>
-                        <div className="absolute inset-0" style={{ transform: "rotate(126.288deg)" }}>
-                            <div className="w-full h-full rounded-full bg-gradient-to-r from-indigo-500 via-blue-500 to-indigo-500"></div>
-                        </div>
-                        <div className="absolute inset-1 bg-white dark:bg-gray-900 rounded-full"
-                             style={{ backgroundColor: "rgb(17, 24, 39)" }}>
-                        </div>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <svg viewBox="0 0 24 24" className="w-4/6 h-4/6 text-indigo-600 dark:text-indigo-400"
-                                 style={{ transform: "none" }}>
-                                <path fill="currentColor"
-                                      d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M11,17V16H9V14H13V13H10A1,1 0 0,1 9,12V9A1,1 0 0,1 10,8H11V7H13V8H15V10H11V11H14A1,1 0 0,1 15,12V15A1,1 0 0,1 14,16H13V17H11Z">
-                                </path>
+        <>
+            {/*
+        This example requires updating your template:
+
+        ```
+        <html class="h-full bg-white">
+        <body class="h-full">
+        ```
+      */}
+            {/*The div below does not take up the full height of the main class it's in*/}
+            <div className="flex flex-1 min-h-screen">
+                <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24" style={{background: "linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(248,131,121,1) 100%)"}}>
+                    <div className="mx-auto w-full max-w-sm lg:w-96">
+                        <div>
+                            {/*<img*/}
+                            {/*    className="h-10 w-auto"*/}
+                            {/*    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"*/}
+                            {/*    alt="Nimbus Logo"*/}
+                            {/*/>*/}
+                            <svg className="h-10 w-auto" xmlns="http://www.w3.org/2000/svg"
+                                 viewBox="0 0 640 512">
+                                <path fill="#74C0FC"
+                                      d="M0 336c0 79.5 64.5 144 144 144l368 0c70.7 0 128-57.3 128-128c0-61.9-44-113.6-102.4-125.4c4.1-10.7 6.4-22.4 6.4-34.6c0-53-43-96-96-96c-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32C167.6 32 96 103.6 96 192c0 2.7 .1 5.4 .2 8.1C40.2 219.8 0 273.2 0 336z"/>
                             </svg>
+                            <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                                Sign in to your account
+                            </h2>
+                            <p className="mt-2 text-sm leading-6 text-gray-500">
+                                Not a member?{' '}
+                                <a href="#" className="font-semibold text-red-300 hover:text-red-200">
+                                    Sign Up
+                                </a>
+                            </p>
+                        </div>
+
+                        <div className="mt-10">
+                            <div>
+                                <form action="#" method="POST" className="space-y-6">
+                                    <div>
+                                        <label htmlFor="email"
+                                               className="block text-sm font-medium leading-6 text-gray-900">
+                                            Username
+                                        </label>
+                                        <div className="mt-2">
+                                            <input
+                                                id="username"
+                                                name="username"
+                                                type="text"
+                                                autoComplete="username"
+                                                required
+                                                className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                                            Password
+                                        </label>
+                                        <div className="mt-2">
+                                            <input
+                                                id="password"
+                                                name="password"
+                                                type="password"
+                                                autoComplete="current-password"
+                                                required
+                                                className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center">
+                                            <input
+                                                id="remember-me"
+                                                name="remember-me"
+                                                type="checkbox"
+                                                className="h-4 w-4 rounded border-gray-300 text-red-400 focus:ring-red-400"
+                                            />
+                                            <label htmlFor="remember-me" className="ml-3 block text-sm leading-6 text-gray-700">
+                                                Remember me
+                                            </label>
+                                        </div>
+
+                                        <div className="text-sm leading-6">
+                                            <a href="#" className="font-semibold text-red-300 hover:text-red-200">
+                                                Forgot password?
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="flex w-full justify-center rounded-md bg-red-300 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-400 hover:border-red-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                                        >
+                                            Sign in
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div className="mt-10">
+                                <div className="relative">
+                                    <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                                        <div className="w-full border-t border-gray-200" />
+                                    </div>
+                                    <div className="relative flex justify-center text-sm font-medium leading-6">
+                                        <span className="bg-white px-6 text-gray-900 rounded-sm">Or continue with</span>
+                                    </div>
+                                </div>
+
+                                <div className="mt-6 grid grid-cols-2 gap-4">
+                                    {/*Commenting out twitter button for now*/}
+                                    <a
+                                        href="#"
+                                        className="flex w-full items-center justify-center gap-3 rounded-md bg-[#1D9BF0] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1D9BF0]"
+                                    >
+                                        <svg className="h-5 w-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+                                        </svg>
+                                        <span className="text-sm font-semibold leading-6">Twitter</span>
+                                    </a>
+
+                                    {/*Commenting out github button*/}
+                                    <a
+                                        href="#"
+                                        className="flex w-full items-center justify-center gap-3 rounded-md bg-[#24292F] px-3 py-1.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#24292F]"
+                                    >
+                                        <svg className="h-5 w-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                        <span className="text-sm font-semibold leading-6">GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <h1 className="text-3xl font-bold mb-2">Create your account</h1>
-                <p className="text-gray-600 dark:text-gray-300">Join GroupPay and start splitting bills with friends</p>
+                <div className="relative hidden w-0 flex-1 lg:block">
+                    <img
+                        className="absolute inset-0 h-full w-full object-cover"
+                        src="/login-clouds.png"
+                        alt=""
+                    />
+                </div>
             </div>
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 space-y-6"
-                 style={{ opacity: 1, transform: "none" }}>
-                <form className="space-y-4">
-                    {/* Form fields */}
-                    <div>
-                        <label className="block text-sm font-medium mb-2">Full Name</label>
-                        <div className="relative">
-                            <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24"
-                                 strokeLinecap="round" strokeLinejoin="round"
-                                 className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" height="1em"
-                                 width="1em" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                            <input
-                                type="text"
-                                name="fullName"
-                                placeholder="John Doe"
-                                className="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition-all duration-200"
-                                value=""
-                            />
-                        </div>
-                    </div>
-                    {/* Password strength indicator */}
-                    <div className="mt-2">
-                        <div className="flex gap-1 h-1">
-                            {[1, 2, 3, 4].map((index) => (
-                                <div
-                                    key={index}
-                                    className="flex-1 rounded-full bg-gray-200 dark:bg-gray-700"
-                                    style={{ transform: "scaleX(0)" }}
-                                ></div>
-                            ))}
-                        </div>
-                    </div>
-                    <button
-                        type="submit"
-                        className="w-full py-2 px-4 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-medium rounded-xl shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                        tabIndex={0}
-                    >
-                        Create Account
-                    </button>
-                </form>
-                <div className="relative">
-                    <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t border-gray-200 dark:border-gray-700"></div>
-                    </div>
-                    <div className="relative flex justify-center text-sm">
-                        <span className="px-2 bg-white dark:bg-gray-800 text-gray-500">Or continue with</span>
-                    </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                    <button
-                        className="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200"
-                        tabIndex={0}>
-                        <img src="" alt="Google" className="w-5 h-5"/>
-                        Google
-                    </button>
-                    <button
-                        className="flex items-center justify-center gap-2 p-2 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200"
-                        tabIndex={0}>
-                        <img src="" alt="Apple" className="w-5 h-5"/>
-                        Apple
-                    </button>
-                </div>
-            </div>
-            <p className="text-center mt-6 text-gray-600 dark:text-gray-300">
-                Already have an account?{" "}
-                <a className="text-indigo-600 dark:text-indigo-400 hover:underline font-medium" href="/login">
-                    Log in
-                </a>
-            </p>
-        </div>
-    );
+        </>
+    )
 }
