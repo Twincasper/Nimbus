@@ -13,7 +13,7 @@ export default function Home() {
                     backgroundImage: 'url("https://img.freepik.com/free-vector/watercolor-sugar-cotton-clouds-background_23-2149231324.jpg?t=st=1737752744~exp=1737756344~hmac=2082b084151fa2ed52356c3e5e721f90ebed3a72b6edc092e9406135d0be7281&w=2000")',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    filter: 'brightness(0.8)'
+                    filter: 'brightness(0.8)',
                 }}
             />
 

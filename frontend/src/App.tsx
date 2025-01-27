@@ -5,7 +5,7 @@ import CurrentUserContext from './context/current-user-context';
 
 // Components and Pages
 import Home from './pages/Home';
-// import LoginPage from './pages/LoginPage';
+import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 // import UsersPage from './pages/UsersPage';
 // import UserPage from './pages/UserPage';
@@ -16,7 +16,6 @@ import NotFoundPage from './pages/NotFoundPage';
 // import PostDetailPage from './pages/PostDetailPage';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-// import SiteHeadingAndNav from './components/SiteHeadingAndNav';
 
 export default function App() {
  // const location = useLocation(); to check current path
@@ -38,7 +37,7 @@ export default function App() {
         <Routes>
           {/* Basic Routes */}
           <Route path="/" element={<Home />} />
-          {/* <Route path="/login" element={<LoginPage />} /> */}
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           {/* <Route path="/resources" element={<ResourcesPage />} /> */}
 
