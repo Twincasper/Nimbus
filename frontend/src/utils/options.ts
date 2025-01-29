@@ -1,25 +1,16 @@
-type CommonOptions = {
-  credentials: 'include';
-  headers?: Record<string, string>;
+import { RequestBody, RequestOptions } from './types';
+
+export const getOptions: RequestOptions = {
+  method: 'GET',
+  credentials: 'include',
 };
 
-type OptionsWithBody<T> = CommonOptions & {
-  method: 'POST' | 'PATCH';
-  body: string;
-};
-
-type OptionsWithoutBody = CommonOptions & {
-  method: 'DELETE';
-};
-
-type RequestBody = Record<string, unknown>;
-
-export const deleteOptions: OptionsWithoutBody = {
+export const deleteOptions: RequestOptions = {
   method: 'DELETE',
   credentials: 'include',
 };
 
-export function getPostOptions<T extends RequestBody>(body: T): OptionsWithBody<T> {
+export function getPostOptions<T extends RequestBody>(body: T): RequestOptions<T> {
   return {
     method: 'POST',
     credentials: 'include',
@@ -28,7 +19,7 @@ export function getPostOptions<T extends RequestBody>(body: T): OptionsWithBody<
   };
 }
 
-export function getPatchOptions<T extends RequestBody>(body: T): OptionsWithBody<T> {
+export function getPatchOptions<T extends RequestBody>(body: T): RequestOptions<T> {
   return {
     method: 'PATCH',
     credentials: 'include',
@@ -36,5 +27,3 @@ export function getPatchOptions<T extends RequestBody>(body: T): OptionsWithBody
     body: JSON.stringify(body),
   };
 }
-
-// Could probably establish an interface for the request body in the adapters later on
