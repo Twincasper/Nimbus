@@ -12,6 +12,8 @@
   }
   ```
 */
+import React from 'react'
+
 export default function LoginPage() {
     return (
         <>
@@ -23,7 +25,7 @@ export default function LoginPage() {
         <body class="h-full">
         ```
       */}
-            {/*The div below does not take up the full height of the main class it's in*/}
+
             <div className="flex flex-1 min-h-screen">
                 <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24" style={{background: "linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(248,131,121,1) 100%)"}}>
                     <div className="mx-auto w-full max-w-sm lg:w-96">

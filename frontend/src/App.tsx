@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import CurrentUserContext from './context/current-user-context';
+import React from 'react';
 // Need to import checkForLoggedInUser function here from auth adapter or some other way to check if user is logged in
 
 // Components and Pages
@@ -33,7 +34,7 @@ export default function App() {
       {/* We can use the current path to show or hide navigation when we want the navbar to show on every page except certain pages */}
       {/* {location.pathname !== '/' && <Navbar />} */}
 
-      {location.pathname !== '/login' && <Navbar />}
+      {location.pathname !== '/login' &&  <Navbar />}
       <main className='flex-grow'>
         <Routes>
           {/* Basic Routes */}

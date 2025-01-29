@@ -1,4 +1,9 @@
+import React from 'react';
+import {Link, useNavigate} from "react-router-dom";
+
 export default function Navbar() {
+  const navigate = useNavigate();
+
   return (
     <div className="navbar mr-auto">
       <div className="flex-1">
@@ -60,29 +65,43 @@ export default function Navbar() {
       <div className="flex-1 justify-end">
         <div className="flex items-center gap-2">
           <div className="form-control">
-            <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
+            <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto"/>
           </div>
           <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    alt="User avatar"
+                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
                 />
               </div>
-            </div>
+            </label>
             <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a className="justify-between">
+                <Link
+                    to="/profile/apple"
+                    className="justify-between"
+                >
                   Profile
-                  <span className="badge">New</span>
-                </a>
+                </Link>
               </li>
-              <li><a>Settings</a></li>
-              <li><a>Logout</a></li>
+              <li>
+                <Link to="/settings">Settings</Link>
+              </li>
+              <li>
+                <button
+                    onClick={() => {
+                      // Add logout logic here later
+                      console.log('Logout clicked');
+                    }}
+                    className="w-full text-left bg-transparent text-[#646cff]"
+                >
+                  Logout
+                </button>
+              </li>
             </ul>
           </div>
         </div>
