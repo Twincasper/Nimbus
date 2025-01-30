@@ -37,7 +37,7 @@ export default function App() {
       {/* {location.pathname !== '/' && <Navbar />} */}
 
       {location.pathname !== '/login' &&  <Navbar />}
-      <main className={'flex-grow'}>
+      <main className={location.pathname === '/profile' ? 'mx-auto' : 'flex-grow'}>
         <Routes>
           {/* Basic Routes */}
           <Route path="/" element={<Home />} />

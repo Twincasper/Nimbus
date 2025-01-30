@@ -1,3 +1,4 @@
+import React from 'react';
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import {UploadWidget} from "@/components/UploadWidget.tsx";
@@ -33,7 +34,7 @@ export default function Profile() {
                     {/*>*/}
                     {/*    Change avatar*/}
                     {/*</button>*/}
-                    <UploadWidget onUpload={(url: string) => setProfileUrl(url)} />
+                    <UploadWidget onUpload={(url: string) => setProfileUrl(url)}/>
                     <p id="file-restrictions" className="mt-2 text-xs leading-5 text-gray-400">JPG, GIF or PNG. 1MB
                         max.</p>
                 </div>
@@ -42,6 +43,8 @@ export default function Profile() {
             <div className="space-y-1">
                 <div>
                     <h2 className="text-base/7 font-semibold text-gray-900">Profile Details</h2>
+                    <p className="mt-1 text-sm leading-6 text-gray-400">Update your account's profile information and
+                        email address.</p>
                     <p className="mt-1 text-sm/6 text-gray-600">
                     </p>
 
@@ -421,6 +424,79 @@ export default function Profile() {
                 {/*        </fieldset>*/}
                 {/*    </div>*/}
                 {/*</div>*/}
+            </div>
+
+            <div>
+                <h2 className="text-base font-semibold leading-7 text-black">Change password</h2>
+                <p className="mt-1 text-sm leading-6 text-gray-400">
+                    Update your password associated with your account.
+                </p>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div className="sm:col-span-3">
+                    <label htmlFor="current-password" className="block text-sm/6 font-medium text-gray-900">
+                        Current password
+                    </label>
+                    <div className="mt-2">
+                        <input
+                            id="current-password"
+                            name="current-password"
+                            type="password"
+                            autoComplete="current-password"
+                            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                        />
+                    </div>
+                </div>
+
+                <div className="sm:col-span-3">
+                    <label htmlFor="new-password" className="block text-sm/6 font-medium text-gray-900">
+                        New password
+                    </label>
+                    <div className="mt-2">
+                        <input
+                            id="new-password"
+                            name="new-password"
+                            type="password"
+                            autoComplete="new-password"
+                            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                        />
+                    </div>
+                </div>
+
+                <div className="sm:col-span-3">
+                    <label htmlFor="confirm-password" className="block text-sm/6 font-medium text-gray-900">
+                        Confirm password
+                    </label>
+                    <div className="mt-2">
+                        <input
+                            id="confirm-password"
+                            name="confirm-password"
+                            type="password"
+                            autoComplete="confirm-password"
+                            className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h2 className="text-base font-semibold leading-7 text-white">Delete account</h2>
+                <p className="mt-1 text-sm leading-6 text-gray-400">
+                    No longer want to use our service? You can delete your account here. This action is not reversible.
+                    All information related to this account will be deleted permanently.
+                </p>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <form className="flex items-start md:col-span-2">
+                    <button
+                        type="submit"
+                        className="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400"
+                    >
+                        Yes, delete my account
+                    </button>
+                </form>
             </div>
 
             <div className="mt-6 flex items-center justify-end gap-x-6">
