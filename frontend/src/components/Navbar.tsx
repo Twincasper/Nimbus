@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <div className="navbar mr-auto">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Nimbus</a>
+        <a className="btn btn-ghost text-xl" onClick={() => navigate('/')}>Nimbus</a>
       </div>
 
       {/* Middle section, may want to recolor this list's li's later */}

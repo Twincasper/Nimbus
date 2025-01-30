@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import {useLocation} from "react-router-dom";
+
 
 // <UploadWidget onUpload={(url: string) => setProfileUrl(url)} /> is the general flow of how we could this, to set the User.profileUrl to the user
 
@@ -7,6 +9,11 @@ interface UploadWidgetProps {
 }
 
 export const UploadWidget = ({ onUpload }: UploadWidgetProps) => {
+    const location = useLocation();
+    const buttonClass = location.pathname === '/profile'
+        ? 'rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500'
+        : 'rounded-md bg-white/10 px-3 py-2 text-sm font-semibold text-black shadow-md hover:bg-white/20';
+
     const cloudinaryRef = useRef<typeof window.cloudinary>();
     const widgetRef = useRef<any>();
     const [buttonText, setButtonText] = useState<string>('Profile Picture');
@@ -39,11 +46,11 @@ export const UploadWidget = ({ onUpload }: UploadWidgetProps) => {
     }, [onUpload]);
 
     return (
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-4 rounded-sm">
             <button
                 type="button"
                 onClick={() => widgetRef.current?.open()}
-                className="bg-white text-black rounded-full font-semibold text-lg px-6 py-3 cursor-pointer transition-all duration-300 ease-in-out border border-black shadow-none hover:-translate-y-1 hover:-translate-x-0.5 hover:shadow-[2px_5px_0_0_black] active:translate-y-0.5 active:translate-x-0.25 active:shadow-none"
+                className={buttonClass}
             >
                 {buttonText}
             </button>
