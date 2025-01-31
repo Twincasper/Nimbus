@@ -12,8 +12,8 @@ interface UploadWidgetProps {
 export const UploadWidget = ({ onUpload }: UploadWidgetProps) => {
     const location = useLocation();
     const buttonClass = location.pathname === '/profile'
-        ? 'rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500'
-        : 'rounded-md bg-white/10 px-3 py-2 text-sm font-semibold text-black shadow-md hover:bg-white/20';
+        ? 'rounded-full bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-md hover:bg-indigo-500'
+        : 'rounded-full bg-white/10 px-3 py-2 text-sm font-semibold text-black shadow-md hover:bg-white/20';
 
     const cloudinaryRef = useRef<typeof window.cloudinary>();
     const widgetRef = useRef<any>();
