@@ -483,7 +483,7 @@ export default function Profile() {
             <div>
                 <h2 className="text-base font-semibold leading-7 text-white">Delete account</h2>
                 <p className="mt-1 text-sm leading-6 text-gray-400 max-w-xl mx-auto">
-                    No longer want to use our service? You can delete your account here. This action is not reversible.
+                    You can delete your account here. This action is not reversible.
                     All information related to this account will be deleted permanently.
                 </p>
             </div>
@@ -494,6 +494,9 @@ export default function Profile() {
                 >
                     Yes, delete my account
                 </button>
+
+        {/*    Stretch feature would be to add a mental health break button here that voluntarily suspends the account,
+               we could store that as a boolean on the user's profile*/}
 
         </form>
     )

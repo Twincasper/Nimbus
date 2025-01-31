@@ -47,8 +47,8 @@ const Community: React.FC = () => {
                 </h1>
                 <div className="space-y-4">
                     {filteredPosts.map((post) => (
-                        <div key={post.id} onClick={() => navigate(`/post/${post.id}`)}>
-                            <ForumPostCard {...post} />
+                        <div key={post.id}>
+                            <ForumPostCard {...post}  onClick={() => navigate(`/post/${post.id}`)} />
                         </div>
                     ))}
                 </div>

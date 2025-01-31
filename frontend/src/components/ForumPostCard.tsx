@@ -14,17 +14,18 @@ interface ForumPostCardProps {
   comments: number;
 }
 
-const ForumPostCard: React.FC<ForumPostCardProps> = ({
+const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = ({
   username,
   avatarUrl,
   title,
   content,
   date,
   likes,
-  comments
+  comments,
+  onClick,
 }) => {
   return (
-    <Card className="w-full max-w-2xl mx-auto my-4">
+    <Card className="w-full max-w-2xl mx-auto my-4 hover:bg-gray-100 transition-colors duration-200 cursor-pointer" onClick={onClick}>
       <CardHeader className="flex flex-row items-center gap-4">
         <Avatar>
           <AvatarImage src={avatarUrl} alt={username} />

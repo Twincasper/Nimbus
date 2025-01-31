@@ -44,19 +44,16 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/profile" element={<Profile />} />
           {/*<Route path="/sign-up" element={<SignUpPage />} />*/}
-          {/* <Route path="/resources" element={<ResourcesPage />} /> */}
 
           {/* Community Pages */}
           <Route path="/community" element={<Community />} />
-          {/* <Route path="/users" element={<UsersPage />} />
-          <Route path="/users/:id" element={<UserPage />} /> */}
+          {/* <Route path="/users/:id" element={<UserPage />} /> */}
 
           {/* Forums */}
           {/* <Route path="/forums/:category" element={<ForumCategoryPage />} /> */}
 
           {/* Posts */}
-          {/* <Route path="/posts" element={<PostsPage />} />
-          <Route path="/posts/:id" element={<PostDetailPage />} /> */}
+          {/* <Route path="/posts/:id" element={<PostDetailPage />} /> */}
 
           {/* 404 */}
           <Route path="*" element={<NotFoundPage />} />
