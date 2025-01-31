@@ -1,5 +1,6 @@
 package com.nimbus.backend.service;
 
+import com.nimbus.backend.dto.UpdateUserDTO;
 import com.nimbus.backend.model.Post;
 import com.nimbus.backend.model.User;
 import java.util.List;
@@ -14,7 +15,7 @@ public interface UserService {
     Optional<User> findByUsername(String username);
     boolean usernameExists(String username);
 
-    User updateUser(Integer id, User userDetails);
+    User updateUser(Integer id, UpdateUserDTO userDetails);
 
     void deleteUser(Integer id);
 }

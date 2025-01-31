@@ -8,6 +8,10 @@ import lombok.Data;
 public class UserResponseDTO {
     private Integer id;
     private String username;
+    private String pronouns;
+    private String bio;
+    private String profilePicture;
 
-    public UserResponseDTO() {} // could use NoArgsConstructor from Lombok too
+    // No-args constructor (if not using Lombok's @NoArgsConstructor)
+    public UserResponseDTO() {}
 }

@@ -1,5 +1,6 @@
 package com.nimbus.backend.service.impl;
 
+import com.nimbus.backend.dto.UpdateUserDTO;
 import com.nimbus.backend.model.Post;
 import com.nimbus.backend.model.User;
 import com.nimbus.backend.repository.PostRepository;
@@ -32,10 +33,19 @@ public class UserServiceImpl implements UserService {
         if (userRepository.findByUsername(username).isPresent()) {
             throw new IllegalArgumentException("Username already exists");
         }
-        String hashedPassword = passwordEncoder.encode(password);
-        User user = new User(username, hashedPassword); // Probably should salt
+
+        User user = new User();
+        user.setUsername(username);
+        user.setPasswordHash(passwordEncoder.encode(password));
+        user.setProfilePicture(generateDefaultAvatarUrl(username)); // Set default profile picture
         return userRepository.save(user);
     }
+
+    private String generateDefaultAvatarUrl(String username) {
+        String initial = username.isEmpty() ? "?" : username.substring(0, 1).toUpperCase();
+        return "https://api.dicebear.com/7.x/initials/svg?seed=" + initial + "&size=64&backgroundType=gradientLinear";
+    }
+
     @Transactional(readOnly = true)
     @Override
     public Optional<User> findByUsername(String username) {
@@ -67,14 +77,19 @@ public class UserServiceImpl implements UserService {
         return postRepository.findByUser(user);
     }
 
-    public User updateUser(Integer id, User userDetails) {
-        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User not found"));
+    @Override
+    public User updateUser(Integer id, UpdateUserDTO userDetails) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        user.setUsername(userDetails.getUsername());
-
-        if (userDetails.getPasswordHash() != null) {
-            user.setPasswordHash(userDetails.getPasswordHash());
+        // Update fields only if they're provided in the DTO
+        if (userDetails.getUsername() != null) {
+            user.setUsername(userDetails.getUsername());
         }
+        user.setPronouns(userDetails.getPronouns()); // Optional field (can be null)
+        user.setBio(userDetails.getBio());           // Optional field
+        user.setProfilePicture(userDetails.getProfilePicture()); // Optional field
+
         return userRepository.save(user);
     }
 

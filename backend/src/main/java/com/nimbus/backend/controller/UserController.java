@@ -1,6 +1,7 @@
 package com.nimbus.backend.controller;
 
 import com.nimbus.backend.dto.CreateUserDTO;
+import com.nimbus.backend.dto.UpdateUserDTO;
 import com.nimbus.backend.dto.UserResponseDTO;
 import com.nimbus.backend.model.User;
 import com.nimbus.backend.service.UserService;
@@ -21,11 +22,23 @@ public class UserController {
     }
 
     private UserResponseDTO convertToDTO(User user) {
-        return new UserResponseDTO(user.getId(), user.getUsername());
+        return new UserResponseDTO(
+                user.getId(),
+                user.getUsername(),
+                user.getPronouns(),
+                user.getBio(),
+                user.getProfilePicture()
+        );
     }
 
-    private User convertToEntity(CreateUserDTO dto) {
-        return new User(dto.getUsername(), dto.getPassword());
+    // New method to convert UpdateUserDTO to User entity
+    private User convertToEntity(UpdateUserDTO dto) {
+        User user = new User();
+        user.setUsername(dto.getUsername());
+        user.setPronouns(dto.getPronouns());
+        user.setBio(dto.getBio());
+        user.setProfilePicture(dto.getProfilePicture());
+        return user;
     }
 
     @PostMapping
@@ -51,8 +64,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public UserResponseDTO updateUser(@PathVariable Integer id, @RequestBody CreateUserDTO userDTO) {
-        User updatingUser = userService.updateUser(id, convertToEntity(userDTO));
+    public UserResponseDTO updateUser(@PathVariable Integer id, @RequestBody UpdateUserDTO userDTO) {
+        User updatingUser = userService.updateUser(id, userDTO);
         return convertToDTO(updatingUser);
     }
 
