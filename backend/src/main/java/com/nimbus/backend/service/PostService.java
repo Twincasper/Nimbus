@@ -21,4 +21,6 @@ public interface PostService {
     List<Post> getPostsByCategory(Integer categoryId);
 
     List<Post> getPostsByTitle(String title);
+
+    List<Post> getRecentPosts();
 }

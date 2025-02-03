@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.List;
 
@@ -42,8 +43,8 @@ public class PostServiceImpl implements PostService {
         post.setBody(body);
         post.setUser(user);
         post.setCategory(category);
-        post.setCreatedAt(Instant.now());
-        post.setUpdatedAt(Instant.now());
+        post.setCreatedAt(LocalDateTime.now());
+        post.setUpdatedAt(LocalDateTime.now());
 
         return postRepository.save(post);
     }
@@ -92,5 +93,10 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> getPostsByTitle(String title) {
         return postRepository.findByTitleContainingIgnoreCase(title);
+    }
+
+    @Override
+    public List<Post> getRecentPosts() {
+        return postRepository.findRecentPosts();
     }
 }

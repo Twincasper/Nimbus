@@ -37,3 +37,7 @@ export const updatePost = async(id: number, post: Post) => {
 export const deletePost = async(id: number) => {
     return fetchHandler(`${baseUrl}/posts/${id}`, deleteOptions)
 }
+
+export const getRecentPosts = async () => {
+    return fetchHandler(`${baseUrl}/posts/recent`);
+}

@@ -72,6 +72,13 @@ public class PostController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/recent")
+    public List<PostResponseDTO> getRecentPosts() {
+        return postService.getRecentPosts().stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
     @GetMapping("/category/{categoryId}")
     public List<PostResponseDTO> getPostsByCategory(@PathVariable Integer categoryId) {
         return postService.getPostsByCategory(categoryId).stream()

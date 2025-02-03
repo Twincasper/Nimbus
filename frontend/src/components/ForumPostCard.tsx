@@ -12,6 +12,7 @@ interface ForumPostCardProps {
   date: string;
   likes: number;
   comments: number;
+  onClick?: () => void;
 }
 
 const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = ({

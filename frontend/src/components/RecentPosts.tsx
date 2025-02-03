@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 interface Post {
     id: number
     title: string
-    username: string
+    username?: string
 }
 
 interface RecentPostsProps {

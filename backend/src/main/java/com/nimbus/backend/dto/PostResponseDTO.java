@@ -6,9 +6,12 @@ import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class PostResponseDTO {
     private Integer id;
     private String title;
@@ -17,6 +20,8 @@ public class PostResponseDTO {
     private String username;
     private Integer categoryId;
     private String categoryName;
-    private Instant createdAt;
-    private Instant updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private Integer likes;
+    private Integer comments;
 }
