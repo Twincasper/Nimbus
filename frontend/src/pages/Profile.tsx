@@ -43,7 +43,7 @@ export default function Profile() {
             <div className="space-y-1">
                 <div>
                     <h2 className="text-base/7 font-semibold text-gray-900">Profile Details</h2>
-                    <p className="mt-1 text-sm leading-6 text-gray-400">Update your account's profile information and
+                    <p className="mt-1 text-sm leading-6 text-gray-400">Update your account`&#39;`s profile information and
                         email address.</p>
                     <p className="mt-1 text-sm/6 text-gray-600">
                     </p>
