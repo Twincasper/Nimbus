@@ -59,7 +59,6 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
-      {location.pathname !== '/login' && location.pathname !== '/profile' && <Footer />}
     </div>
   );
 }

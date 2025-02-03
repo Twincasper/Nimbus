@@ -10,7 +10,7 @@ export const deleteOptions: RequestOptions = {
   credentials: 'include',
 };
 
-export function getPostOptions<T extends RequestBody>(body: T): RequestOptions<T> {
+export function postOptions<T extends RequestBody>(body: T): RequestOptions<T> {
   return {
     method: 'POST',
     credentials: 'include',
@@ -19,7 +19,7 @@ export function getPostOptions<T extends RequestBody>(body: T): RequestOptions<T
   };
 }
 
-export function getPatchOptions<T extends RequestBody>(body: T): RequestOptions<T> {
+export function patchOptions<T extends RequestBody>(body: T): RequestOptions<T> {
   return {
     method: 'PATCH',
     credentials: 'include',

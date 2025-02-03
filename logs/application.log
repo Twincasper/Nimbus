@@ -8,3 +8,4 @@
 2025-02-03T08:36:01.301-05:00  WARN 98352 --- [backend] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m58s96ms).
 2025-02-03T09:04:48.105-05:00  WARN 98352 --- [backend] [RMI TCP Connection(71)-127.0.0.1] javax.management.remote.misc             : The server has decided to close this client connection.
 2025-02-03T09:05:08.429-05:00  WARN 98352 --- [backend] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=28m37s107ms).
+2025-02-03T10:51:17.215-05:00  WARN 98352 --- [backend] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m38s3ms).
