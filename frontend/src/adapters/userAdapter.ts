@@ -2,7 +2,7 @@
 import { fetchHandler } from '@/utils/fetchHandler'
 import { postOptions } from '@/utils/requestOptions';
 
-const baseUrl = '/api';
+const baseUrl = "http://localhost:8080/api";
 
 // Authentication
 export const login = async (username: string, password: string) => {

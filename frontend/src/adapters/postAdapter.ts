@@ -1,7 +1,7 @@
 import {fetchHandler} from "@/utils/fetchHandler.ts";
 import {postOptions, patchOptions, deleteOptions} from "@/utils/requestOptions.ts";
 
-const baseUrl = '/api';
+const baseUrl = "http://localhost:8080/api";
 
 interface Post {
     title: string;
