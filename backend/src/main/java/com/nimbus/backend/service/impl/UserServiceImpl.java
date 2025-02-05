@@ -86,6 +86,7 @@ public class UserServiceImpl implements UserService {
         if (userDetails.getUsername() != null) {
             user.setUsername(userDetails.getUsername());
         }
+
         user.setPronouns(userDetails.getPronouns()); // Optional field (can be null)
         user.setBio(userDetails.getBio());           // Optional field
         user.setProfilePicture(userDetails.getProfilePicture()); // Optional field

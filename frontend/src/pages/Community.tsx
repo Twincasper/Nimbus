@@ -1,10 +1,10 @@
-import React, {useEffect} from "react"
-import { useState } from "react"
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ForumPostCard from "../components/ForumPostCard";
 import Sidebar from "../components/Sidebar";
-import RecentPosts from "../components/RecentPosts"
-import {getPostsByCategory, getRecentPosts} from "@/adapters/postAdapter.ts";
+import RecentPosts from "../components/RecentPosts";
+import { getPostsByCategory, getRecentPosts } from "@/adapters/postAdapter.ts";
 
 interface Post {
     id: number;
@@ -17,6 +17,16 @@ interface Post {
     username: string;
     avatarUrl: string;
 }
+
+// Define communities here (or import from a shared file)
+const communities = [
+    { id: 1, name: "Rainy Days & Silver Linings", description: "Depression & Hope" },
+    { id: 2, name: "Calm in the Storm", description: "Anxiety & Stress Relief" },
+    { id: 3, name: "Fluff Therapy", description: "Self-Care & Comfort" },
+    { id: 4, name: "Cloud Nine Creations", description: "Hobbies & Creativity" },
+    { id: 5, name: "Cumulus Care", description: "Physical & Mental Health Tips" },
+    { id: 6, name: "Rainbows", description: "For the good days. The victories, big and small. You deserve to feel good about yourself."}
+];
 
 const Community: React.FC = () => {
     const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
@@ -33,15 +43,14 @@ const Community: React.FC = () => {
                 } else {
                     data = await getRecentPosts();
                 }
-                console.log("Fetched data:", data); // Log the data
-                setPosts(data);
+                console.log("Fetched data:", data);
+                setPosts(data[0]); // Fixed: Remove [0]
             } catch (error) {
                 console.error("Error fetching posts:", error);
             } finally {
                 setLoading(false);
             }
         };
-
         fetchPosts();
     }, [selectedCategoryId]);
 
@@ -53,7 +62,7 @@ const Community: React.FC = () => {
             <main className="flex-1 p-4">
                 <h1 className="text-2xl font-bold mb-4">
                     {selectedCategoryId
-                        ? `${categories.find(c => c.id === selectedCategoryId)?.name || ''} Community`
+                        ? `${communities.find(c => c.id === selectedCategoryId)?.name || ''} Community`
                         : "All Communities"}
                 </h1>
                 <div className="space-y-4">
@@ -63,7 +72,7 @@ const Community: React.FC = () => {
                                 username={post.username || "Anonymous"}
                                 avatarUrl={post.avatarUrl || "/default-avatar.png"}
                                 title={post.title || "No Title"}
-                                content={post.content || "No content available."}
+                                content={post.body || "No content available."}
                                 date={new Date(post.createdAt).toLocaleDateString() || "Unknown date"}
                                 likes={post.likes || 0}
                                 comments={post.comments || 0}
@@ -75,8 +84,7 @@ const Community: React.FC = () => {
             </main>
             <RecentPosts posts={posts.slice(0, 5)} />
         </div>
-    )
-}
+    );
+};
 
 export default Community;
-
