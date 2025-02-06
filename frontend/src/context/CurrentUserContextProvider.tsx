@@ -1,7 +1,8 @@
 // src/context/CurrentUserContextProvider.tsx
 import React, { useState } from 'react';
 import CurrentUserContext, { CurrentUser, CurrentUserContextType } from './current-user-context';
-import { login, register, updateUser } from '../adapters/userAdapter';
+import { login as loginAdapter, register as registerAdapter } from '@/adapters/authAdapter';
+import {updateUser} from "@/adapters/userAdapter.ts";
 
 interface UserContextProviderProps {
   children: React.ReactNode;
@@ -10,13 +11,13 @@ interface UserContextProviderProps {
 export default function CurrentUserContextProvider({ children }: UserContextProviderProps) {
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
 
+  // A helper that handles both login and sign up
   const handleAuth = async (
-      action: typeof login | typeof register,
-      username: string,
-      password: string
+      action: (...args: any[]) => Promise<any>,
+      ...args: any[]
   ) => {
     try {
-      const [userData] = await action(username, password);
+      const [userData] = await action(...args);
       if (userData) setCurrentUser(userData);
     } catch (error) {
       console.error('Authentication error:', error);
@@ -26,8 +27,8 @@ export default function CurrentUserContextProvider({ children }: UserContextProv
 
   const contextValue: CurrentUserContextType = {
     currentUser,
-    login: (username, password) => handleAuth(login, username, password),
-    register: (username, password) => handleAuth(register, username, password),
+    login: (username, password) => handleAuth(loginAdapter, username, password),
+    register: (username, password, pronouns, profilePicture) => handleAuth(registerAdapter, username, password, pronouns, profilePicture),
     logout: () => setCurrentUser(null),
     updateUser: async (id, updates) => {
       const [updatedUser] = await updateUser(id, updates);

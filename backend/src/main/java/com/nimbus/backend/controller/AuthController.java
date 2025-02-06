@@ -47,10 +47,14 @@ public class AuthController {
         User newUser = new User();
         newUser.setUsername(request.username());
         newUser.setPasswordHash(passwordEncoder.encode(request.password()));
-        User savedUser = userService.save(newUser);
+        // Set extra fields
+        newUser.setPronouns(request.pronouns());
+        newUser.setProfilePicture(request.profilePicture());
 
+        User savedUser = userService.save(newUser);
         return ResponseEntity.status(HttpStatus.CREATED).body(convertToDTO(savedUser));
     }
+
 
     private UserResponseDTO convertToDTO(User user) {
         return new UserResponseDTO(

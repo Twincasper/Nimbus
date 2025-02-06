@@ -5,13 +5,13 @@ import { postOptions } from '@/utils/requestOptions';
 const baseUrl = "http://localhost:8080/api";
 
 // Authentication
-export const login = async (username: string, password: string) => {
-    return fetchHandler(`${baseUrl}/login`, postOptions({ username, password }));
-};
-
-export const register = async (username: string, password: string) => {
-    return fetchHandler(`${baseUrl}/users`, postOptions({ username, password }));
-};
+// export const login = async (username: string, password: string) => {
+//     return fetchHandler(`${baseUrl}/login`, postOptions({ username, password }));
+// };
+//
+// export const register = async (username: string, password: string) => {
+//     return fetchHandler(`${baseUrl}/users`, postOptions({ username, password }));
+// };
 
 // User management
 export const getCurrentUser = async () => {
