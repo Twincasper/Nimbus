@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface UserService {
     User createUser(String username, String password);
+    User save(User user);
 
     List<User> getAllUsers();
     List<Post> getPostsByUser(Integer userId);

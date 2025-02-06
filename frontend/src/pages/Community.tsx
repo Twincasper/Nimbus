@@ -4,7 +4,14 @@ import { useNavigate } from "react-router-dom";
 import ForumPostCard from "../components/ForumPostCard";
 import Sidebar from "../components/Sidebar";
 import RecentPosts from "../components/RecentPosts";
-import { getPostsByCategory, getRecentPosts } from "@/adapters/postAdapter.ts";
+import {
+    createPost,
+    deletePost,
+    getPostByUser,
+    getPostsByCategory,
+    getRecentPosts,
+    updatePost
+} from "@/adapters/postAdapter.ts";
 
 interface Post {
     id: number;
@@ -76,7 +83,10 @@ const Community: React.FC = () => {
                                 date={new Date(post.createdAt).toLocaleDateString() || "Unknown date"}
                                 likes={post.likes || 0}
                                 comments={post.comments || 0}
-                                onClick={() => navigate(`/post/${post.id}`)}
+                                onClick={() => {
+                                    console.log(JSON.stringify(post, null, 2));
+                                    navigate(`/post/${post.id}`);
+                                }}
                             />
                         </div>
                     ))}

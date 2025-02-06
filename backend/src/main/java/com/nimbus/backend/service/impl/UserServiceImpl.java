@@ -41,6 +41,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+
     private String generateDefaultAvatarUrl(String username) {
         String initial = username.isEmpty() ? "?" : username.substring(0, 1).toUpperCase();
         return "https://api.dicebear.com/7.x/initials/svg?seed=" + initial + "&size=64&backgroundType=gradientLinear";

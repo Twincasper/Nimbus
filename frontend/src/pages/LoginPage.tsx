@@ -13,19 +13,13 @@
   ```
 */
 import React from 'react'
+import CurrentUserContext from "@/context/current-user-context.ts";
 
 export default function LoginPage() {
+    const { login } = useContext(CurrentUserContext)
+
     return (
         <>
-            {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-white">
-        <body class="h-full">
-        ```
-      */}
-
             <div className="flex flex-1 min-h-screen">
                 <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
                      style={{background: "linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(248,131,121,1) 100%)"}}>
