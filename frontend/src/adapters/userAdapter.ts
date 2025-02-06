@@ -18,8 +18,8 @@ export const getCurrentUser = async () => {
     return fetchHandler(`${baseUrl}/users/me`);
 };
 
-export const updateUser = async (id: number, updates: unknown) => {
-    return fetchHandler(`${baseUrl}/users/${id}`, postOptions(updates));
+export const updateUser = async (id: number, username: string, pronouns: string, profilePicture: string, bio: string) => {
+    return fetchHandler(`${baseUrl}/users/${id}`, postOptions({username, pronouns, profilePicture, bio}));
 };
 
 export const checkUsername = async (username: string): Promise<boolean> => {

@@ -19,7 +19,6 @@ export interface CurrentUserContextType {
       profilePicture: string
   ) => Promise<void>;
   logout: () => void;
-  updateUser: (id: number, updates: Partial<CurrentUser>) => Promise<void>;
 }
 
 const CurrentUserContext = createContext<CurrentUserContextType>({
