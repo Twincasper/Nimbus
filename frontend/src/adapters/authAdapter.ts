@@ -1,11 +1,23 @@
-// src/adapters/authAdapter.ts
 import { fetchHandler } from "@/utils/fetchHandler";
 import { postOptions } from "@/utils/requestOptions";
+import { CurrentUser } from "@/context/current-user-context";
 
 const baseUrl = "http://localhost:8080/api/auth";
 
-export const login = async (username: string, password: string) => {
-    return fetchHandler(`${baseUrl}/login`, postOptions({ username, password }));
+// Note: Replace `CurrentUser` with the appropriate type if needed.
+
+export const login = async (username: string, password: string): Promise<CurrentUser> => {
+    const [data, error] = await fetchHandler<CurrentUser>(
+        `${baseUrl}/login`,
+        postOptions({ username, password })
+    );
+
+    if (error) {
+        throw error;
+    }
+
+    // At this point, data is guaranteed to be non-null (assuming a successful response)
+    return data!;
 };
 
 export const register = async (
@@ -13,9 +25,15 @@ export const register = async (
     password: string,
     pronouns: string,
     profilePicture: string
-) => {
-    return fetchHandler(
+): Promise<CurrentUser> => {
+    const [data, error] = await fetchHandler<CurrentUser>(
         `${baseUrl}/register`,
         postOptions({ username, password, pronouns, profilePicture })
     );
+
+    if (error) {
+        throw error;
+    }
+
+    return data!;
 };

@@ -965,3 +965,22 @@ This generated password is for development use only. Your security configuration
 2025-02-06T11:15:10.613-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : OPTIONS /api/auth/register]
 2025-02-06T11:15:10.618-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/auth/register]
 2025-02-06T11:15:10.789-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : POST /api/auth/register, payload={"username":"naruto","password":"uzumaki","pronouns":"Hokage","profilePicture":"https://res.cloudinary.com/nimbus-capstone/image/upload/v1738858507/fsrpgzellzyute9d2z5k.jpg"}]
+2025-02-06T11:18:27.877-05:00  WARN 13290 --- [backend] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m6s312ms).
+2025-02-06T11:19:55.429-05:00  WARN 13290 --- [backend] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=57s517ms).
+2025-02-06T11:22:59.595-05:00  WARN 13290 --- [backend] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m4s166ms).
+2025-02-06T11:25:26.147-05:00  WARN 13290 --- [backend] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m56s658ms).
+2025-02-06T11:28:50.766-05:00  WARN 13290 --- [backend] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m53s245ms).
+2025-02-06T11:30:09.804-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/auth/login]
+2025-02-06T11:30:09.991-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : POST /api/auth/login, payload={"username":"naruto","password":"uzumaki"}]
+2025-02-06T12:11:50.131-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/auth/login]
+2025-02-06T12:11:50.141-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : OPTIONS /api/auth/login]
+2025-02-06T12:11:50.156-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/auth/login]
+2025-02-06T12:11:50.307-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : POST /api/auth/login, payload={"username":"naruto","password":"uzumaki"}]
+2025-02-06T12:12:37.690-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/auth/login]
+2025-02-06T12:12:37.801-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : POST /api/auth/login, payload={"username":"gatorade","password":"frost"}]
+2025-02-06T12:19:02.293-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/auth/login]
+2025-02-06T12:19:02.412-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : POST /api/auth/login, payload={"username":"gatorade","password":"frost"}]
+2025-02-06T12:19:22.902-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/auth/login]
+2025-02-06T12:19:23.018-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : POST /api/auth/login, payload={"username":"naruto","password":"uzumaki"}]
+2025-02-06T12:20:45.051-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/auth/login]
+2025-02-06T12:20:45.152-05:00 DEBUG 13290 --- [backend] [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : POST /api/auth/login, payload={"username":"naruto","password":"uzumaki"}]

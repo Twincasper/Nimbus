@@ -1,12 +1,10 @@
 // src/pages/LoginPage.tsx
 import React, { useContext, useState } from 'react';
 import CurrentUserContext from '@/context/current-user-context';
-// Assume you have an UploadWidget component that accepts an onUpload callback
 import { UploadWidget } from '@/components/UploadWidget';
 
 export default function LoginPage() {
-    // Use context methods for login and register.
-    const { login, register } = useContext(CurrentUserContext);
+    const { currentUser, login, register } = useContext(CurrentUserContext);
     // Track whether we’re in sign in or sign up mode.
     const [isSignUp, setIsSignUp] = useState(false);
 
@@ -28,25 +26,36 @@ export default function LoginPage() {
             } else {
                 await login(username, password);
             }
+            // After a successful call, the context’s currentUser is updated.
         } catch (err) {
             console.error('Authentication error:', err);
-            setError(isSignUp
-                ? 'Sign up failed. Please try again.'
-                : "Login failed. Hope you didn't forget your password.");
+            setError(
+                isSignUp
+                    ? 'Sign up failed. Please try again.'
+                    : "Login failed. Hope you didn't forget your password."
+            );
         }
+        console.log("The state of the current user",currentUser);
     };
 
     return (
         <div className="flex flex-1 min-h-screen">
             <div
                 className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
-                style={{ background: "linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(248,131,121,1) 100%)" }}
+                style={{
+                    background: 'linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(248,131,121,1) 100%)'
+                }}
             >
                 <div className="mx-auto w-full max-w-sm lg:w-96">
                     <div>
                         {/* Logo SVG */}
                         <svg className="h-10 w-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                            <path fill="#74C0FC" d="M0 336c0 79.5 64.5 144 144 144l368 0c70.7 0 128-57.3 128-128c0-61.9-44-113.6-102.4-125.4c4.1-10.7 6.4-22.4 6.4-34.6c0-53-43-96-96-96c-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32C167.6 32 96 103.6 96 192c0 2.7 .1 5.4 .2 8.1C40.2 219.8 0 273.2 0 336z"/>
+                            <path
+                                fill="#74C0FC"
+                                d="M0 336c0 79.5 64.5 144 144 144l368 0c70.7 0 128-57.3 128-128c0-61.9-44-113.6-102.4-125.4
+                c4.1-10.7 6.4-22.4 6.4-34.6c0-53-43-96-96-96c-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32C167.6 32 96
+                103.6 96 192c0 2.7 .1 5.4 .2 8.1C40.2 219.8 0 273.2 0 336z"
+                            />
                         </svg>
                         <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
                             {isSignUp ? 'Sign up for an account' : 'Sign in to your account'}

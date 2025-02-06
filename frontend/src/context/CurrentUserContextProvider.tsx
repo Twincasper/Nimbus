@@ -1,39 +1,40 @@
 // src/context/CurrentUserContextProvider.tsx
-import React, { useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 import CurrentUserContext, { CurrentUser, CurrentUserContextType } from './current-user-context';
 import { login as loginAdapter, register as registerAdapter } from '@/adapters/authAdapter';
-import {updateUser} from "@/adapters/userAdapter.ts";
 
 interface UserContextProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function CurrentUserContextProvider({ children }: UserContextProviderProps) {
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
 
-  // A helper that handles both login and sign up
-  const handleAuth = async (
-      action: (...args: any[]) => Promise<any>,
-      ...args: any[]
-  ) => {
-    try {
-      const [userData] = await action(...args);
-      if (userData) setCurrentUser(userData);
-    } catch (error) {
-      console.error('Authentication error:', error);
-      throw error;
-    }
+  const login = async (username: string, password: string): Promise<void> => {
+    const user = await loginAdapter(username, password);
+    setCurrentUser(user);
   };
+
+  const register = async (
+      username: string,
+      password: string,
+      pronouns: string,
+      profilePicture: string
+  ): Promise<void> => {
+    const user = await registerAdapter(username, password, pronouns, profilePicture);
+    setCurrentUser(user);
+  };
+
+  const logout = () => {
+    setCurrentUser(null);
+  };
+
 
   const contextValue: CurrentUserContextType = {
     currentUser,
-    login: (username, password) => handleAuth(loginAdapter, username, password),
-    register: (username, password, pronouns, profilePicture) => handleAuth(registerAdapter, username, password, pronouns, profilePicture),
-    logout: () => setCurrentUser(null),
-    updateUser: async (id, updates) => {
-      const [updatedUser] = await updateUser(id, updates);
-      if (updatedUser) setCurrentUser(updatedUser);
-    }
+    login,
+    register,
+    logout,
   };
 
   return (
