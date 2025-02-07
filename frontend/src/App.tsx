@@ -43,7 +43,6 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/profile" element={<Profile />} />
-          {/*<Route path="/sign-up" element={<SignUpPage />} />*/}
 
           {/* Community Pages */}
           <Route path="/community" element={<Community />} />

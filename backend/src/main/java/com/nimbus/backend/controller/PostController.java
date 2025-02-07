@@ -33,6 +33,7 @@ public class PostController {
         dto.setBody(post.getBody());
         dto.setUserId(post.getUser().getId());
         dto.setUsername(post.getUser().getUsername());
+        dto.setProfilePicture(post.getUser().getProfilePicture());
         dto.setCategoryId(post.getCategory().getId());
         dto.setCategoryName(post.getCategory().getName());
         dto.setCreatedAt(post.getCreatedAt());

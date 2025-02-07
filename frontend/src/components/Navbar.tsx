@@ -82,14 +82,14 @@ export default function Navbar() {
             >
               <li>
                 <Link
-                    to="/profile/apple"
-                    className="justify-between"
+                    to="/profile/apple" // This should be dynamic based on the current user
+                    className="justify-between text-[#646cff]"
                 >
                   Profile
                 </Link>
               </li>
               <li>
-                <Link to="/settings">Settings</Link>
+                <Link className="text-[#646cff]" to="/settings">Settings</Link>
               </li>
               <li>
                 <button

@@ -2,8 +2,10 @@
 import React, { useContext, useState } from 'react';
 import CurrentUserContext from '@/context/current-user-context';
 import { UploadWidget } from '@/components/UploadWidget';
+import {useNavigate} from "react-router-dom";
 
 export default function LoginPage() {
+    const navigate = useNavigate();
     const { currentUser, login, register } = useContext(CurrentUserContext);
     // Track whether we’re in sign in or sign up mode.
     const [isSignUp, setIsSignUp] = useState(false);
@@ -36,6 +38,7 @@ export default function LoginPage() {
             );
         }
         console.log("The state of the current user",currentUser);
+        navigate('/community')
     };
 
     return (

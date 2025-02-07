@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
-
 import java.time.LocalDateTime;
 
 @Data
@@ -20,6 +18,7 @@ public class PostResponseDTO {
     private String username;
     private Integer categoryId;
     private String categoryName;
+    private String profilePicture;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private Integer likes;

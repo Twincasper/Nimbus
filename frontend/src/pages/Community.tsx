@@ -22,7 +22,7 @@ interface Post {
     comments: number;
     categoryId: number;
     username: string;
-    avatarUrl: string;
+    profilePicture: string;
 }
 
 // Define communities here (or import from a shared file)
@@ -51,7 +51,8 @@ const Community: React.FC = () => {
                     data = await getRecentPosts();
                 }
                 console.log("Fetched data:", data);
-                setPosts(data[0]); // Fixed: Remove [0]
+                setPosts(data[0]);
+                console.log("First post object", posts[0]);
             } catch (error) {
                 console.error("Error fetching posts:", error);
             } finally {
@@ -77,7 +78,7 @@ const Community: React.FC = () => {
                         <div key={post.id}>
                             <ForumPostCard
                                 username={post.username || "Anonymous"}
-                                avatarUrl={post.avatarUrl || "/default-avatar.png"}
+                                avatarUrl={post.profilePicture || "/default-avatar.png"}
                                 title={post.title || "No Title"}
                                 content={post.body || "No content available."}
                                 date={new Date(post.createdAt).toLocaleDateString() || "Unknown date"}
