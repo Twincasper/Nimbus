@@ -1,11 +1,8 @@
-// src/pages/LoginPage.tsx
-import React, { useContext, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import CurrentUserContext from '@/context/current-user-context';
 import { UploadWidget } from '@/components/UploadWidget';
-import {useNavigate} from "react-router-dom";
 
 export default function LoginPage() {
-    const navigate = useNavigate();
     const { currentUser, login, register } = useContext(CurrentUserContext);
     // Track whether we’re in sign in or sign up mode.
     const [isSignUp, setIsSignUp] = useState(false);
@@ -18,6 +15,10 @@ export default function LoginPage() {
     const [avatarUrl, setAvatarUrl] = useState('');
 
     const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        console.log("Current user updated:", currentUser);
+    }, [currentUser]);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -37,8 +38,6 @@ export default function LoginPage() {
                     : "Login failed. Hope you didn't forget your password."
             );
         }
-        console.log("The state of the current user",currentUser);
-        navigate('/community')
     };
 
     return (
