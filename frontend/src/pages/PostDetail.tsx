@@ -63,8 +63,8 @@ const PostDetail: React.FC = () => {
                     {/* Post Display */}
                     <div className="mb-8">
                         <ForumPostCard
-                            username={post.user.username}
-                            avatarUrl={post.user.avatarUrl}
+                            username={post.username}
+                            avatarUrl={post.profilePicture}
                             title={post.title}
                             content={post.body}
                             date={new Date(post.created_at).toLocaleDateString()}
@@ -89,7 +89,7 @@ const PostDetail: React.FC = () => {
                             {comments.map(comment => (
                                 <CommentCard
                                     key={comment.id}
-                                    username={comment.user.username}
+                                    username={comment.username}
                                     avatarUrl={comment.user.avatarUrl}
                                     content={comment.body}
                                     date={new Date(comment.created_at).toLocaleDateString()}
