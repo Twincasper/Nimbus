@@ -2,6 +2,8 @@ package com.nimbus.backend.controller;
 
 import com.nimbus.backend.dto.CreatePostDTO;
 import com.nimbus.backend.dto.PostResponseDTO;
+import com.nimbus.backend.repository.CommentRepository;
+import com.nimbus.backend.repository.LikeRepository;
 import com.nimbus.backend.service.CategoryService;
 import com.nimbus.backend.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +21,17 @@ public class PostController {
     private final UserService userService;
     private final CategoryService categoryService;
 
+    private final LikeRepository likeRepository;
+    private final CommentRepository commentRepository;
+
+
     @Autowired
-    public PostController(PostService postService, UserService userService, CategoryService categoryService) {
+    public PostController(PostService postService, UserService userService, CategoryService categoryService, LikeRepository likeRepository, CommentRepository commentRepository) {
         this.postService = postService;
         this.userService = userService;
         this.categoryService = categoryService;
+        this.likeRepository = likeRepository;
+        this.commentRepository = commentRepository;
     }
 
     private PostResponseDTO convertToDTO(Post post) {
@@ -38,6 +46,12 @@ public class PostController {
         dto.setCategoryName(post.getCategory().getName());
         dto.setCreatedAt(post.getCreatedAt());
         dto.setUpdatedAt(post.getUpdatedAt());
+
+        int likeCount = likeRepository.countByPostId(post.getId());
+        int commentCount = commentRepository.countByPostId(post.getId());
+
+        dto.setLikes(likeCount);
+        dto.setComments(commentCount);
         return dto;
     }
 
