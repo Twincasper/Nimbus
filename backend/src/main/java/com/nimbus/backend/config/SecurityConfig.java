@@ -14,9 +14,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll()  // Allow all requests
+                        .anyRequest().permitAll()
                 )
-                .csrf(AbstractHttpConfigurer::disable);  // Updated way to disable CSRF
+                .csrf(AbstractHttpConfigurer::disable);
 
         return http.build();
     }

@@ -1,5 +1,5 @@
 import { fetchHandler } from "@/utils/fetchHandler";
-import { postOptions } from "@/utils/requestOptions";
+import {getOptions, postOptions} from "@/utils/requestOptions";
 import { CurrentUser } from "@/context/current-user-context";
 
 const baseUrl = "http://localhost:8080/api/auth";
@@ -20,6 +20,7 @@ export const login = async (username: string, password: string): Promise<Current
     return data!;
 };
 
+
 export const register = async (
     username: string,
     password: string,
@@ -37,3 +38,15 @@ export const register = async (
 
     return data!;
 };
+
+export const getCurrentUser = async (): Promise<CurrentUser | null> => {
+    const [data, error] = await fetchHandler<CurrentUser>(`${baseUrl}/me`, getOptions);
+
+    if (error) {
+        console.error('Failed to fetch current user:', error);
+        return null; // Return null if there's an error
+    }
+
+    return data;
+};
+
