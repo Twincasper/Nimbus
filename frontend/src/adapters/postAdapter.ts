@@ -19,7 +19,7 @@ export const getPostsByCategory = async(categoryId: number) => {
 }
 
 export const getPost = async(id: number) => {
-    return fetchHandler(`${baseUrl}/posts/{id}`)
+    return fetchHandler(`${baseUrl}/posts/${id}`)
 }
 
 export const getPostByUser = async(userId: number) => {

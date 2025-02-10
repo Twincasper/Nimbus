@@ -1,127 +1,112 @@
-// src/pages/PostDetail.tsx
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import ForumPostCard from "@/components/ForumPostCard";
-import CommentCard from "@/components/CommentCard";
-import Sidebar from "@/components/Sidebar";
-import { getPost } from "@/adapters/postAdapter";
-import { createComment, getCommentsByPost } from "@/adapters/commentAdapter";
-import { Button } from "@/components/ui/button";
-import { Modal, TextArea } from "@/components/ui/modal"; // Assuming you have these components
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getPost } from '@/adapters/postAdapter';
+import { getCommentsByPost, createComment } from "@/adapters/commentAdapter.ts";
+import ForumPostCard from '@/components/ForumPostCard';
+import CommentCard from '@/components/CommentCard';
+import { Button } from '@/components/ui/button';
+import Textarea from '@/components/Textarea';
+import CurrentUserContext from '@/context/current-user-context';
 
-const PostDetail: React.FC = () => {
+const PostDetail = () => {
     const { id } = useParams<{ id: string }>();
+    const { currentUser } = useContext(CurrentUserContext);
     const navigate = useNavigate();
     const [post, setPost] = useState(null);
     const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState('');
     const [loading, setLoading] = useState(true);
-    const [showCommentModal, setShowCommentModal] = useState(false);
-    const [commentBody, setCommentBody] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const postData = await getPost(Number(id));
-                setPost(postData);
-
                 const commentsData = await getCommentsByPost(Number(id));
-                setComments(commentsData);
+                setPost(postData[0]);
+                setComments(commentsData[0]);
             } catch (error) {
-                console.error("Error fetching data:", error);
+                console.error('Error fetching data:', error);
+                navigate('/not-found');
             } finally {
                 setLoading(false);
             }
         };
         fetchData();
-    }, [id]);
+    }, [id, navigate]);
 
-    const handleSubmitComment = async () => {
+    const handleCommentSubmit = async () => {
+        if (!newComment.trim() || !currentUser) return;
+
         try {
             await createComment({
-                body: commentBody,
-                userId: 1, // Replace with actual user ID from auth context
+                body: newComment,
+                userId: currentUser.id,
                 postId: Number(id)
             });
+
             // Refresh comments
             const updatedComments = await getCommentsByPost(Number(id));
             setComments(updatedComments);
-            setShowCommentModal(false);
-            setCommentBody("");
+            setNewComment('');
         } catch (error) {
-            console.error("Error submitting comment:", error);
+            console.error('Error submitting comment:', error);
         }
     };
 
     if (loading) return <div>Loading...</div>;
 
     return (
-        <div className="flex min-h-screen bg-gray-100">
-            <Sidebar onSelectCategory={(id) => navigate(`/community/${id}`)} />
-
-            <main className="flex-1 p-4">
-                <div className="max-w-3xl mx-auto">
-                    {/* Post Display */}
-                    <div className="mb-8">
-                        <ForumPostCard
-                            username={post.username}
-                            avatarUrl={post.profilePicture}
-                            title={post.title}
-                            content={post.body}
-                            date={new Date(post.created_at).toLocaleDateString()}
-                            likes={post.likes}
-                            comments={post.comments}
-                        />
-                    </div>
-
-                    {/* Comments Section */}
-                    <div className="bg-white rounded-lg shadow">
-                        <div className="p-4 border-b">
-                            <h2 className="text-xl font-bold">Comments ({comments.length})</h2>
-                            <Button
-                                className="mt-2"
-                                onClick={() => setShowCommentModal(true)}
-                            >
-                                Add Comment
-                            </Button>
-                        </div>
-
-                        <div className="p-4 space-y-4">
-                            {comments.map(comment => (
-                                <CommentCard
-                                    key={comment.id}
-                                    username={comment.username}
-                                    avatarUrl={comment.user.avatarUrl}
-                                    content={comment.body}
-                                    date={new Date(comment.created_at).toLocaleDateString()}
-                                />
-                            ))}
-                        </div>
-                    </div>
+        <div className="max-w-4xl mx-auto p-4">
+            {/* Post Section */}
+            {post && (
+                <div className="mb-8">
+                    <ForumPostCard
+                        username={post.username}
+                        avatarUrl={post.profilePicture}
+                        title={post.title}
+                        content={post.body}
+                        date={new Date(post.createdAt).toLocaleDateString()}
+                        likes={post.likes}
+                        comments={post.comments}
+                        // Disable click behavior
+                        onClick={undefined}
+                    />
                 </div>
+            )}
 
-                {/* Comment Modal */}
-                {showCommentModal && (
-                    <Modal
-                        title="Add Comment"
-                        onClose={() => setShowCommentModal(false)}
-                        actions={[
-                            <Button key="cancel" variant="secondary" onClick={() => setShowCommentModal(false)}>
-                                Cancel
-                            </Button>,
-                            <Button key="submit" onClick={handleSubmitComment}>
-                                Submit
-                            </Button>
-                        ]}
-                    >
-                        <TextArea
-                            value={commentBody}
-                            onChange={(e) => setCommentBody(e.target.value)}
+            {/* Comment Section */}
+            <div className="bg-white rounded-lg shadow-md p-6">
+                <h2 className="text-2xl font-bold mb-4">Comments ({comments.length})</h2>
+
+                {/* Comment Input */}
+                {currentUser && (
+                    <div className="mb-6">
+                        <Textarea
+                            value={newComment}
+                            onChange={(e) => setNewComment(e.target.value)}
                             placeholder="Write your comment..."
-                            rows={4}
+                            rows={3}
+                            className="mb-2"
                         />
-                    </Modal>
+                        <Button onClick={handleCommentSubmit}>
+                            Post Comment
+                        </Button>
+                    </div>
                 )}
-            </main>
+
+                {/* Comments List */}
+                <div className="space-y-4">
+                    {comments.map(comment => (
+                        <CommentCard
+                            key={comment.id}
+                            username={comment.username}
+                            avatarUrl={comment.profilePicture}
+                            content={comment.body}
+                            date={new Date(comment.createdAt).toLocaleDateString()}
+                        />
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };

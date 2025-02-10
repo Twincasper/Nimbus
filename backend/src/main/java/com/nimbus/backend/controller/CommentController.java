@@ -28,6 +28,7 @@ public class CommentController {
         dto.setBody(comment.getBody());
         dto.setUserId(comment.getUser().getId());
         dto.setUsername(comment.getUser().getUsername());
+        dto.setProfilePicture(comment.getUser().getProfilePicture());
         dto.setPostId(comment.getPost().getId());
         dto.setCreatedAt(comment.getCreatedAt());
         dto.setUpdatedAt(comment.getUpdatedAt());

@@ -19,6 +19,7 @@ import NotFoundPage from '@/pages/NotFoundPage';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import Community from "@/pages/Community.tsx";
+import PostDetail from "@/pages/PostDetail.tsx";
 
 export default function App() {
  const location = useLocation();
@@ -52,7 +53,7 @@ export default function App() {
           {/* <Route path="/forums/:category" element={<ForumCategoryPage />} /> */}
 
           {/* Posts */}
-          {/* <Route path="/posts/:id" element={<PostDetailPage />} /> */}
+          <Route path="/posts/:id" element={<PostDetail />} />
 
           {/* 404 */}
           <Route path="*" element={<NotFoundPage />} />

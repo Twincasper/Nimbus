@@ -12,6 +12,7 @@ public class CommentResponseDTO {
     private String body;
     private Integer userId;
     private String username;
+    private String profilePicture;
     private Integer postId;
     private Instant createdAt;
     private Instant updatedAt;

@@ -86,7 +86,7 @@ const Community: React.FC = () => {
                                 comments={post.comments || 0}
                                 onClick={() => {
                                     console.log(JSON.stringify(post, null, 2));
-                                    navigate(`/post/${post.id}`);
+                                    navigate(`/posts/${post.id}`);
                                 }}
                             />
                         </div>
