@@ -5,13 +5,11 @@ import com.nimbus.backend.dto.RegisterRequestDTO;
 import com.nimbus.backend.dto.UserResponseDTO;
 import com.nimbus.backend.model.User;
 import com.nimbus.backend.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
@@ -30,12 +28,29 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserResponseDTO> login(@RequestBody LoginRequestDTO request) {
+    public ResponseEntity<UserResponseDTO> login(@RequestBody LoginRequestDTO request, HttpSession session) {
         Optional<User> userOpt = userService.findByUsername(request.username());
         if (userOpt.isEmpty() || !passwordEncoder.matches(request.password(), userOpt.get().getPasswordHash())) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials");
         }
+        // Store user in session
+        session.setAttribute("currentUser", userOpt.get());
         return ResponseEntity.ok(convertToDTO(userOpt.get()));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<UserResponseDTO> getCurrentUser(HttpSession session) {
+        User user = (User) session.getAttribute("currentUser");
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok(convertToDTO(user));
     }
 
     @PostMapping("/register")
