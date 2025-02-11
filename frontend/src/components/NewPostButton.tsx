@@ -76,6 +76,22 @@ const NewPostButton = () => {
                                 />
                             </div>
 
+                            {/* Community Dropdown */}
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-1">Community</label>
+                                <select
+                                    value={categoryId}
+                                    onChange={(e) => setCategoryId(Number(e.target.value))}
+                                    className="w-full p-2 border rounded-md"
+                                >
+                                    {communities.map(community => (
+                                        <option key={community.id} value={community.id}>
+                                            {community.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
 
                         </form>
                     </div>
