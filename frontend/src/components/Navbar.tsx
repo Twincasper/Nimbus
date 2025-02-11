@@ -23,7 +23,7 @@ export default function Navbar({profilePicture}) {
                 <li><a>Fluff Therapy</a></li>
                 <li><a>Cloud Nine Creations</a></li>
                 <li><a>Cumulus Care</a></li>
-                <li><a>Rainbow</a></li>
+                <li><a>🌈 Rainbow</a></li>
               </ul>
             </details>
           </li>

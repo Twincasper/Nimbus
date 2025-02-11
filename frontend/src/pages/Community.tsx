@@ -12,6 +12,7 @@ import {
     getRecentPosts,
     updatePost
 } from "@/adapters/postAdapter.ts";
+import NewPostButton from "@/components/NewPostButton.tsx";
 
 interface Post {
     id: number;
@@ -94,6 +95,7 @@ const Community: React.FC = () => {
                 </div>
             </main>
             <RecentPosts posts={posts.slice(0, 5)} />
+            <NewPostButton />
         </div>
     );
 };

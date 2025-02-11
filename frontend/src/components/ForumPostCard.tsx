@@ -54,9 +54,9 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
             <span>{comments}</span>
           </Button>
         </div>
-        <Button variant="ghost" size="sm">
-          <Share2 className="w-4 h-4" />
-        </Button>
+        {/*<Button variant="ghost" size="sm">*/}
+        {/*  <Share2 className="w-4 h-4" />*/}
+        {/*</Button>*/}
       </CardFooter>
     </Card>
   );

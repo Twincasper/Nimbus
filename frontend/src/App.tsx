@@ -8,23 +8,16 @@ import React from 'react';
 import Home from '@/pages/Home';
 import LoginPage from '@/pages/LoginPage';
 import Profile from '@/pages/Profile'
-// import SignUpPage from './pages/SignUpPage';
-// import UsersPage from './pages/UsersPage';
-// import UserPage from './pages/UserPage';
-import NotFoundPage from '@/pages/NotFoundPage';
-// import ResourcesPage from './pages/ResourcesPage';
-// import PostsPage from './pages/PostsPage';
-// import ForumCategoryPage from './pages/ForumCategoryPage';
-// import PostDetailPage from './pages/PostDetailPage';
 import Footer from '@/components/Footer';
+
+import NotFoundPage from '@/pages/NotFoundPage';
+
 import Navbar from '@/components/Navbar';
 import Community from "@/pages/Community.tsx";
 import PostDetail from "@/pages/PostDetail.tsx";
 
 export default function App() {
  const location = useLocation();
-
-  // WHen we establish current user state, we'll use this to check if user is logged in
 
     const { currentUser } = useContext(CurrentUserContext);
 
@@ -35,9 +28,6 @@ export default function App() {
   return (
 
     <div className='flex flex-col min-h-screen'>
-      {/* Conditional Nav */}
-      {/* We can use the current path to show or hide navigation when we want the navbar to show on every page except certain pages */}
-      {/* {location.pathname !== '/' && <Navbar />} */}
 
       {location.pathname !== '/login' &&  <Navbar profilePicture={currentUser?.profilePicture} />}
       <main className={location.pathname === '/profile' ? 'mx-auto' : 'flex-grow'}>
