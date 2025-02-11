@@ -788,3 +788,84 @@ This generated password is for development use only. Your security configuration
 2025-02-10T15:32:57.782-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
 2025-02-10T15:32:57.785-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
 2025-02-10T15:32:57.785-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-10T15:40:47.077-05:00  INFO 46791 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Starting BackendApplication using Java 22.0.2 with PID 46791 (/Users/justinwatson/personal-projects/PS-Capstone/backend/target/classes started by justinwatson in /Users/justinwatson/personal-projects/PS-Capstone)
+2025-02-10T15:40:47.078-05:00  INFO 46791 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2025-02-10T15:40:47.332-05:00  INFO 46791 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-10T15:40:47.359-05:00  INFO 46791 --- [backend] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 6 JPA repository interfaces.
+2025-02-10T15:40:47.524-05:00  INFO 46791 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-02-10T15:40:47.526-05:00  INFO 46791 --- [backend] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-10T15:40:47.527-05:00  INFO 46791 --- [backend] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-02-10T15:40:47.541-05:00  INFO 46791 --- [backend] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-10T15:40:47.542-05:00  INFO 46791 --- [backend] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 458 ms
+2025-02-10T15:40:47.560-05:00 DEBUG 46791 --- [backend] [restartedMain] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'logFilter' configured for use
+2025-02-10T15:40:47.651-05:00  INFO 46791 --- [backend] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-10T15:40:47.657-05:00  INFO 46791 --- [backend] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-02-10T15:40:47.680-05:00  INFO 46791 --- [backend] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-10T15:40:47.683-05:00  INFO 46791 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-02-10T15:40:47.717-05:00  INFO 46791 --- [backend] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@15bad46b
+2025-02-10T15:40:47.718-05:00  INFO 46791 --- [backend] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-02-10T15:40:47.720-05:00  WARN 46791 --- [backend] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-02-10T15:40:47.721-05:00  INFO 46791 --- [backend] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 8.0.40
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-02-10T15:40:47.862-05:00  INFO 46791 --- [backend] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-10T15:40:47.933-05:00  INFO 46791 --- [backend] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-10T15:40:48.082-05:00  WARN 46791 --- [backend] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-10T15:40:48.096-05:00  WARN 46791 --- [backend] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 14e3557f-ccda-4208-bd16-ba4f07052f6d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-02-10T15:40:48.098-05:00  INFO 46791 --- [backend] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-02-10T15:40:48.274-05:00  INFO 46791 --- [backend] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-02-10T15:40:48.289-05:00  INFO 46791 --- [backend] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-02-10T15:40:48.296-05:00  INFO 46791 --- [backend] [restartedMain] com.nimbus.backend.BackendApplication    : Started BackendApplication in 1.267 seconds (process running for 543.469)
+2025-02-10T15:40:48.301-05:00  INFO 46791 --- [backend] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-02-10T15:56:52.427-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=5m4s524ms).
+2025-02-10T15:59:08.603-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=1m16s132ms).
+2025-02-10T16:02:56.564-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=3m47s961ms).
+2025-02-10T16:10:34.817-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=7m38s253ms).
+2025-02-10T16:12:51.702-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=2m16s885ms).
+2025-02-10T16:14:01.426-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=1m9s724ms).
+2025-02-10T16:17:22.146-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=3m20s720ms).
+2025-02-10T16:21:44.034-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=4m21s888ms).
+2025-02-10T17:52:45.783-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=1h31m1s749ms).
+2025-02-10T18:52:07.149-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=58m21s268ms).
+2025-02-10T19:53:43.271-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=1h1m5s783ms).
+2025-02-10T20:55:06.090-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=1h52s914ms).
+2025-02-10T21:07:24.903-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=12m18s813ms).
+2025-02-10T21:55:53.693-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=48m28s790ms).
+2025-02-10T22:52:20.497-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=55m56s875ms).
+2025-02-10T22:59:25.936-05:00  INFO 46791 --- [backend] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-10T22:59:25.941-05:00  INFO 46791 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-10T22:59:25.976-05:00  INFO 46791 --- [backend] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 35 ms
+2025-02-10T22:59:25.985-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-10T22:59:25.985-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-10T22:59:26.089-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-10T22:59:26.089-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-10T23:04:59.325-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-10T23:04:59.325-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-10T23:04:59.328-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-10T23:04:59.328-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-10T23:05:17.516-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-10T23:05:17.516-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-10T23:05:17.518-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-10T23:05:17.518-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-10T23:05:25.411-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/auth/login]
+2025-02-10T23:05:25.445-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : OPTIONS /api/auth/login]
+2025-02-10T23:05:25.452-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/auth/login]
+2025-02-10T23:05:25.702-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : POST /api/auth/login, payload={"username":"naruto","password":"uzumaki"}]
+2025-02-10T23:05:30.329-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-10T23:05:30.329-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-10T23:05:30.331-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-10T23:05:30.331-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-10T23:30:10.358-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-10T23:30:10.390-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-6] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-10T23:30:10.397-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-10T23:30:10.400-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
