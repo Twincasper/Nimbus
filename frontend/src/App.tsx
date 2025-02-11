@@ -25,19 +25,21 @@ export default function App() {
  const location = useLocation();
 
   // WHen we establish current user state, we'll use this to check if user is logged in
-  // const { setCurrentUser } = useContext(UserContext);
+
+    const { currentUser } = useContext(CurrentUserContext);
 
   // useEffect(() => {
   //   checkForLoggedInUser().then(setCurrentUser);
   // }, [setCurrentUser]);
 
   return (
+
     <div className='flex flex-col min-h-screen'>
       {/* Conditional Nav */}
       {/* We can use the current path to show or hide navigation when we want the navbar to show on every page except certain pages */}
       {/* {location.pathname !== '/' && <Navbar />} */}
 
-      {location.pathname !== '/login' &&  <Navbar />}
+      {location.pathname !== '/login' &&  <Navbar profilePicture={currentUser?.profilePicture} />}
       <main className={location.pathname === '/profile' ? 'mx-auto' : 'flex-grow'}>
         <Routes>
           {/* Basic Routes */}

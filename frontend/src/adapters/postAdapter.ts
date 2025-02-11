@@ -27,11 +27,11 @@ export const getPostByUser = async(userId: number) => {
 }
 
 export const createPost = async(post: Post) => {
-    return fetchHandler(`${baseUrl}/posts`, postOptions(post))
+    return fetchHandler(`${baseUrl}/posts`, postOptions({post}))
 }
 
 export const updatePost = async(id: number, post: Post) => {
-    return fetchHandler(`${baseUrl}/posts/${id}`, patchOptions(post))
+    return fetchHandler(`${baseUrl}/posts/${id}`, patchOptions({post}))
 }
 
 export const deletePost = async(id: number) => {

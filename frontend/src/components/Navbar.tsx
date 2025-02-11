@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, useNavigate} from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({profilePicture}) {
   const navigate = useNavigate();
 
   return (
@@ -18,8 +18,12 @@ export default function Navbar() {
             <details>
               <summary>Community</summary>
               <ul className="p-2">
-                <li><a>Submenu 1</a></li>
-                <li><a>Submenu 2</a></li>
+                <li><a>Rainy Days & Silver Linings</a></li>
+                <li><a>Calm in the Storm</a></li>
+                <li><a>Fluff Therapy</a></li>
+                <li><a>Cloud Nine Creations</a></li>
+                <li><a>Cumulus Care</a></li>
+                <li><a>Rainbow</a></li>
               </ul>
             </details>
           </li>
@@ -53,8 +57,12 @@ export default function Navbar() {
           <li>
             <a>Community</a>
             <ul className="p-2">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
+              <li><a>Rainy Days & Silver Linings</a></li>
+              <li><a>Calm in the Storm</a></li>
+              <li><a>Fluff Therapy</a></li>
+              <li><a>Cloud Nine Creations</a></li>
+              <li><a>Cumulus Care</a></li>
+              <li><a>Rainbow</a></li>
             </ul>
           </li>
           <li><a>Journal</a></li>
@@ -67,12 +75,12 @@ export default function Navbar() {
           <div className="form-control">
             <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto"/>
           </div>
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end z-20">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img
                     alt="User avatar"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    src={profilePicture}
                 />
               </div>
             </label>
@@ -82,15 +90,15 @@ export default function Navbar() {
             >
               <li>
                 <Link
-                    to="/profile/apple" // This should be dynamic based on the current user
+                    to="/profile"
                     className="justify-between text-[#646cff]"
                 >
                   Profile
                 </Link>
               </li>
-              <li>
-                <Link className="text-[#646cff]" to="/settings">Settings</Link>
-              </li>
+              {/*<li>*/}
+              {/*  <Link className="text-[#646cff]" to="/settings">Settings</Link>*/}
+              {/*</li>*/}
               <li>
                 <button
                     onClick={() => {

@@ -19,6 +19,15 @@ export function postOptions<T extends RequestBody>(body: T): RequestOptions<T> {
   };
 }
 
+export function putOptions<T extends RequestBody>(body: T): RequestOptions<T> {
+  return {
+    method: 'PUT',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  };
+}
+
 export function patchOptions<T extends RequestBody>(body: T): RequestOptions<T> {
   return {
     method: 'PATCH',

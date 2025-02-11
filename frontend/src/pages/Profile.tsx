@@ -5,8 +5,6 @@ import {UploadWidget} from "@/components/UploadWidget.tsx";
 import CurrentUserContext from "@/context/current-user-context.ts";
 import {updateUser} from "@/adapters/userAdapter.ts";
 
-
-
 export default function Profile() {
 const { currentUser } = useContext(CurrentUserContext);
 const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
@@ -17,13 +15,12 @@ const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
         const data = {
             username: formData.get('username'),
             pronouns: formData.get('pronouns'),
-            profilePicture: profileUrl, // Use the state from UploadWidget
+            profilePicture: profileUrl,
             bio: formData.get('bio')
         };
 
         try {
-            await updateUser(currentUser.id, data);
-            // Handle success (maybe update currentUser context)
+           await updateUser(currentUser.id, data);
         } catch (error) {
             console.error('Update failed:', error);
         }
@@ -34,10 +31,11 @@ const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
             <div className="col-span-full flex flex-col items-center gap-y-4 my-4">
                 <div role="img" aria-label="Current profile photo">
                     <img
-                        src={currentUser?.profilePicture}
+                        src={profileUrl || currentUser?.profilePicture} // Use state directly
                         alt="Current profile photo"
                         className="h-24 w-24 flex-none rounded-full bg-gray-800 object-cover"
                     />
+
                 </div>
 
                 <div className="text-center">
@@ -64,7 +62,7 @@ const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
             <div className="space-y-1">
                 <div>
                     <h2 className="text-base/7 font-semibold text-gray-900">Profile Details</h2>
-                    <p className="mt-1 text-sm leading-6 text-gray-400">Update your account`&#39;`s profile
+                    <p className="mt-1 text-sm leading-6 text-gray-400">Update your account&#39;s profile
                         information</p>
                     <p className="mt-1 text-sm/6 text-gray-600">
                     </p>
@@ -84,7 +82,7 @@ const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
                                         id="username"
                                         name="username"
                                         type="text"
-                                        placeholder={currentUser?.username}
+                                        defaultValue={currentUser?.username}
                                         className="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6"
                                     />
                                 </div>
@@ -93,7 +91,7 @@ const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
 
                         <div className="col-span-full">
                             <label htmlFor="bio" className="block text-sm/6 font-medium text-gray-900">
-                                Bio
+                            Bio
                             </label>
                             <div className="mt-2">
                 <textarea
@@ -138,7 +136,7 @@ const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
                                         type="text"
                                         name="customPronouns"
                                         placeholder="Type your pronouns"
-                                        defaultValue={currentUser.customPronouns || ""}
+                                        defaultValue={currentUser.pronouns || ""}
                                         className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                     />
                                 )}

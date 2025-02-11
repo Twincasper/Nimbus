@@ -3,7 +3,7 @@ export type CommonOptions = {
     headers?: Record<string, string>;
 };
 
-export type HttpMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
+export type HttpMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE' | 'PUT';
 
 export type RequestOptions<T = void> = CommonOptions & {
     method: HttpMethod;
