@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import DOMPurify from "dompurify";
 import { useParams, useNavigate } from 'react-router-dom';
 import { getPost } from '@/adapters/postAdapter';
 import { getCommentsByPost, createComment } from "@/adapters/commentAdapter.ts";
@@ -64,7 +65,7 @@ const PostDetail = () => {
                         username={post.username}
                         avatarUrl={post.profilePicture}
                         title={post.title}
-                        content={post.body}
+                        content={DOMPurify.sanitize(post.body)}
                         date={new Date(post.createdAt).toLocaleDateString()}
                         likes={post.likes}
                         comments={post.comments}

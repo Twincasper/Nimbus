@@ -19,6 +19,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "daisyui": "^4.12.14",
+    "dompurify": "^3.2.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^15.14.0",
