@@ -37,7 +37,7 @@ const NewPostButton = () => {
             });
 
             if (newPost) {
-                navigate(`/posts/${newPost.id}`);
+                navigate(`/posts/${newPost[0].id}`);
                 setShowModal(false);
             }
         } catch (error) {
@@ -48,57 +48,95 @@ const NewPostButton = () => {
     };
 
     return (
-        <>
-            {/* Floating Action Button */}
-            <button
-                onClick={() => setShowModal(true)}
-                className="fixed bottom-4 right-4 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
-            >
-                New Post +
-            </button>
+    <>
+        {/* Floating Action Button */}
+        <button
+            onClick={() => setShowModal(true)}
+            className="fixed bottom-4 right-4 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
+        >
+            New Post +
+        </button>
 
-            {/* Modal */}
-            {showModal && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-                    <div className="bg-white rounded-lg w-full max-w-2xl p-6">
-                        <h2 className="text-2xl font-bold mb-4">Create New Post</h2>
+        {/* Modal */}
+        {showModal && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+                <div className="bg-white rounded-lg w-full max-w-2xl p-6">
+                    <h2 className="text-2xl font-bold mb-4">Create New Post</h2>
 
-                        <form onSubmit={handleSubmit}>
-                            {/* Title Input */}
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium mb-1">Title</label>
-                                <input
-                                    type="text"
-                                    value={title}
-                                    onChange={(e) => setTitle(e.target.value)}
-                                    className="w-full p-2 border rounded-md"
-                                    required
-                                />
-                            </div>
+                    <form onSubmit={handleSubmit}>
+                        {/* Title Input */}
+                        <div className="mb-4">
+                            <label className="block text-sm font-medium mb-1">Title</label>
+                            <input
+                                type="text"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                className="w-full p-2 border rounded-md"
+                                required
+                            />
+                        </div>
 
-                            {/* Community Dropdown */}
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium mb-1">Community</label>
-                                <select
-                                    value={categoryId}
-                                    onChange={(e) => setCategoryId(Number(e.target.value))}
-                                    className="w-full p-2 border rounded-md"
-                                >
-                                    {communities.map(community => (
-                                        <option key={community.id} value={community.id}>
-                                            {community.name}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
+                        {/* Community Dropdown */}
+                        <div className="mb-4">
+                            <label className="block text-sm font-medium mb-1">Community</label>
+                            <select
+                                value={categoryId}
+                                onChange={(e) => setCategoryId(Number(e.target.value))}
+                                className="w-full p-2 border rounded-md"
+                            >
+                                {communities.map(community => (
+                                    <option key={community.id} value={community.id}>
+                                        {community.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
 
+                        {/* Rich Text Editor */}
+                        <div className="mb-6">
+                            <label className="block text-sm font-medium mb-1">Content</label>
+                            <ReactQuill
+                                theme="snow"
+                                value={content}
+                                onChange={setContent}
+                                className="bg-white rounded-md"
+                                modules={{
+                                    toolbar: [
+                                        ['bold', 'italic', 'underline', 'strike'],
+                                        ['blockquote', 'code-block'],
+                                        [{ 'header': 1 }, { 'header': 2 }],
+                                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                        [{ 'script': 'sub'}, { 'script': 'super' }],
+                                        ['link', 'image'],
+                                        ['clean']
+                                    ]
+                                }}
+                            />
+                        </div>
 
-                        </form>
-                    </div>
+                        {/* Form Actions */}
+                        <div className="flex justify-end gap-2">
+                            <button
+                                type="button"
+                                onClick={() => setShowModal(false)}
+                                className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+                            >
+                                {isSubmitting ? 'Posting...' : 'Create Post'}
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            )}
-        </>
-    );
+            </div>
+        )}
+    </>
+);
 };
 
 export default NewPostButton;
