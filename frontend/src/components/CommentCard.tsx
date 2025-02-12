@@ -1,26 +1,34 @@
 import React from 'react';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import DOMPurify from 'dompurify';
 
-const CommentCard = ({username, avatarUrl, content, date }) => {
+interface CommentCardProps {
+    username: string;
+    avatarUrl: string;
+    content: string;
+    date: string;
+}
+
+const CommentCard: React.FC<CommentCardProps> = ({username, avatarUrl, content, date}) => {
+    const cleanContent = DOMPurify.sanitize(content);
+
     return (
-        <Card className="shadow-none border-0">
-            <CardHeader className="flex flex-row items-center gap-4 p-4 pb-2">
-                <Avatar>
-                    <AvatarImage src={avatarUrl} alt={username} />
-                    <AvatarFallback>
-                        {username?.[0]?.toUpperCase() || 'U'}
-                    </AvatarFallback>
-                </Avatar>
+        <div className="bg-gray-50 rounded-lg p-4">
+            <div className="flex items-center gap-3 mb-2">
+                <img
+                    src={avatarUrl || '/default-avatar.png'}
+                    alt={username}
+                    className="w-8 h-8 rounded-full"
+                />
                 <div>
-                    <h3 className="font-semibold">{username || 'Anonymous'}</h3>
+                    <h3 className="font-medium">{username}</h3>
                     <p className="text-sm text-gray-500">{date}</p>
                 </div>
-            </CardHeader>
-            <CardContent className="p-4 pt-0">
-                <p className="text-gray-700">{content}</p>
-            </CardContent>
-        </Card>
+            </div>
+            <div
+                className="prose max-w-none"
+                dangerouslySetInnerHTML={{ __html: cleanContent }}
+            />
+        </div>
     );
 };
 

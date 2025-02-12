@@ -8,6 +8,7 @@ import CommentCard from '@/components/CommentCard';
 import { Button } from '@/components/ui/button';
 import Textarea from '@/components/Textarea';
 import CurrentUserContext from '@/context/current-user-context';
+import ReactQuill from "react-quill";
 
 const PostDetail = () => {
     const { id } = useParams<{ id: string }>();
@@ -54,6 +55,8 @@ const PostDetail = () => {
         }
     };
 
+
+
     if (loading) return <div>Loading...</div>;
 
     return (
@@ -82,12 +85,22 @@ const PostDetail = () => {
                 {/* Comment Input */}
                 {currentUser && (
                     <div className="mb-6">
-                        <Textarea
+                        <ReactQuill
+                            theme="snow"
                             value={newComment}
-                            onChange={(e) => setNewComment(e.target.value)}
-                            placeholder="Write your comment..."
-                            rows={3}
-                            className="mb-2"
+                            onChange={setNewComment}
+                            className="bg-white rounded-md"
+                            modules={{
+                                toolbar: [
+                                    ['bold', 'italic', 'underline', 'strike'],
+                                    ['blockquote', 'code-block'],
+                                    [{ 'header': 1 }, { 'header': 2 }],
+                                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                    [{ 'script': 'sub'}, { 'script': 'super' }],
+                                    ['link', 'image'],
+                                    ['clean']
+                                ]
+                            }}
                         />
                         <Button onClick={handleCommentSubmit}>
                             Post Comment
