@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
 import CurrentUserContext from '@/context/current-user-context';
 import { UploadWidget } from '@/components/UploadWidget';
+import {useNavigate} from "react-router-dom";
 
 export default function LoginPage() {
     const { currentUser, login, register } = useContext(CurrentUserContext);
-    // Track whether we’re in sign in or sign up mode.
+    const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
 
     // Common fields
@@ -29,6 +30,7 @@ export default function LoginPage() {
             } else {
                 await login(username, password);
             }
+            navigate('/community');
             // After a successful call, the context’s currentUser is updated.
         } catch (err) {
             console.error('Authentication error:', err);

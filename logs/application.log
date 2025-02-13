@@ -600,3 +600,32 @@ java.lang.IllegalArgumentException: The given id must not be null
 2025-02-12T13:05:29.046-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/comments/post/15]
 2025-02-12T13:05:29.057-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/comments/post/15]
 2025-02-12T13:05:29.058-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/comments/post/15]
+2025-02-12T13:14:56.559-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/comments]
+2025-02-12T13:14:56.661-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : POST /api/comments, payload={"body":"<p>eighth</p>","userId":5,"postId":15}]
+2025-02-12T14:12:38.383-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=39m23s868ms).
+2025-02-12T14:13:08.222-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Retrograde clock change detected (housekeeper delta=29s841ms), soft-evicting connections from pool.
+2025-02-12T15:34:47.589-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=1h21m39s370ms).
+2025-02-12T16:27:12.497-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=52m24s908ms).
+2025-02-12T16:35:27.093-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=8m14s501ms).
+2025-02-12T17:36:34.483-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=1h1m7s413ms).
+2025-02-12T18:37:59.651-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=1h53s61ms).
+2025-02-12T19:38:55.716-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=1h56s66ms).
+2025-02-12T20:39:53.508-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=1h57s751ms).
+2025-02-12T20:40:21.505-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Retrograde clock change detected (housekeeper delta=28s38ms), soft-evicting connections from pool.
+2025-02-12T20:46:20.251-05:00  WARN 46791 --- [backend] [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=5m58s745ms).
+2025-02-12T21:32:45.987-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-12T21:32:46.072-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-12T21:32:46.129-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-12T21:32:46.131-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-12T21:32:49.672-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-12T21:32:49.671-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/auth/me]
+2025-02-12T21:32:49.673-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-12T21:32:49.674-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/auth/me]
+2025-02-12T21:33:03.336-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [OPTIONS /api/auth/login]
+2025-02-12T21:33:03.340-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : OPTIONS /api/auth/login]
+2025-02-12T21:33:03.351-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/auth/login]
+2025-02-12T21:33:03.573-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : POST /api/auth/login, payload={"username":"just naruto","password":"uzumaki"}]
+2025-02-12T21:33:03.742-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/posts/recent]
+2025-02-12T21:33:03.839-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/posts/recent]
+2025-02-12T21:33:03.844-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/posts/recent]
+2025-02-12T21:33:03.932-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/posts/recent]
