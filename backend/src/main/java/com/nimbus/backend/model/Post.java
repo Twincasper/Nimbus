@@ -31,7 +31,7 @@ public class Post {
     private String title;
 
     @Lob
-    @Column(name = "body")
+    @Column(name = "body", columnDefinition = "LONGTEXT")
     private String body;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
