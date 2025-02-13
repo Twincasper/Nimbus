@@ -14,6 +14,7 @@ import {
 } from "@/adapters/postAdapter.ts";
 import NewPostButton from "@/components/NewPostButton.tsx";
 import CurrentUserContext from "@/context/current-user-context.ts";
+import EditPostModal from "@/components/EditPostModal.tsx";
 
 interface Post {
     id: number;
@@ -119,6 +120,13 @@ const Community: React.FC = () => {
             </main>
             <RecentPosts posts={posts.slice(0, 5)} />
             <NewPostButton />
+            {editingPost && (
+                <EditPostModal
+                    post={editingPost}
+                    onClose={() => setEditingPost(null)}
+                    onSave={handleSavePost}
+                />
+            )}
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import {fetchHandler} from "@/utils/fetchHandler.ts";
-import {postOptions, patchOptions, deleteOptions} from "@/utils/requestOptions.ts";
+import {postOptions, deleteOptions, putOptions} from "@/utils/requestOptions.ts";
 
 const baseUrl = "http://localhost:8080/api";
 
@@ -31,7 +31,7 @@ export const createPost = async(post: Post) => {
 }
 
 export const updatePost = async(id: number, post: Post) => {
-    return fetchHandler(`${baseUrl}/posts/${id}`, patchOptions(post));
+    return fetchHandler(`${baseUrl}/posts/${id}`, putOptions(post));
 }
 
 export const deletePost = async(id: number) => {
