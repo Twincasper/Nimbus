@@ -15,7 +15,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 
     List<Post> findByTitleContainingIgnoreCase(String title); // Custom query method
 
-    List<Post> findByCategory(Category category);
+    List<Post> findByCategoryOrderByCreatedAtDesc(Category category);
 
     @Query("SELECT p FROM Post p ORDER BY p.createdAt DESC")
     List<Post> findRecentPosts();

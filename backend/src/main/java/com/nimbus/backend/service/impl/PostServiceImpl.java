@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.List;
@@ -87,7 +86,7 @@ public class PostServiceImpl implements PostService {
     public List<Post> getPostsByCategory(Integer categoryId) {
         Category searchedCategory = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
-        return postRepository.findByCategory(searchedCategory);
+        return postRepository.findByCategoryOrderByCreatedAtDesc(searchedCategory);
     }
 
     @Override
