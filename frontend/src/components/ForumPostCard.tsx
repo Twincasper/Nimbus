@@ -44,7 +44,7 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
       <CardHeader className="flex flex-row items-center gap-4">
         <Avatar>
           <AvatarImage src={avatarUrl} alt={username} />
-          <AvatarFallback>{username[0].toUpperCase()}</AvatarFallback>
+          {/*<AvatarFallback>{username[0].toUpperCase()}</AvatarFallback>*/}
         </Avatar>
         <div>
           <h2 className="text-lg font-semibold">{username}</h2>
