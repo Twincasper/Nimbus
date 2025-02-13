@@ -17,6 +17,7 @@ interface ForumPostCardProps {
   currentUserUsername?: string;
   onEdit?: () => void;
   onDelete?: () => void;
+  isDetailView?: boolean;
 }
 
 const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = ({
@@ -31,11 +32,15 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
   currentUserUsername,
   onEdit,
   onDelete,
+  isDetailView = false
 }) => {
   const sanitizedContent = DOMPurify.sanitize(content);
+
   const truncatedContent = sanitizedContent.length > 200
       ? `${sanitizedContent.substring(0, 200)}...`
       : sanitizedContent;
+
+  const displayContent = isDetailView ? sanitizedContent : truncatedContent;
 
   const showActions = currentUserUsername === username;
 
@@ -55,7 +60,7 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
         <h3 className="text-xl font-bold mb-2">{title}</h3>
         <div
             className="text-gray-700 prose"
-            dangerouslySetInnerHTML={{__html: truncatedContent}}
+            dangerouslySetInnerHTML={{__html: displayContent}}
         />
       </CardContent>
       <CardFooter className="flex justify-between items-center">

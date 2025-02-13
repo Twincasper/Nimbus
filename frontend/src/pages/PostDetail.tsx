@@ -136,7 +136,8 @@ const PostDetail = () => {
                     currentUserUsername={currentUser?.username} // Pass current user's username
                     onEdit={() => setEditingPost(post)} // Pass edit handler
                     onDelete={() => handleDeletePost(post.id)} // Pass delete handler
-                    onClick={undefined} // Disable click behavior
+                    onClick={undefined}
+                    isDetailView={true}
                 />
             </div>
 

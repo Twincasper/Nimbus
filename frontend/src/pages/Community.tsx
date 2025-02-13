@@ -113,6 +113,7 @@ const Community: React.FC = () => {
                                 currentUserUsername={currentUser?.username}
                                 onEdit={() => setEditingPost(post)}
                                 onDelete={() => handleDeletePost(post.id)}
+                                isDetailView={false}
                             />
                         </div>
                     ))}
