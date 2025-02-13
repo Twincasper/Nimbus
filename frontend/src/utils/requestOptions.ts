@@ -10,7 +10,7 @@ export const deleteOptions: RequestOptions = {
   credentials: 'include',
 };
 
-export function postOptions<T extends RequestBody>(body: T): RequestOptions<T> {
+export function postOptions<T extends RequestBody>(body?: T): RequestOptions<T> {
   return {
     method: 'POST',
     credentials: 'include',

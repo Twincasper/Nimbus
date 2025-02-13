@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link, useNavigate} from "react-router-dom";
+import {logout} from "@/adapters/authAdapter.ts";
 
 export default function Navbar({profilePicture}) {
   const navigate = useNavigate();
@@ -100,10 +101,10 @@ export default function Navbar({profilePicture}) {
               {/*  <Link className="text-[#646cff]" to="/settings">Settings</Link>*/}
               {/*</li>*/}
               <li>
-                <button
-                    onClick={() => {
-                      // Add logout logic here later
+                <button onClick={() => {
+                      logout();
                       console.log('Logout clicked');
+                      navigate('/login')
                     }}
                     className="w-full text-left bg-transparent text-[#646cff]"
                 >

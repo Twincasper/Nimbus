@@ -20,6 +20,16 @@ export const login = async (username: string, password: string): Promise<Current
     return data!;
 };
 
+export const logout = async (): Promise<void> => {
+    const [_, error] = await fetchHandler<void>(
+        `${baseUrl}/logout`,
+        postOptions()
+    );
+
+    if (error) {
+        throw error;
+    }
+};
 
 export const register = async (
     username: string,
