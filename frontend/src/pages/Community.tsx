@@ -56,6 +56,12 @@ const Community: React.FC = () => {
         }
     };
 
+    const handleSavePost = (updatedPost: Post) => {
+        setPosts(prev => prev.map(post =>
+            post.id === updatedPost.id ? updatedPost : post
+        ));
+    };
+
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -103,6 +109,9 @@ const Community: React.FC = () => {
                                     console.log(JSON.stringify(post, null, 2));
                                     navigate(`/posts/${post.id}`);
                                 }}
+                                currentUserUsername={currentUser?.username}
+                                onEdit={() => setEditingPost(post)}
+                                onDelete={() => handleDeletePost(post.id)}
                             />
                         </div>
                     ))}

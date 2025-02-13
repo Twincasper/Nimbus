@@ -81,3 +81,5 @@
 2025-02-13T09:23:15.308-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/posts/recent]
 2025-02-13T09:24:50.329-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/posts/recent]
 2025-02-13T09:24:50.378-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/posts/recent]
+2025-02-13T09:27:01.406-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/posts/recent]
+2025-02-13T09:27:01.441-05:00 DEBUG 46791 --- [backend] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : REQUEST DATA : GET /api/posts/recent]
