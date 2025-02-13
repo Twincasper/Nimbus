@@ -8,33 +8,22 @@ interface UserContextProviderProps {
 
 export default function CurrentUserContextProvider({ children }: UserContextProviderProps) {
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
-
-  // useEffect(() => {
-  //   const checkSession = async () => {
-  //     try {
-  //       const response = await fetch('http://localhost:8080/api/auth/me', {
-  //         credentials: 'include' // Send cookies
-  //       });
-  //       if (response.ok) {
-  //         const user = await response.json();
-  //         setCurrentUser(user);
-  //       }
-  //     } catch (error) {
-  //       console.error('Session check failed:', error);
-  //     }
-  //   };
-  //   checkSession();
-  // }, []);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const checkSession = async () => {
-      const user = await getCurrentUser();
-      if (user) {
+      try {
+        const user = await getCurrentUser();
         setCurrentUser(user);
+      } catch (error) {
+        console.error('Session check failed:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
+
     checkSession();
-  }, []);
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   const login = async (username: string, password: string): Promise<void> => {
     const user = await loginAdapter(username, password);

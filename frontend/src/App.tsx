@@ -15,6 +15,7 @@ import NotFoundPage from '@/pages/NotFoundPage';
 import Navbar from '@/components/Navbar';
 import Community from "@/pages/Community.tsx";
 import PostDetail from "@/pages/PostDetail.tsx";
+import {RequireAuth} from "@/components/RequireAuth.tsx";
 
 export default function App() {
  const location = useLocation();
@@ -31,25 +32,31 @@ export default function App() {
 
       {location.pathname !== '/login' &&  <Navbar profilePicture={currentUser?.profilePicture} />}
       <main className={location.pathname === '/profile' ? 'mx-auto' : 'flex-grow'}>
-        <Routes>
-          {/* Basic Routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/profile" element={<Profile />} />
+          <Routes>
+              {/* Public Routes */}
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<LoginPage />} />
 
-          {/* Community Pages */}
-          <Route path="/community" element={<Community />} />
-          {/* <Route path="/users/:id" element={<UserPage />} /> */}
+              {/* Protected Routes */}
+              <Route path="/profile" element={
+                  <RequireAuth>
+                      <Profile />
+                  </RequireAuth>
+              } />
+              <Route path="/community" element={
+                  <RequireAuth>
+                      <Community />
+                  </RequireAuth>
+              } />
+              <Route path="/posts/:id" element={
+                  <RequireAuth>
+                      <PostDetail />
+                  </RequireAuth>
+              } />
 
-          {/* Forums */}
-          {/* <Route path="/forums/:category" element={<ForumCategoryPage />} /> */}
-
-          {/* Posts */}
-          <Route path="/posts/:id" element={<PostDetail />} />
-
-          {/* 404 */}
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+              {/* 404 */}
+              <Route path="*" element={<NotFoundPage />} />
+          </Routes>
       </main>
     </div>
   );

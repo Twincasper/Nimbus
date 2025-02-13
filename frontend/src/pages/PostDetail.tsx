@@ -68,54 +68,27 @@ const PostDetail = () => {
     };
 
     const handleSavePost = (updatedPost: Post) => {
-        setPost(updatedPost); // Update the post in the state
+        console.log("Updated post", updatedPost);
+        setPost(updatedPost[0]); // Update the post in the state
         setEditingPost(null); // Close the modal
     };
 
     const handleCommentSubmit = async () => {
         if (!newComment.trim() || !currentUser) return;
 
-        setCommentLoading(true);
-
         try {
-            const tempComment = {
-                id: Date.now(),
-                body: newComment,
-                createdAt: new Date().toISOString(),
-                username: currentUser.username,
-                profilePicture: currentUser.profilePicture,
-                userId: currentUser.id
-            };
-
-            // Optimistically update comments
-            setComments(prev => [...prev, tempComment]);
-
-            const createdComment = await createComment({
+            await createComment({
                 body: newComment,
                 userId: currentUser.id,
                 postId: Number(id)
             });
 
-            // Replace temporary comment with server response
-            setComments(prev => [
-                ...prev.filter(comment => comment.id !== tempComment.id),
-                {
-                    id: createdComment.id,
-                    body: createdComment.body || newComment,
-                    username: createdComment.username || currentUser.username,
-                    profilePicture: createdComment.profilePicture || currentUser.profilePicture,
-                    createdAt: createdComment.createdAt || new Date().toISOString(),
-                    userId: currentUser.id
-                }
-            ]);
-
+            // Refresh comments
+            const updatedComments = await getCommentsByPost(Number(id));
+            setComments(updatedComments[0]);
             setNewComment('');
         } catch (error) {
             console.error('Error submitting comment:', error);
-            // Rollback optimistic update
-            setComments(prev => prev.filter(comment => comment.id !== tempComment.id));
-        } finally {
-            setCommentLoading(false);
         }
     };
 
