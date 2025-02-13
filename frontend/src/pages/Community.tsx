@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useContext, useEffect} from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ForumPostCard from "../components/ForumPostCard";
@@ -13,6 +13,7 @@ import {
     updatePost
 } from "@/adapters/postAdapter.ts";
 import NewPostButton from "@/components/NewPostButton.tsx";
+import CurrentUserContext from "@/context/current-user-context.ts";
 
 interface Post {
     id: number;
@@ -37,10 +38,23 @@ const communities = [
 ];
 
 const Community: React.FC = () => {
+    const { currentUser } = useContext(CurrentUserContext);
+    const [editingPost, setEditingPost] = useState<Post | null>(null);
     const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
     const [posts, setPosts] = useState<Post[]>([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+
+    const handleDeletePost = async (postId: number) => {
+        if (!window.confirm('You actually wanna delete your post? :(')) return;
+
+        try {
+            await deletePost(postId);
+            setPosts(prev => prev.filter(post => post.id !== postId));
+        } catch (error) {
+            console.error('There was an issue deleting your post!: ', error);
+        }
+    };
 
     useEffect(() => {
         const fetchPosts = async () => {
