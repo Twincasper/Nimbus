@@ -3,7 +3,7 @@ import DOMPurify from "dompurify";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar.tsx"
 import { Button } from "./ui/button.tsx"
 import { Card, CardContent, CardFooter, CardHeader } from "./ui/card.tsx"
-import { ThumbsUp, MessageCircle, Share2 } from 'lucide-react';
+import { ThumbsUp, MessageCircle, Share2, Edit, Trash2 } from 'lucide-react';
 
 interface ForumPostCardProps {
   username: string;
@@ -13,7 +13,10 @@ interface ForumPostCardProps {
   date: string;
   likes: number;
   comments: number;
-  onClick?: () => void;
+  onClick?: () => void
+  currentUserUsername?: string;
+  onEdit?: () => void;
+  onDelete?: () => void;
 }
 
 const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = ({
@@ -25,11 +28,16 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
   likes,
   comments,
   onClick,
+  currentUserUsername,
+  onEdit,
+  onDelete,
 }) => {
   const sanitizedContent = DOMPurify.sanitize(content);
   const truncatedContent = sanitizedContent.length > 200
       ? `${sanitizedContent.substring(0, 200)}...`
       : sanitizedContent;
+
+  const showActions = currentUserUsername === username;
 
   return (
     <Card className="w-full max-w-2xl mx-auto my-4 hover:bg-gray-100 transition-colors duration-200 cursor-pointer" onClick={onClick}>
@@ -61,6 +69,30 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
             <span>{comments}</span>
           </Button>
         </div>
+        {showActions && (
+            <div className="flex gap-2">
+              <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onEdit?.();
+                  }}
+              >
+                <Edit className="w-4 h-4" />
+              </Button>
+              <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onDelete?.();
+                  }}
+              >
+                <Trash2 className="w-4 h-4 text-red-500" />
+              </Button>
+            </div>
+        )}
         {/*<Button variant="ghost" size="sm">*/}
         {/*  <Share2 className="w-4 h-4" />*/}
         {/*</Button>*/}
