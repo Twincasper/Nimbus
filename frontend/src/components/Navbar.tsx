@@ -17,11 +17,10 @@ export default function Navbar() {
       {/* Middle section, may want to recolor this list's li's later */}
       <div className="flex-1 justify-center navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li><a>Chat</a></li>
           <li>
             <details>
               <summary>Community</summary>
-              <ul className="p-2">
+              <ul className="p-2 min-w-[9rem]">
                 <li><a>Rainy Days & Silver Linings</a></li>
                 <li><a>Calm in the Storm</a></li>
                 <li><a>Fluff Therapy</a></li>
@@ -31,7 +30,6 @@ export default function Navbar() {
               </ul>
             </details>
           </li>
-          <li><a>Journal</a></li>
         </ul>
       </div>
 
@@ -57,7 +55,6 @@ export default function Navbar() {
           tabIndex={0}
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
         >
-          <li><a>Chat</a></li>
           <li>
             <a>Community</a>
             <ul className="p-2">
@@ -69,7 +66,6 @@ export default function Navbar() {
               <li><a>Rainbow</a></li>
             </ul>
           </li>
-          <li><a>Journal</a></li>
         </ul>
       </div>
 
