@@ -29,6 +29,7 @@ interface Post {
     username: string;
     profilePicture: string;
     categoryId: number;
+    pronouns?: string;
 }
 
 const PostDetail = () => {
@@ -100,6 +101,7 @@ const PostDetail = () => {
             <div className="mb-8">
                 <ForumPostCard
                     username={post.username}
+                    pronouns={post.pronouns}
                     avatarUrl={post.profilePicture}
                     title={post.title}
                     content={DOMPurify.sanitize(post.body)}
