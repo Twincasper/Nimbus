@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {logout} from "@/adapters/authAdapter.ts";
+import CurrentUserContext from "@/context/current-user-context.ts";
 
-export default function Navbar({profilePicture}) {
+
+export default function Navbar() {
   const navigate = useNavigate();
+  const { currentUser } = useContext(CurrentUserContext);
 
   return (
     <div className="navbar mr-auto">
@@ -72,48 +75,58 @@ export default function Navbar({profilePicture}) {
 
       {/* Profile section */}
       <div className="flex-1 justify-end">
-        <div className="flex items-center gap-2">
-          <div className="form-control">
-            <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto"/>
-          </div>
-          <div className="dropdown dropdown-end z-20">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img
-                    alt="User avatar"
-                    src={profilePicture}
+        {currentUser ? (
+            <div className="flex items-center gap-2">
+              <div className="form-control">
+                <input
+                    type="text"
+                    placeholder="Search"
+                    className="input input-bordered w-24 md:w-auto"
                 />
               </div>
-            </label>
-            <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              <div className="dropdown dropdown-end z-20">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img
+                        alt="User avatar"
+                        src={currentUser?.profilePicture}
+                    />
+                  </div>
+                </label>
+                <ul
+                    tabIndex={0}
+                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                >
+                  <li>
+                    <Link
+                        to="/profile"
+                        className="justify-between text-[#646cff]"
+                    >
+                      Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <button
+                        onClick={() => {
+                          logout();
+                          navigate('/login');
+                        }}
+                        className="w-full text-left bg-transparent text-[#646cff]"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        ) : (
+            <button
+                onClick={() => navigate('/login')}
+                className="btn bg-sky-200 hover:bg-sky-300 text-sky-800"
             >
-              <li>
-                <Link
-                    to="/profile"
-                    className="justify-between text-[#646cff]"
-                >
-                  Profile
-                </Link>
-              </li>
-              {/*<li>*/}
-              {/*  <Link className="text-[#646cff]" to="/settings">Settings</Link>*/}
-              {/*</li>*/}
-              <li>
-                <button onClick={() => {
-                      logout();
-                      console.log('Logout clicked');
-                      navigate('/login')
-                    }}
-                    className="w-full text-left bg-transparent text-[#646cff]"
-                >
-                  Logout
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
+              Login
+            </button>
+        )}
       </div>
     </div>
   )

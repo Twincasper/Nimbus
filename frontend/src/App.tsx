@@ -27,10 +27,9 @@ export default function App() {
   // }, [setCurrentUser]);
 
   return (
-
     <div className='flex flex-col min-h-screen'>
 
-      {location.pathname !== '/login' &&  <Navbar profilePicture={currentUser?.profilePicture} />}
+      {location.pathname !== '/login' &&  <Navbar />}
       <main className={location.pathname === '/profile' ? 'mx-auto' : 'flex-grow'}>
           <Routes>
               {/* Public Routes */}
