@@ -17,9 +17,9 @@ export const getCommentsByPost = async(postId: number) => {
     return fetchHandler(`${baseUrl}/comments/post/${postId}`);
 }
 
-export const updateComment = async(id: number, comment: Comment) => {
+export const updateComment = async (id: number, comment: Comment) => {
     return fetchHandler(`${baseUrl}/comments/${id}`, patchOptions(comment));
-}
+};
 
 export const deleteComment = async(id: number) => {
     return fetchHandler(`${baseUrl}/comments/${id}`, deleteOptions);

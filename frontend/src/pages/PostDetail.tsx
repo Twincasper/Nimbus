@@ -41,7 +41,7 @@ const PostDetail = () => {
     const [comments, setComments] = useState<Comment[]>([]);
     const [newComment, setNewComment] = useState('');
     const [commentLoading, setCommentLoading] = useState(false);
-    const [editingPost, setEditingPost] = useState<Post | null>(null); // State for editing post
+    const [editingPost, setEditingPost] = useState<Post | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
