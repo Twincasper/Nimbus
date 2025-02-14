@@ -76,3 +76,5 @@ const EditCommentModal: React.FC<EditCommentModalProps> = ({ comment, onClose, o
         </div>
     );
 };
+
+export default EditCommentModal;

@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
-import DOMPurify from "dompurify";
+import DOMPurify from 'dompurify';
 import { useParams, useNavigate } from 'react-router-dom';
 import { deletePost, getPost, updatePost } from '@/adapters/postAdapter';
-import { getCommentsByPost, createComment } from "@/adapters/commentAdapter.ts";
+import { getCommentsByPost, createComment, updateComment, deleteComment } from '@/adapters/commentAdapter';
 import ForumPostCard from '@/components/ForumPostCard';
 import CommentCard from '@/components/CommentCard';
 import { Button } from '@/components/ui/button';
 import CurrentUserContext from '@/context/current-user-context';
-import ReactQuill from "react-quill";
-import EditPostModal from '@/components/EditPostModal'; // Import the EditPostModal
+import ReactQuill from 'react-quill';
+import EditPostModal from '@/components/EditPostModal';
+import EditCommentModal from '@/components/EditCommentModal'; // Import the EditCommentModal
 
 interface Comment {
     id: number;
@@ -42,6 +43,7 @@ const PostDetail = () => {
     const [newComment, setNewComment] = useState('');
     const [commentLoading, setCommentLoading] = useState(false);
     const [editingPost, setEditingPost] = useState<Post | null>(null);
+    const [editingComment, setEditingComment] = useState<Comment | null>(null); // State for editing comment
 
     useEffect(() => {
         const fetchData = async () => {
@@ -63,16 +65,16 @@ const PostDetail = () => {
 
         try {
             await deletePost(postId);
-            navigate('/'); // Redirect to home or another page after deletion
+            navigate('/');
         } catch (error) {
             console.error('Error deleting post:', error);
         }
     };
 
     const handleSavePost = (updatedPost: Post) => {
-        console.log("Updated post", updatedPost);
-        setPost(updatedPost[0]); // Update the post in the state
-        setEditingPost(null); // Close the modal
+        console.log('Updated post', updatedPost);
+        setPost(updatedPost[0]);
+        setEditingPost(null);
     };
 
     const handleCommentSubmit = async () => {
@@ -82,16 +84,36 @@ const PostDetail = () => {
             await createComment({
                 body: newComment,
                 userId: currentUser.id,
-                postId: Number(id)
+                postId: Number(id),
             });
 
-            // Refresh comments
             const updatedComments = await getCommentsByPost(Number(id));
             setComments(updatedComments[0]);
             setNewComment('');
         } catch (error) {
             console.error('Error submitting comment:', error);
         }
+    };
+
+    const handleDeleteComment = async (commentId: number) => {
+        if (!window.confirm('Are you sure you want to delete this comment?')) return;
+
+        try {
+            await deleteComment(commentId);
+            const updatedComments = await getCommentsByPost(Number(id));
+            setComments(updatedComments[0]);
+        } catch (error) {
+            console.error('Error deleting comment:', error);
+        }
+    };
+
+    const handleSaveComment = (updatedComment: Comment) => {
+        setComments((prev) =>
+            prev.map((comment) =>
+                comment.id === updatedComment.id ? updatedComment : comment
+            )
+        );
+        setEditingComment(null);
     };
 
     if (!post) return <div>Loading...</div>;
@@ -109,9 +131,9 @@ const PostDetail = () => {
                     date={new Date(post.createdAt).toLocaleDateString()}
                     likes={post.likes}
                     comments={post.comments}
-                    currentUserUsername={currentUser?.username} // Pass current user's username
-                    onEdit={() => setEditingPost(post)} // Pass edit handler
-                    onDelete={() => handleDeletePost(post.id)} // Pass delete handler
+                    currentUserUsername={currentUser?.username}
+                    onEdit={() => setEditingPost(post)}
+                    onDelete={() => handleDeletePost(post.id)}
                     onClick={undefined}
                     isDetailView={true}
                 />
@@ -133,15 +155,18 @@ const PostDetail = () => {
                                 toolbar: [
                                     ['bold', 'italic', 'underline', 'strike'],
                                     ['blockquote', 'code-block'],
-                                    [{ 'header': 1 }, { 'header': 2 }],
-                                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                                    [{ 'script': 'sub'}, { 'script': 'super' }],
+                                    [{ header: 1 }, { header: 2 }],
+                                    [{ list: 'ordered' }, { list: 'bullet' }],
+                                    [{ script: 'sub' }, { script: 'super' }],
                                     ['link', 'image'],
-                                    ['clean']
-                                ]
+                                    ['clean'],
+                                ],
                             }}
                         />
-                        <Button onClick={handleCommentSubmit} disabled={commentLoading || !newComment.trim()}>
+                        <Button
+                            onClick={handleCommentSubmit}
+                            disabled={commentLoading || !newComment.trim()}
+                        >
                             {commentLoading ? 'Posting...' : 'Post Comment'}
                         </Button>
                     </div>
@@ -149,16 +174,22 @@ const PostDetail = () => {
 
                 {/* Comments List */}
                 <div className="space-y-4">
-                    {comments.map(comment => comment && (
-                        <CommentCard
-                            key={comment.id}
-                            username={comment.username}
-                            pronouns={comment.pronouns}
-                            avatarUrl={comment.profilePicture}
-                            content={comment.body}
-                            date={new Date(comment.createdAt).toLocaleDateString()}
-                        />
-                    ))}
+                    {comments.map(
+                        (comment) =>
+                            comment && (
+                                <CommentCard
+                                    key={comment.id}
+                                    username={comment.username}
+                                    pronouns={comment.pronouns}
+                                    avatarUrl={comment.profilePicture}
+                                    content={comment.body}
+                                    date={new Date(comment.createdAt).toLocaleDateString()}
+                                    currentUserUsername={currentUser?.username}
+                                    onEdit={() => setEditingComment(comment)}
+                                    onDelete={() => handleDeleteComment(comment.id)}
+                                />
+                            )
+                    )}
                 </div>
             </div>
 
@@ -168,6 +199,15 @@ const PostDetail = () => {
                     post={editingPost}
                     onClose={() => setEditingPost(null)}
                     onSave={handleSavePost}
+                />
+            )}
+
+            {/* Edit Comment Modal */}
+            {editingComment && (
+                <EditCommentModal
+                    comment={editingComment}
+                    onClose={() => setEditingComment(null)}
+                    onSave={handleSaveComment}
                 />
             )}
         </div>

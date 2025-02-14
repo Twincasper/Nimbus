@@ -35,8 +35,8 @@ const CommentCard: React.FC<CommentCardProps> = ({
     return (
         <div className="bg-white rounded-lg shadow-sm p-4 mb-4 border border-gray-100">
             <div className="flex items-start gap-4">
-                <Avatar>
-                    <AvatarImage src={avatarUrl} alt={username} />
+                <Avatar className="w-10 h-10">
+                    <AvatarImage className="rounded-full" src={avatarUrl} alt={username} />
                 </Avatar>
                 <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
@@ -77,3 +77,5 @@ const CommentCard: React.FC<CommentCardProps> = ({
         </div>
     );
 };
+
+export default CommentCard;
