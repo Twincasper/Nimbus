@@ -16,6 +16,7 @@ interface Comment {
     createdAt: string;
     username: string;
     profilePicture: string;
+    pronouns?: string;
     userId: number;
 }
 
@@ -152,6 +153,7 @@ const PostDetail = () => {
                         <CommentCard
                             key={comment.id}
                             username={comment.username}
+                            pronouns={comment.pronouns}
                             avatarUrl={comment.profilePicture}
                             content={comment.body}
                             date={new Date(comment.createdAt).toLocaleDateString()}

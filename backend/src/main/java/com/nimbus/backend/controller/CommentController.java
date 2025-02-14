@@ -29,6 +29,7 @@ public class CommentController {
         dto.setUserId(comment.getUser().getId());
         dto.setUsername(comment.getUser().getUsername());
         dto.setProfilePicture(comment.getUser().getProfilePicture());
+        dto.setPronouns(comment.getUser().getPronouns());
         dto.setPostId(comment.getPost().getId());
         dto.setCreatedAt(comment.getCreatedAt());
         dto.setUpdatedAt(comment.getUpdatedAt());

@@ -13,6 +13,7 @@ public class CommentResponseDTO {
     private Integer userId;
     private String username;
     private String profilePicture;
+    private String pronouns;
     private Integer postId;
     private Instant createdAt;
     private Instant updatedAt;

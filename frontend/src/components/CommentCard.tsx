@@ -6,9 +6,10 @@ interface CommentCardProps {
     avatarUrl: string;
     content: string;
     date: string;
+    pronouns?: string;
 }
 
-const CommentCard: React.FC<CommentCardProps> = ({username, avatarUrl, content, date}) => {
+const CommentCard: React.FC<CommentCardProps> = ({username, avatarUrl, content, date, pronouns}) => {
     const cleanContent = DOMPurify.sanitize(content);
 
     return (
@@ -20,7 +21,7 @@ const CommentCard: React.FC<CommentCardProps> = ({username, avatarUrl, content, 
                     className="w-8 h-8 rounded-full"
                 />
                 <div>
-                    <h3 className="font-medium">{username}</h3>
+                    <h3 className="font-medium">{username} {pronouns && ` (${pronouns})`}</h3>
                     <p className="text-sm text-gray-500">{date}</p>
                 </div>
             </div>
