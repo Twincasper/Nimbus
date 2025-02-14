@@ -17,7 +17,7 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ posts }) => {
             <h2 className="text-xl font-bold mb-4">Recent Posts</h2>
             <div className="space-y-2">
                 {posts.map((post) => (
-                    <Card key={post.id}>
+                    <Card className="bg-[#83C5BE]" key={post.id}>
                         <CardHeader className="p-2">
                             <h3 className="text-sm font-semibold">{post.title}</h3>
                         </CardHeader>

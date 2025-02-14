@@ -61,7 +61,7 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
       <CardContent>
         <h3 className="text-xl font-bold mb-2">{title}</h3>
         <div
-            className="text-gray-700 prose"
+            className="text-white prose"
             dangerouslySetInnerHTML={{__html: displayContent}}
         />
       </CardContent>

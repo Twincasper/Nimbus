@@ -9,7 +9,7 @@ interface UserContextProviderProps {
 
 export default function CurrentUserContextProvider({ children }: UserContextProviderProps) {
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const validateSession = async () => {
