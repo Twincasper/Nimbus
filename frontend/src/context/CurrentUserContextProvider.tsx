@@ -2,28 +2,33 @@ import React, { useState, useEffect, ReactNode } from 'react';
 import CurrentUserContext, { CurrentUser, CurrentUserContextType } from './current-user-context';
 import {getCurrentUser, login as loginAdapter, register as registerAdapter} from '@/adapters/authAdapter';
 
+
 interface UserContextProviderProps {
   children: ReactNode;
 }
 
 export default function CurrentUserContextProvider({ children }: UserContextProviderProps) {
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
-    const checkSession = async () => {
+    const validateSession = async () => {
       try {
         const user = await getCurrentUser();
         setCurrentUser(user);
-      } catch (error) {
-        console.error('Session check failed:', error);
+      } catch {
+        setCurrentUser(null);
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     };
 
-    checkSession();
-  }, []); // Empty dependency array ensures this runs only once on mount
+    validateSession();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   const login = async (username: string, password: string): Promise<void> => {
     const user = await loginAdapter(username, password);
