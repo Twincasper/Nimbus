@@ -19,6 +19,7 @@ public class PostResponseDTO {
     private Integer categoryId;
     private String categoryName;
     private String profilePicture;
+    private String pronouns;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private Integer likes;

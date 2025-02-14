@@ -26,6 +26,7 @@ interface Post {
     categoryId: number;
     username: string;
     profilePicture: string;
+    pronouns: string;
 }
 
 // Define communities here (or import from a shared file)
@@ -100,6 +101,7 @@ const Community: React.FC = () => {
                         <div key={post.id}>
                             <ForumPostCard
                                 username={post.username || "Anonymous"}
+                                pronouns={post.pronouns}
                                 avatarUrl={post.profilePicture || "/default-avatar.png"}
                                 title={post.title || "No Title"}
                                 content={post.body || "No content available."}

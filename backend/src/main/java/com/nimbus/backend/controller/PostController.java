@@ -42,6 +42,7 @@ public class PostController {
         dto.setUserId(post.getUser().getId());
         dto.setUsername(post.getUser().getUsername());
         dto.setProfilePicture(post.getUser().getProfilePicture());
+        dto.setPronouns(post.getUser().getPronouns());
         dto.setCategoryId(post.getCategory().getId());
         dto.setCategoryName(post.getCategory().getName());
         dto.setCreatedAt(post.getCreatedAt());

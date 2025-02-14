@@ -10,6 +10,7 @@ interface ForumPostCardProps {
   avatarUrl: string;
   title: string;
   content: string;
+  pronouns?: string;
   date: string;
   likes: number;
   comments: number;
@@ -25,6 +26,7 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
   avatarUrl,
   title,
   content,
+  pronouns,
   date,
   likes,
   comments,
@@ -52,7 +54,7 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
           {/*<AvatarFallback>{username[0].toUpperCase()}</AvatarFallback>*/}
         </Avatar>
         <div>
-          <h2 className="text-lg font-semibold">{username}</h2>
+          <h2 className="text-lg font-semibold">{username} {pronouns && ` (${pronouns})`}</h2>
           <p className="text-sm text-gray-500">{date}</p>
         </div>
       </CardHeader>
