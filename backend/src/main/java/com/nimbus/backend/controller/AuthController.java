@@ -54,7 +54,10 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<UserResponseDTO> register(@RequestBody RegisterRequestDTO request) {
+    public ResponseEntity<UserResponseDTO> register(
+            @RequestBody RegisterRequestDTO request,
+            HttpSession session // Add session parameter
+    ) {
         if (userService.usernameExists(request.username())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already exists");
         }
@@ -62,14 +65,15 @@ public class AuthController {
         User newUser = new User();
         newUser.setUsername(request.username());
         newUser.setPasswordHash(passwordEncoder.encode(request.password()));
-        // Set extra fields
         newUser.setPronouns(request.pronouns());
         newUser.setProfilePicture(request.profilePicture());
 
         User savedUser = userService.save(newUser);
+
+        session.setAttribute("currentUser", savedUser);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(convertToDTO(savedUser));
     }
-
 
     private UserResponseDTO convertToDTO(User user) {
         return new UserResponseDTO(
