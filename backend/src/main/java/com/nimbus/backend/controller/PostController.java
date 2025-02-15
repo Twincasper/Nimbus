@@ -2,6 +2,8 @@ package com.nimbus.backend.controller;
 
 import com.nimbus.backend.dto.CreatePostDTO;
 import com.nimbus.backend.dto.PostResponseDTO;
+import com.nimbus.backend.exceptions.ResourceNotFoundException;
+import com.nimbus.backend.model.Category;
 import com.nimbus.backend.repository.CommentRepository;
 import com.nimbus.backend.repository.LikeRepository;
 import com.nimbus.backend.service.CategoryService;
@@ -12,6 +14,7 @@ import com.nimbus.backend.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -111,12 +114,19 @@ public class PostController {
 
     @PutMapping("/{id}")
     public PostResponseDTO updatePost(@PathVariable Integer id, @RequestBody CreatePostDTO postDTO) {
+        Optional<Category> categoryOptional = categoryService.getCategoryById(postDTO.getCategoryId());
+        Category category = categoryOptional.orElseThrow(() -> new ResourceNotFoundException("Category not found"));
+
         Post post = new Post();
         post.setTitle(postDTO.getTitle());
         post.setBody(postDTO.getBody());
+        post.setCategory(category);
+
         Post updatedPost = postService.updatePost(id, post);
+
         return convertToDTO(updatedPost);
     }
+
 
     @DeleteMapping("/{id}")
     public void deletePost(@PathVariable Integer id) {

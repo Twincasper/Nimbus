@@ -3,7 +3,6 @@ package com.nimbus.backend.service.impl;
 import com.nimbus.backend.model.Category;
 import com.nimbus.backend.repository.CategoryRepository;
 import com.nimbus.backend.service.CategoryService;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

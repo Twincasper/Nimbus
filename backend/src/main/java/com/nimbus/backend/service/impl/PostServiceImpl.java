@@ -51,10 +51,15 @@ public class PostServiceImpl implements PostService {
     @Transactional
     @Override
     public Post updatePost(Integer id, Post postDetails) {
-        Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Post not found"));
 
         post.setTitle(postDetails.getTitle());
         post.setBody(postDetails.getBody());
+
+        if (postDetails.getCategory() != null) {
+            post.setCategory(postDetails.getCategory());
+        }
 
         return postRepository.save(post);
     }
