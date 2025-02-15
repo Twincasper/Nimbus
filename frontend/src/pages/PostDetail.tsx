@@ -107,13 +107,21 @@ const PostDetail = () => {
         }
     };
 
-    const handleSaveComment = (updatedComment: Comment) => {
-        setComments((prev) =>
-            prev.map((comment) =>
-                comment.id === updatedComment.id ? updatedComment : comment
-            )
-        );
-        setEditingComment(null);
+    const handleSaveComment = async (updatedComment: Comment) => {
+        try {
+            setComments((prev) =>
+                prev.map((comment) =>
+                    comment.id === updatedComment.id ? updatedComment : comment
+                )
+            );
+
+            const refreshedComments = await getCommentsByPost(Number(id));
+            setComments(refreshedComments[0]);
+
+            setEditingComment(null);
+        } catch (error) {
+            console.error('Error saving comment:', error);
+        }
     };
 
     if (!post) return <div>Loading...</div>;
