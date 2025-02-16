@@ -5,6 +5,7 @@ interface Post {
     id: number
     title: string
     username?: string
+    pronouns?: string
 }
 
 interface RecentPostsProps {
@@ -17,12 +18,12 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ posts }) => {
             <h2 className="text-xl font-bold mb-4">Recent Posts</h2>
             <div className="space-y-2">
                 {posts.map((post) => (
-                    <Card className="bg-[#83C5BE]" key={post.id}>
-                        <CardHeader className="p-2">
+                    <Card className="bg-base-100" key={post.id}>
+                        <CardHeader className="p-2 text-primary">
                             <h3 className="text-sm font-semibold">{post.title}</h3>
                         </CardHeader>
                         <CardContent className="p-2">
-                            <p className="text-xs text-gray-500">by {post.username}</p>
+                            <p className="text-xs text-base-content">by {post.username} {post.pronouns && <span className="text-accent">({post.pronouns})</span>}</p>
                         </CardContent>
                     </Card>
                 ))}
