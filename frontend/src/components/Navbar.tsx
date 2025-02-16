@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import {logout} from "@/adapters/authAdapter.ts";
 import CurrentUserContext from "@/context/current-user-context.ts";
+import ThemeDropdown from "@/components/ThemeDropdown.tsx";
 
 
 export default function Navbar() {
@@ -79,6 +80,7 @@ export default function Navbar() {
                     placeholder="Search"
                     className="input input-bordered w-24 md:w-auto"
                 />
+                <ThemeDropdown />
               </div>
               <div className="dropdown dropdown-end z-20">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
