@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { UserCircleIcon } from '@heroicons/react/24/solid'
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import {UploadWidget} from "@/components/UploadWidget.tsx";
@@ -9,31 +9,53 @@ export default function Profile() {
 const { currentUser } = useContext(CurrentUserContext);
 const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
 
+    const [selectedPronouns, setSelectedPronouns] = useState(currentUser?.pronouns || "");
+
+    useEffect(() => {
+        if (currentUser?.pronouns === "other") {
+            setSelectedPronouns("other");
+        }
+    }, [currentUser]);
+
+    const handlePronounsChange = (e) => {
+        setSelectedPronouns(e.target.value);
+    };
+
     const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
+
+        let pronouns = formData.get('pronouns');
+
+        if (pronouns === "other") {
+            pronouns = formData.get('customPronouns');
+        }
+
         const data = {
             username: formData.get('username'),
-            pronouns: formData.get('pronouns'),
+            pronouns: pronouns,
             profilePicture: profileUrl,
             bio: formData.get('bio')
         };
 
         try {
-           await updateUser(currentUser.id, data);
+            await updateUser(currentUser.id, data);
         } catch (error) {
             console.error('Update failed:', error);
         }
     };
+
+
+
 
     return (
         <form onSubmit={onSubmit}>
             <div className="col-span-full flex flex-col items-center gap-y-4 my-4">
                 <div role="img" aria-label="Current profile photo">
                     <img
-                        src={profileUrl || currentUser?.profilePicture} // Use state directly
+                        src={profileUrl || currentUser?.profilePicture}
                         alt="Current profile photo"
-                        className="h-24 w-24 flex-none rounded-full bg-gray-800 object-cover"
+                        className="h-24 w-24 flex-none rounded-full bg-gray-800 object-cover border-2 border-accent"
                     />
 
                 </div>
@@ -121,7 +143,8 @@ const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
                                 <select
                                     id="pronouns"
                                     name="pronouns"
-                                    defaultValue={currentUser?.pronouns || ""} // Set default value from currentUser
+                                    value={selectedPronouns} // Bind the local state to the dropdown
+                                    onChange={handlePronounsChange} // Handle dropdown changes
                                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                 >
                                     <option value="" disabled>Select pronouns</option>
@@ -130,18 +153,20 @@ const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
                                     <option value="he/him">He/Him</option>
                                     <option value="other">Other (please specify)</option>
                                 </select>
+
                                 {/* Input field for "Other" pronouns */}
-                                {currentUser?.pronouns === "other" && (
+                                {selectedPronouns === "other" && (
                                     <input
                                         type="text"
                                         name="customPronouns"
-                                        placeholder="Type your pronouns"
-                                        defaultValue={currentUser.pronouns || ""}
+                                        placeholder="Please enter your preferred pronouns"
+                                        defaultValue={currentUser?.pronouns || ""}
                                         className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                                     />
                                 )}
                             </div>
                         </div>
+
 
                     </div>
                 </div>

@@ -8,11 +8,11 @@ export default function LoginPage() {
     const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
 
-    // Common fields
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    // Extra sign-up fields:
+
     const [pronouns, setPronouns] = useState('');
+    const [customPronouns, setCustomPronouns] = useState("");
     const [avatarUrl, setAvatarUrl] = useState('');
 
     const [error, setError] = useState<string | null>(null);
@@ -121,29 +121,47 @@ export default function LoginPage() {
                             {isSignUp && (
                                 <>
                                     <div>
-                                        <label htmlFor="pronouns" className="block text-sm font-medium leading-6 text-gray-900">
+                                        <label htmlFor="pronouns"
+                                               className="block text-sm font-medium leading-6 text-gray-900">
                                             Pronouns
                                         </label>
                                         <div className="mt-2">
-                                            <input
+                                            <select
                                                 id="pronouns"
-                                                type="text"
-                                                required
+                                                name="pronouns"
                                                 value={pronouns}
-                                                onChange={(e) => setPronouns(e.target.value)}
-                                                className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300
-                          placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                            />
+                                                onChange={(e) => setPronouns(e.target.value)} // Update pronouns onChange
+                                                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm sm:leading-6"
+                                            >
+                                                <option value="" disabled>Select pronouns</option>
+                                                <option value="they/them">They/Them</option>
+                                                <option value="she/her">She/Her</option>
+                                                <option value="he/him">He/Him</option>
+                                                <option value="other">Other (please specify)</option>
+                                            </select>
+                                            {/* Input field for "Other" pronouns */}
+                                            {pronouns === "other" && (
+                                                <input
+                                                    type="text"
+                                                    id="customPronouns"
+                                                    placeholder="Type your pronouns"
+                                                    value={customPronouns}
+                                                    onChange={(e) => setCustomPronouns(e.target.value)} // Manage custom pronouns
+                                                    className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm sm:leading-6"
+                                                />
+                                            )}
                                         </div>
                                     </div>
+
                                     <div>
                                         <label className="block text-sm font-medium leading-6 text-gray-900">
                                             Profile Picture
                                         </label>
                                         <div className="mt-2">
-                                            <UploadWidget onUpload={(url: string) => setAvatarUrl(url)} />
+                                            <UploadWidget onUpload={(url: string) => setAvatarUrl(url)}/>
                                             {avatarUrl && (
-                                                <img src={avatarUrl} alt="Profile" className="mt-2 h-16 w-16 rounded-full" />
+                                                <img src={avatarUrl} alt="Profile"
+                                                     className="mt-2 h-16 w-16 rounded-full"/>
                                             )}
                                         </div>
                                     </div>

@@ -87,16 +87,16 @@ export default function Navbar({ onSelectCategory }: { onSelectCategory: (catego
         {currentUser ? (
             <div className="flex items-center gap-2">
               <div className="form-control">
-                <input
-                    type="text"
-                    placeholder="Search"
-                    className="input input-bordered w-24 md:w-auto"
-                />
+                {/*<input*/}
+                {/*    type="text"*/}
+                {/*    placeholder="Search"*/}
+                {/*    className="input input-bordered w-24 md:w-auto"*/}
+                {/*/>*/}
                 <ThemeDropdown />
               </div>
               <div className="dropdown dropdown-end z-20">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                  <div className="w-10 rounded-full">
+                  <div className="w-10 rounded-full border-2 border-accent">
                     <img
                         alt="User avatar"
                         src={currentUser?.profilePicture}

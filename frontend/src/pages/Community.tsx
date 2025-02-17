@@ -49,7 +49,7 @@ const Community: React.FC = () => {
 
     useEffect(() => {
         if (categoryId) {
-            setSelectedCategoryId(Number(categoryId)); // Set the selected category based on the URL
+            setSelectedCategoryId(Number(categoryId));
         }
     }, [categoryId]);
 

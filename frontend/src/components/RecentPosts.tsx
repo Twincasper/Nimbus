@@ -18,12 +18,12 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ posts }) => {
             <h2 className="text-xl font-bold mb-4 text-base-100">Recent Posts</h2>
             <div className="space-y-2">
                 {posts.map((post) => (
-                    <Card className="bg-primary" key={post.id}>
-                        <CardHeader className="p-2 text-base-100">
+                    <Card className="bg-neutral" key={post.id}>
+                        <CardHeader className="p-2 text-neutral-content">
                             <h3 className="text-sm font-semibold">{post.title}</h3>
                         </CardHeader>
                         <CardContent className="p-2">
-                            <p className="text-xs text-base-100">by {post.username} {post.pronouns && <span className="text-base-100">({post.pronouns})</span>}</p>
+                            <p className="text-xs text-neutral-content">by {post.username} {post.pronouns && <span className="text-accent">({post.pronouns})</span>}</p>
                         </CardContent>
                     </Card>
                 ))}

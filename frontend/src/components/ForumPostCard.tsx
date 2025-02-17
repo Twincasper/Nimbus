@@ -47,21 +47,21 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
   const showActions = currentUserUsername === username;
 
   return (
-      <Card className="w-full max-w-2xl mx-auto my-4 bg-primary hover:bg-neutral transition-colors duration-200 cursor-pointer shadow-md" onClick={onClick}>
+      <Card className="w-full max-w-2xl mx-auto my-4 bg-neutral hover:bg-neutral-focus transition-colors duration-200 cursor-pointer shadow-md" onClick={onClick}>
         <CardHeader className="flex flex-row items-center gap-4">
           <Avatar className="border-2 border-accent">
             <AvatarImage src={avatarUrl} alt={username} />
             {/*<AvatarFallback className="bg-neutral text-neutral-content">{username[0].toUpperCase()}</AvatarFallback>*/}
           </Avatar>
           <div>
-            <h2 className="text-lg font-semibold text-base-100">
-              {username} {pronouns && <span className="text-base-100">({pronouns})</span>}
+            <h2 className="text-lg font-semibold text-neutral-content">
+              {username} {pronouns && <span className="text-accent">({pronouns})</span>}
             </h2>
-            <p className="text-sm text-base-content/70">{date}</p>
+            <p className="text-sm text-neutral-content/70">{date}</p>
           </div>
         </CardHeader>
         <CardContent>
-          <h3 className="text-xl font-bold mb-2 text-base-100">{title}</h3>
+          <h3 className="text-xl font-bold mb-2 text-primary">{title}</h3>
           <div
               className="prose text-neutral-content"
               dangerouslySetInnerHTML={{__html: displayContent}}
@@ -69,13 +69,13 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
         </CardContent>
         <CardFooter className="flex justify-between items-center">
           <div className="flex gap-4">
-            <Button variant="ghost" size="sm" className="flex items-center gap-1 text-base-content hover:bg-accent/10">
-              <ThumbsUp className="w-4 h-4 text-base-100" />
-              <span className="text-base-content">{likes}</span>
+            <Button variant="ghost" size="sm" className="flex items-center gap-1 text-neutral-content hover:bg-accent/10">
+              <ThumbsUp className="w-4 h-4 text-accent" />
+              <span className="text-neutral-content">{likes}</span>
             </Button>
-            <Button variant="ghost" size="sm" className="flex items-center gap-1 text-base-content hover:bg-accent/10">
-              <MessageCircle className="w-4 h-4 text-base-100" />
-              <span className="text-base-content">{comments}</span>
+            <Button variant="ghost" size="sm" className="flex items-center gap-1 text-neutral-content hover:bg-accent/10">
+              <MessageCircle className="w-4 h-4 text-accent" />
+              <span className="text-neutral-content">{comments}</span>
             </Button>
           </div>
           {showActions && (
@@ -83,24 +83,24 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
                 <Button
                     variant="ghost"
                     size="sm"
-                    className="text-base-content hover:bg-accent/10"
+                    className="text-neutral-content hover:bg-accent/10"
                     onClick={(e) => {
                       e.stopPropagation();
                       onEdit?.();
                     }}
                 >
-                  <Edit className="w-4 h-4 text-info" />
+                  <Edit className="w-4 h-4 text-accent" />
                 </Button>
                 <Button
                     variant="ghost"
                     size="sm"
-                    className="text-base-content hover:bg-error/10"
+                    className="text-neutral-content hover:bg-error/10"
                     onClick={(e) => {
                       e.stopPropagation();
                       onDelete?.();
                     }}
                 >
-                  <Trash2 className="w-4 h-4 text-base-100" />
+                  <Trash2 className="w-4 h-4 text-error" />
                 </Button>
               </div>
           )}

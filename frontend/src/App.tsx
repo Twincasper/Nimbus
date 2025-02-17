@@ -21,7 +21,7 @@ export default function App() {
 
 
     return (
-    <div className='flex flex-col min-h-screen'>
+    <div className='flex flex-col min-h-screen bg-base-100'>
 
       {location.pathname !== '/login' &&  <Navbar onSelectCategory={setSelectedCategoryId} />}
       <main className={location.pathname === '/profile' ? 'mx-auto' : 'flex-grow'}>
