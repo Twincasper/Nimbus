@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import ForumPostCard from "../components/ForumPostCard";
 import Sidebar from "../components/Sidebar";
 import RecentPosts from "../components/RecentPosts";
@@ -29,7 +29,6 @@ interface Post {
     pronouns: string;
 }
 
-// Define communities here (or import from a shared file)
 const communities = [
     { id: 1, name: "Rainy Days & Silver Linings", description: "Depression & Hope" },
     { id: 2, name: "Calm in the Storm", description: "Anxiety & Stress Relief" },
@@ -42,10 +41,17 @@ const communities = [
 const Community: React.FC = () => {
     const { currentUser } = useContext(CurrentUserContext);
     const [editingPost, setEditingPost] = useState<Post | null>(null);
+    const { categoryId } = useParams<{ categoryId: string }>();
     const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
     const [posts, setPosts] = useState<Post[]>([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (categoryId) {
+            setSelectedCategoryId(Number(categoryId)); // Set the selected category based on the URL
+        }
+    }, [categoryId]);
 
     const handleDeletePost = async (postId: number) => {
         if (!window.confirm('You actually wanna delete your post? :(')) return;

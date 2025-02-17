@@ -4,8 +4,16 @@ import {logout} from "@/adapters/authAdapter.ts";
 import CurrentUserContext from "@/context/current-user-context.ts";
 import ThemeDropdown from "@/components/ThemeDropdown.tsx";
 
+const communities = [
+  { id: 1, name: "Rainy Days & Silver Linings", description: "Depression & Hope" },
+  { id: 2, name: "Calm in the Storm", description: "Anxiety & Stress Relief" },
+  { id: 3, name: "Fluff Therapy", description: "Self-Care & Comfort" },
+  { id: 4, name: "Cloud Nine Creations", description: "Hobbies & Creativity" },
+  { id: 5, name: "Cumulus Care", description: "Physical & Mental Health Tips" },
+  { id: 6, name: "Rainbows", description: "For the good days. The victories, big and small. You deserve to feel good about yourself."}
+];
 
-export default function Navbar() {
+export default function Navbar({ onSelectCategory }: { onSelectCategory: (categoryId: number | null) => void }) {
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext);
 
@@ -22,12 +30,16 @@ export default function Navbar() {
             <details>
               <summary>Community</summary>
               <ul className="p-2 min-w-[9rem]">
-                <li><a>Rainy Days & Silver Linings</a></li>
-                <li><a>Calm in the Storm</a></li>
-                <li><a>Fluff Therapy</a></li>
-                <li><a>Cloud Nine Creations</a></li>
-                <li><a>Cumulus Care</a></li>
-                <li><a>🌈 Rainbow</a></li>
+                {communities.map((category) => (
+                    <li key={category.id}>
+                      <Link
+                          to={`/community/${category.id}`} // Navigate to the community page for this category
+                          onClick={() => onSelectCategory(category.id)} // Update the selected category state
+                      >
+                        {category.name}
+                      </Link>
+                    </li>
+                ))}
               </ul>
             </details>
           </li>

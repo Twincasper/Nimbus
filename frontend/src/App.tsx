@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import React from 'react';
+import React, {useState} from 'react';
 // Need to import checkForLoggedInUser function here from auth adapter or some other way to check if user is logged in
 
 // Components and Pages
@@ -17,12 +17,13 @@ import ThemePalettePage from "@/pages/ThemePalettePage.tsx";
 
 export default function App() {
  const location = useLocation();
+ const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
 
 
-  return (
+    return (
     <div className='flex flex-col min-h-screen'>
 
-      {location.pathname !== '/login' &&  <Navbar />}
+      {location.pathname !== '/login' &&  <Navbar onSelectCategory={setSelectedCategoryId} />}
       <main className={location.pathname === '/profile' ? 'mx-auto' : 'flex-grow'}>
           <Routes>
               {/* Public Routes */}
@@ -37,6 +38,11 @@ export default function App() {
                   </RequireAuth>
               } />
               <Route path="/community" element={
+                  <RequireAuth>
+                      <Community />
+                  </RequireAuth>
+              } />
+              <Route path="/community/:categoryId" element={
                   <RequireAuth>
                       <Community />
                   </RequireAuth>
