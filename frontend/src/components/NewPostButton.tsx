@@ -52,7 +52,7 @@ const NewPostButton = () => {
         {/* Floating Action Button */}
         <button
             onClick={() => setShowModal(true)}
-            className="fixed bottom-4 right-4 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
+            className="fixed bottom-4 right-4 bg-primary text-white p-4 rounded-full shadow-lg hover:bg-neutral transition-colors"
         >
             New Post +
         </button>

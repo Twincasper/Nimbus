@@ -88,7 +88,7 @@ const Community: React.FC = () => {
     if (loading) return <div>Loading...</div>;
 
     return (
-        <div className="flex min-h-screen bg-gray-100">
+        <div className="flex min-h-screen bg-base-100">
             <Sidebar onSelectCategory={setSelectedCategoryId} />
             <main className="flex-1 p-4">
                 <h1 className="text-2xl font-bold mb-4">
@@ -121,7 +121,7 @@ const Community: React.FC = () => {
                     ))}
                 </div>
             </main>
-            <RecentPosts posts={posts.slice(0, 5)} />
+            <RecentPosts posts={posts.slice(0, 10)} />
             <NewPostButton />
             {editingPost && (
                 <EditPostModal

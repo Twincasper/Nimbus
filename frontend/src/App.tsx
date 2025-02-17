@@ -1,6 +1,4 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
-import CurrentUserContext from './context/current-user-context';
 import React from 'react';
 // Need to import checkForLoggedInUser function here from auth adapter or some other way to check if user is logged in
 
@@ -8,7 +6,6 @@ import React from 'react';
 import Home from '@/pages/Home';
 import LoginPage from '@/pages/LoginPage';
 import Profile from '@/pages/Profile'
-import Footer from '@/components/Footer';
 
 import NotFoundPage from '@/pages/NotFoundPage';
 
@@ -16,15 +13,11 @@ import Navbar from '@/components/Navbar';
 import Community from "@/pages/Community.tsx";
 import PostDetail from "@/pages/PostDetail.tsx";
 import {RequireAuth} from "@/components/RequireAuth.tsx";
+import ThemePalettePage from "@/pages/ThemePalettePage.tsx";
 
 export default function App() {
  const location = useLocation();
 
-    const { currentUser } = useContext(CurrentUserContext);
-
-  // useEffect(() => {
-  //   checkForLoggedInUser().then(setCurrentUser);
-  // }, [setCurrentUser]);
 
   return (
     <div className='flex flex-col min-h-screen'>
@@ -35,6 +28,7 @@ export default function App() {
               {/* Public Routes */}
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<LoginPage />} />
+              <Route path="/palette" element={<ThemePalettePage />} />
 
               {/* Protected Routes */}
               <Route path="/profile" element={

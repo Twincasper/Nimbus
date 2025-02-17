@@ -22,7 +22,7 @@ const communities = [
 
 const Sidebar: React.FC<SidebarProps> = ({ onSelectCategory }) => {
     return (
-        <aside className="w-64 bg-white p-4 shadow-md">
+        <aside className="w-64 bg-base-100 p-4 shadow-md">
             <h2 className="text-xl font-bold mb-4">Communities</h2>
             <nav>
                 <ul className="space-y-2">

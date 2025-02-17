@@ -33,19 +33,24 @@ const CommentCard: React.FC<CommentCardProps> = ({
     const showActions = currentUserUsername === username;
 
     return (
-        <div className="bg-white rounded-lg shadow-sm p-4 mb-4 border border-gray-100">
+        <div className="bg-base-100 rounded-xl shadow-sm p-4 mb-4 border border-base-200">
             <div className="flex items-start gap-4">
-                <Avatar className="w-10 h-10">
-                    <AvatarImage className="rounded-full" src={avatarUrl} alt={username} />
+                {/*relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border-2 border-accent*/}
+                <Avatar className="w-10 h-10 border-2 border-accent rounded-full box-border overflow-visible">
+                    <AvatarImage
+                        className="rounded-full w-full h-full aspect-square"
+                        src={avatarUrl}
+                        alt={username}
+                    />
                 </Avatar>
                 <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                        <h3 className="font-medium">{username}</h3>
-                        {pronouns && <span className="text-sm text-gray-500">({pronouns})</span>}
-                        <span className="text-sm text-gray-500">{date}</span>
+                        <h3 className="font-medium text-base-content">{username}</h3>
+                        {pronouns && <span className="text-sm text-base-content/70">({pronouns})</span>}
+                        <span className="text-sm text-base-content/70">{date}</span>
                     </div>
                     <div
-                        className="text-gray-700 prose"
+                        className="text-base-content prose"
                         dangerouslySetInnerHTML={{ __html: sanitizedContent }}
                     />
                     {showActions && (
@@ -53,22 +58,24 @@ const CommentCard: React.FC<CommentCardProps> = ({
                             <Button
                                 variant="ghost"
                                 size="sm"
+                                className="text-base-content hover:bg-accent/10"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     onEdit?.();
                                 }}
                             >
-                                <Edit className="w-4 h-4" />
+                                <Edit className="w-4 h-4 text-accent" />
                             </Button>
                             <Button
                                 variant="ghost"
                                 size="sm"
+                                className="text-base-content hover:bg-error/10"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     onDelete?.();
                                 }}
                             >
-                                <Trash2 className="w-4 h-4 text-red-500" />
+                                <Trash2 className="w-4 h-4 text-error" />
                             </Button>
                         </div>
                     )}

@@ -148,7 +148,7 @@ const PostDetail = () => {
             </div>
 
             {/* Comment Section */}
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="rounded-lg shadow-md p-6 bg-secondary">
                 <h2 className="text-2xl font-bold mb-4">Comments ({comments.length})</h2>
 
                 {/* Comment Input */}

@@ -47,34 +47,34 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
   const showActions = currentUserUsername === username;
 
   return (
-      <Card className="w-full max-w-2xl mx-auto my-4 bg-base-100 hover:bg-base-200 transition-colors duration-200 cursor-pointer shadow-md" onClick={onClick}>
+      <Card className="w-full max-w-2xl mx-auto my-4 bg-primary hover:bg-neutral transition-colors duration-200 cursor-pointer shadow-md" onClick={onClick}>
         <CardHeader className="flex flex-row items-center gap-4">
           <Avatar className="border-2 border-accent">
             <AvatarImage src={avatarUrl} alt={username} />
             {/*<AvatarFallback className="bg-neutral text-neutral-content">{username[0].toUpperCase()}</AvatarFallback>*/}
           </Avatar>
           <div>
-            <h2 className="text-lg font-semibold text-base-content">
-              {username} {pronouns && <span className="text-accent">({pronouns})</span>}
+            <h2 className="text-lg font-semibold text-base-100">
+              {username} {pronouns && <span className="text-base-100">({pronouns})</span>}
             </h2>
             <p className="text-sm text-base-content/70">{date}</p>
           </div>
         </CardHeader>
         <CardContent>
-          <h3 className="text-xl font-bold mb-2 text-primary">{title}</h3>
+          <h3 className="text-xl font-bold mb-2 text-base-100">{title}</h3>
           <div
-              className="prose text-base-content"
+              className="prose text-neutral-content"
               dangerouslySetInnerHTML={{__html: displayContent}}
           />
         </CardContent>
         <CardFooter className="flex justify-between items-center">
           <div className="flex gap-4">
             <Button variant="ghost" size="sm" className="flex items-center gap-1 text-base-content hover:bg-accent/10">
-              <ThumbsUp className="w-4 h-4 text-accent" />
+              <ThumbsUp className="w-4 h-4 text-base-100" />
               <span className="text-base-content">{likes}</span>
             </Button>
             <Button variant="ghost" size="sm" className="flex items-center gap-1 text-base-content hover:bg-accent/10">
-              <MessageCircle className="w-4 h-4 text-accent" />
+              <MessageCircle className="w-4 h-4 text-base-100" />
               <span className="text-base-content">{comments}</span>
             </Button>
           </div>
@@ -89,7 +89,7 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
                       onEdit?.();
                     }}
                 >
-                  <Edit className="w-4 h-4 text-accent" />
+                  <Edit className="w-4 h-4 text-info" />
                 </Button>
                 <Button
                     variant="ghost"
@@ -100,7 +100,7 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
                       onDelete?.();
                     }}
                 >
-                  <Trash2 className="w-4 h-4 text-error" />
+                  <Trash2 className="w-4 h-4 text-base-100" />
                 </Button>
               </div>
           )}
