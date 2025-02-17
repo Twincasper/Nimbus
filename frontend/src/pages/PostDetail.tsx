@@ -148,17 +148,16 @@ const PostDetail = () => {
             </div>
 
             {/* Comment Section */}
-            <div className="rounded-lg shadow-md p-6 bg-secondary">
-                <h2 className="text-2xl font-bold mb-4">Comments ({comments.length})</h2>
+            <div className="rounded-lg shadow-md p-2 bg-accent/80">
+                <h2 className="text-2xl font-bold mb-4 bg-neutral text-neutral-content border border-neutral-focus rounded-xl p-2 inline-block">Comments ({comments.length})</h2>
 
-                {/* Comment Input */}
                 {currentUser && (
                     <div className="mb-6">
                         <ReactQuill
                             theme="snow"
                             value={newComment}
                             onChange={setNewComment}
-                            className="bg-white rounded-md"
+                            className="bg-white rounded-md text-black"
                             modules={{
                                 toolbar: [
                                     ['bold', 'italic', 'underline', 'strike'],

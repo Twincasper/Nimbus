@@ -18,7 +18,7 @@ export default function Navbar({ onSelectCategory }: { onSelectCategory: (catego
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
-    <div className="navbar mr-auto">
+    <div className="navbar mr-auto z-20">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl" onClick={() => navigate('/')}>Nimbus</a>
       </div>
@@ -28,8 +28,8 @@ export default function Navbar({ onSelectCategory }: { onSelectCategory: (catego
         <ul className="menu menu-horizontal px-1">
           <li>
             <details>
-              <summary>Community</summary>
-              <ul className="p-2 min-w-[9rem]">
+              <summary className="text-base-content">Community</summary>
+              <ul className="p-2 min-w-[9rem] z-10">
                 {communities.map((category) => (
                     <li key={category.id}>
                       <Link
@@ -66,7 +66,7 @@ export default function Navbar({ onSelectCategory }: { onSelectCategory: (catego
         </div>
         <ul
           tabIndex={0}
-          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-30 mt-3 w-52 p-2 shadow"
         >
           <li>
             <a>Community</a>
@@ -105,12 +105,12 @@ export default function Navbar({ onSelectCategory }: { onSelectCategory: (catego
                 </label>
                 <ul
                     tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-40 mt-3 w-52 p-2 shadow"
                 >
                   <li>
                     <Link
                         to="/profile"
-                        className="justify-between text-[#646cff]"
+                        className="justify-between text-base-content"
                     >
                       Profile
                     </Link>
@@ -121,7 +121,7 @@ export default function Navbar({ onSelectCategory }: { onSelectCategory: (catego
                           logout();
                           navigate('/login');
                         }}
-                        className="w-full text-left bg-transparent text-[#646cff]"
+                        className="w-full text-left bg-transparent text-base-content"
                     >
                       Logout
                     </button>

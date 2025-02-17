@@ -64,7 +64,7 @@ export default function LoginPage() {
                         <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
                             {isSignUp ? 'Sign up for an account' : 'Sign in to your account'}
                         </h2>
-                        <p className="mt-2 text-sm leading-6 text-gray-500">
+                        <p className="mt-2 text-sm leading-6 text-gray-700">
                             {isSignUp ? 'Already have an account? ' : 'Not a member? '}
                             <button
                                 type="button"
@@ -86,7 +86,7 @@ export default function LoginPage() {
                                 <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
                                     Username
                                 </label>
-                                <div className="mt-2">
+                                <div className="mt-2 rounded-md">
                                     <input
                                         id="username"
                                         type="text"

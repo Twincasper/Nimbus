@@ -94,9 +94,9 @@ const Community: React.FC = () => {
     if (loading) return <div>Loading...</div>;
 
     return (
-        <div className="flex min-h-screen bg-base-100">
+        <div className="flex min-h-screen bg-base-100/80 max-w-7xl mx-auto">
             <Sidebar onSelectCategory={setSelectedCategoryId} />
-            <main className="flex-1 p-4">
+            <div className="flex-1 p-4">
                 <h1 className="text-2xl font-bold mb-4">
                     {selectedCategoryId
                         ? `${communities.find(c => c.id === selectedCategoryId)?.name || ''} Community`
@@ -126,7 +126,7 @@ const Community: React.FC = () => {
                         </div>
                     ))}
                 </div>
-            </main>
+            </div>
             <RecentPosts posts={posts.slice(0, 10)} />
             <NewPostButton />
             {editingPost && (

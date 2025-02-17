@@ -14,8 +14,8 @@ interface RecentPostsProps {
 
 const RecentPosts: React.FC<RecentPostsProps> = ({ posts }) => {
     return (
-        <aside className="w-64 bg-base-100 p-4 shadow-md">
-            <h2 className="text-xl font-bold mb-4 text-base-100">Recent Posts</h2>
+        <aside className="w-64 p-4 shadow-md">
+            <h2 className="text-xl font-bold mb-4">Recent Posts</h2>
             <div className="space-y-2">
                 {posts.map((post) => (
                     <Card className="bg-neutral" key={post.id}>
@@ -32,5 +32,5 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ posts }) => {
     )
 }
 
-export default RecentPosts
+export default RecentPosts;
 

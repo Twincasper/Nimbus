@@ -1,6 +1,4 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { UserCircleIcon } from '@heroicons/react/24/solid'
-import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import {UploadWidget} from "@/components/UploadWidget.tsx";
 import CurrentUserContext from "@/context/current-user-context.ts";
 import {updateUser} from "@/adapters/userAdapter.ts";
@@ -44,8 +42,6 @@ const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
             console.error('Update failed:', error);
         }
     };
-
-
 
 
     return (
@@ -130,8 +126,6 @@ const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
                 </div>
 
                 <div className="pb-12">
-                    {/*<h2 className="text-base/7 font-semibold text-gray-900">Personal Information</h2>*/}
-                    {/*<p className="mt-1 text-sm/6 text-gray-600">Use a permanent address where you can receive mail.</p>*/}
 
                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
@@ -154,7 +148,6 @@ const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
                                     <option value="other">Other (please specify)</option>
                                 </select>
 
-                                {/* Input field for "Other" pronouns */}
                                 {selectedPronouns === "other" && (
                                     <input
                                         type="text"
@@ -166,7 +159,6 @@ const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
                                 )}
                             </div>
                         </div>
-
 
                     </div>
                 </div>
@@ -249,10 +241,6 @@ const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
                 Yes, delete my account
             </button>
 
-
-
-            {/*    Stretch feature would be to add a mental health break button here that voluntarily suspends the account,
-               we could store that as a boolean on the user's profile*/}
 
         </form>
     )

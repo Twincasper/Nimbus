@@ -21,7 +21,14 @@ export default function App() {
 
 
     return (
-    <div className='flex flex-col min-h-screen bg-base-100'>
+    <div className='flex flex-col min-h-screen bg-base-100' style={{
+        backgroundImage: 'url(/adobe-cloud.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+    }}>
+
 
       {location.pathname !== '/login' &&  <Navbar onSelectCategory={setSelectedCategoryId} />}
       <main className={location.pathname === '/profile' ? 'mx-auto' : 'flex-grow'}>
@@ -49,7 +56,7 @@ export default function App() {
               } />
               <Route path="/posts/:id" element={
                   <RequireAuth>
-                      <PostDetail />
+                      <PostDetail />f
                   </RequireAuth>
               } />
 
