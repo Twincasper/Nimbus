@@ -1,14 +1,17 @@
 package com.nimbus.backend.controller;
 
+import com.nimbus.backend.dto.ChangePasswordDTO;
 import com.nimbus.backend.dto.CreateUserDTO;
 import com.nimbus.backend.dto.UpdateUserDTO;
 import com.nimbus.backend.dto.UserResponseDTO;
 import com.nimbus.backend.model.User;
 import com.nimbus.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -77,5 +80,22 @@ public class UserController {
     @GetMapping("/check/{username}")
     public boolean checkUsernameExists(@PathVariable String username) {
         return userService.usernameExists(username);
+    }
+
+    @PostMapping("/{id}/change-password")
+    public ResponseEntity<?> changePassword(
+            @PathVariable Integer id,
+            @RequestBody ChangePasswordDTO changePasswordDTO
+    ) {
+        try {
+            if (!changePasswordDTO.newPassword().equals(changePasswordDTO.confirmPassword())) {
+                throw new IllegalArgumentException("New passwords do not match");
+            }
+
+            userService.changePassword(id, changePasswordDTO.currentPassword(), changePasswordDTO.newPassword());
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
     }
 }
