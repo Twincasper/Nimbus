@@ -20,14 +20,32 @@ export default function App() {
  const location = useLocation();
  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
 
+    // style={{
+    //     background: `
+    //       linear-gradient(
+    //         rgba(0, 0, 0, 0.5),   /* top color with 50% opacity */
+    //         rgba(0, 0, 0, 0.5)    /* bottom color with 50% opacity */
+    //       ),
+    //       url("/adobe-cloud.png")
+    //     `,
+    //     backgroundSize: 'cover',
+    //     backgroundPosition: 'center',
+    //     backgroundRepeat: 'no-repeat',
+    //     backgroundAttachment: 'fixed',
+    //   }}
 
     return (
     <div className='flex flex-col min-h-screen bg-base-100' style={{
-        backgroundImage: 'url(/adobe-cloud.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed',
+        backgroundImage: `
+      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5)),
+      url("/adobe-cloud.png")
+    `,
+        /* Note how each background-size is separated by a comma */
+        backgroundSize: 'cover, cover',
+        backgroundPosition: 'center, center',
+        backgroundRepeat: 'no-repeat, no-repeat',
+        /* Attach both layers if you still want them fixed */
+        backgroundAttachment: 'fixed, fixed'
     }}>
 
         <Toaster

@@ -1,13 +1,16 @@
 // src/adapters/userAdapter.ts
 import { fetchHandler } from '@/utils/fetchHandler'
-import {patchOptions, postOptions, putOptions} from '@/utils/requestOptions';
+import {patchOptions, postOptions, putOptions, deleteOptions} from '@/utils/requestOptions';
 
 const baseUrl = "http://localhost:8080/api";
-
 
 export const getCurrentUser = async () => {
     return fetchHandler(`${baseUrl}/users/me`);
 };
+
+export const deleteUser = async (id: number) => {
+    return fetchHandler(`${baseUrl}/users/${id}`, deleteOptions);
+}
 
 export const updateUser = async (id: number, data: {
     username: string,
