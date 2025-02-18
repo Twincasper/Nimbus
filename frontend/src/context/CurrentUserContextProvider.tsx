@@ -2,7 +2,6 @@ import React, { useState, useEffect, ReactNode } from 'react';
 import CurrentUserContext, { CurrentUser, CurrentUserContextType } from './current-user-context';
 import {getCurrentUser, login as loginAdapter, register as registerAdapter} from '@/adapters/authAdapter';
 
-
 interface UserContextProviderProps {
   children: ReactNode;
 }
