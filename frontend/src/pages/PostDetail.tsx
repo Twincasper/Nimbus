@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import DOMPurify from 'dompurify';
 import { useParams, useNavigate } from 'react-router-dom';
-import { deletePost, getPost, updatePost } from '@/adapters/postAdapter';
-import { getCommentsByPost, createComment, updateComment, deleteComment } from '@/adapters/commentAdapter';
+import { deletePost, getPost, } from '@/adapters/postAdapter';
+import { getCommentsByPost, createComment, deleteComment } from '@/adapters/commentAdapter';
 import ForumPostCard from '@/components/ForumPostCard';
 import CommentCard from '@/components/CommentCard';
 import { Button } from '@/components/ui/button';
 import CurrentUserContext from '@/context/current-user-context';
 import ReactQuill from 'react-quill';
+import toast from 'react-hot-toast';
 import EditPostModal from '@/components/EditPostModal';
-import EditCommentModal from '@/components/EditCommentModal'; // Import the EditCommentModal
+import EditCommentModal from '@/components/EditCommentModal';
 
 interface Comment {
     id: number;
@@ -60,21 +61,40 @@ const PostDetail = () => {
         fetchData();
     }, [id, navigate]);
 
+
     const handleDeletePost = async (postId: number) => {
         if (!window.confirm('Are you sure you want to delete this post?')) return;
 
         try {
             await deletePost(postId);
+            toast.success('Post deleted successfully!', {
+                duration: 3000,
+            });
             navigate('/');
         } catch (error) {
             console.error('Error deleting post:', error);
+            toast.error('Failed to delete post. Please try again.', {
+            });
         }
     };
 
-    const handleSavePost = (updatedPost: Post) => {
-        console.log('Updated post', updatedPost);
-        setPost(updatedPost[0]);
-        setEditingPost(null);
+    const handleSavePost = async (updatedPost: Post) => {
+        try {
+            console.log('Updated post', updatedPost);
+            setPost(updatedPost[0]);
+            setEditingPost(null);
+            toast.success('Post updated successfully!', {
+                duration: 3000,
+                style: {
+                    background: 'oklch(var(--in))',
+                    color: 'oklch(var(--inc))'
+                }
+            });
+        } catch (error) {
+            console.error('Error saving post:', error);
+            toast.error('Failed to update post. Please try again.', {
+            });
+        }
     };
 
     const handleCommentSubmit = async () => {
@@ -90,8 +110,13 @@ const PostDetail = () => {
             const updatedComments = await getCommentsByPost(Number(id));
             setComments(updatedComments[0]);
             setNewComment('');
+            toast.success('Comment submitted successfully!', {
+                duration: 3000,
+            });
         } catch (error) {
             console.error('Error submitting comment:', error);
+            toast.error('Failed to submit comment. Please try again.', {
+            });
         }
     };
 
@@ -102,8 +127,13 @@ const PostDetail = () => {
             await deleteComment(commentId);
             const updatedComments = await getCommentsByPost(Number(id));
             setComments(updatedComments[0]);
+            toast.success('Comment deleted successfully!', {
+                duration: 3000,
+            });
         } catch (error) {
             console.error('Error deleting comment:', error);
+            toast.error('Failed to delete comment. Please try again.', {
+            });
         }
     };
 
@@ -119,8 +149,17 @@ const PostDetail = () => {
             setComments(refreshedComments[0]);
 
             setEditingComment(null);
+            toast.success('Comment updated successfully!', {
+                duration: 3000,
+                style: {
+                    background: 'oklch(var(--in))',
+                    color: 'oklch(var(--inc))'
+                }
+            });
         } catch (error) {
             console.error('Error saving comment:', error);
+            toast.error('Failed to update comment. Please try again.', {
+            });
         }
     };
 
@@ -136,7 +175,13 @@ const PostDetail = () => {
                     avatarUrl={post.profilePicture}
                     title={post.title}
                     content={DOMPurify.sanitize(post.body)}
-                    date={new Date(post.createdAt).toLocaleDateString()}
+                    date={new Date(post.createdAt).toLocaleString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                    })}
                     likes={post.likes}
                     comments={post.comments}
                     currentUserUsername={currentUser?.username}
@@ -190,7 +235,13 @@ const PostDetail = () => {
                                     pronouns={comment.pronouns}
                                     avatarUrl={comment.profilePicture}
                                     content={comment.body}
-                                    date={new Date(comment.createdAt).toLocaleDateString()}
+                                    date={new Date(comment.createdAt).toLocaleString('en-US', {
+                                        year: 'numeric',
+                                        month: 'short',
+                                        day: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                    })}
                                     currentUserUsername={currentUser?.username}
                                     onEdit={() => setEditingComment(comment)}
                                     onDelete={() => handleDeleteComment(comment.id)}

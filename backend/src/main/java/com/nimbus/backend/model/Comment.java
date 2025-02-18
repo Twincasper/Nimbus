@@ -26,7 +26,7 @@ public class Comment {
     private User user;
 
     @Lob
-    @Column(name = "body", nullable = false)
+    @Column(name = "body", nullable = false, columnDefinition = "LONGTEXT")
     private String body;
 
     @Column(name = "created_at", updatable = false, nullable = false)

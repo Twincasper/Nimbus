@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import React, {useState} from 'react';
+import { Toaster } from 'react-hot-toast'
 // Need to import checkForLoggedInUser function here from auth adapter or some other way to check if user is logged in
 
 // Components and Pages
@@ -29,6 +30,31 @@ export default function App() {
         backgroundAttachment: 'fixed',
     }}>
 
+        <Toaster
+            position="top-right"
+            toastOptions={{
+                success: {
+                    style: {
+                        background: 'oklch(var(--su))', // bg-success
+                        color: 'oklch(var(--suc))', // bg-success-content
+                    },
+                    iconTheme: {
+                        primary: 'oklch(var(--a))',
+                        secondary: 'oklch(var(--ac))',
+                    },
+                },
+                error: {
+                    style: {
+                        background: 'oklch(var(--er))', // bg-error
+                        color: 'oklch(var(--erc))', // bg-error-content
+                    },
+                    iconTheme: {
+                        primary: 'red',
+                        secondary: 'white',
+                    },
+                },
+            }}
+        />
 
       {location.pathname !== '/login' &&  <Navbar onSelectCategory={setSelectedCategoryId} />}
       <main className={location.pathname === '/profile' ? 'mx-auto' : 'flex-grow'}>

@@ -1,6 +1,7 @@
 import React, {useContext, useEffect} from "react";
 import { useState } from "react";
 import {useNavigate, useParams} from "react-router-dom";
+import communities from '@/utils/communities.ts'
 import ForumPostCard from "../components/ForumPostCard";
 import Sidebar from "../components/Sidebar";
 import RecentPosts from "../components/RecentPosts";
@@ -28,15 +29,6 @@ interface Post {
     profilePicture: string;
     pronouns: string;
 }
-
-const communities = [
-    { id: 1, name: "Rainy Days & Silver Linings", description: "Depression & Hope" },
-    { id: 2, name: "Calm in the Storm", description: "Anxiety & Stress Relief" },
-    { id: 3, name: "Fluff Therapy", description: "Self-Care & Comfort" },
-    { id: 4, name: "Cloud Nine Creations", description: "Hobbies & Creativity" },
-    { id: 5, name: "Cumulus Care", description: "Physical & Mental Health Tips" },
-    { id: 6, name: "Rainbows", description: "For the good days. The victories, big and small. You deserve to feel good about yourself."}
-];
 
 const Community: React.FC = () => {
     const { currentUser } = useContext(CurrentUserContext);
@@ -111,7 +103,13 @@ const Community: React.FC = () => {
                                 avatarUrl={post.profilePicture || "/default-avatar.png"}
                                 title={post.title || "No Title"}
                                 content={post.body || "No content available."}
-                                date={new Date(post.createdAt).toLocaleDateString() || "Unknown date"}
+                                date={new Date(post.createdAt).toLocaleString('en-US', {
+                                    year: 'numeric',
+                                    month: 'short',
+                                    day: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                })}
                                 likes={post.likes || 0}
                                 comments={post.comments || 0}
                                 onClick={() => {

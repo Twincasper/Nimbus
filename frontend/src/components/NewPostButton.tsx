@@ -2,8 +2,10 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import communities from "@/utils/communities.ts";
 import CurrentUserContext  from '@/context/current-user-context';
 import { createPost } from '@/adapters/postAdapter';
+import toast from "react-hot-toast";
 
 const NewPostButton = () => {
     const { currentUser } = useContext(CurrentUserContext);
@@ -14,14 +16,6 @@ const NewPostButton = () => {
     const [categoryId, setCategoryId] = useState<number>(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const communities = [
-        { id: 1, name: "Rainy Days & Silver Linings" },
-        { id: 2, name: "Calm in the Storm" },
-        { id: 3, name: "Fluff Therapy" },
-        { id: 4, name: "Cloud Nine Creations" },
-        { id: 5, name: "Cumulus Care" },
-        { id: 6, name: "Rainbows" }
-    ];
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -37,15 +31,26 @@ const NewPostButton = () => {
             });
 
             if (newPost) {
+                // Success toast
+                toast.success('Post created successfully!', {
+                    duration: 3000,
+                    position:'top-right'
+                });
+
                 navigate(`/posts/${newPost[0].id}`);
                 setShowModal(false);
             }
         } catch (error) {
             console.error('Error creating post:', error);
+            // Error toast
+            toast.error('Failed to create post. Please try again.', {
+                className: 'bg-error text-light',
+            });
         } finally {
             setIsSubmitting(false);
         }
     };
+
 
     return (
     <>

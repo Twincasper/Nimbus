@@ -3,15 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {logout} from "@/adapters/authAdapter.ts";
 import CurrentUserContext from "@/context/current-user-context.ts";
 import ThemeDropdown from "@/components/ThemeDropdown.tsx";
-
-const communities = [
-  { id: 1, name: "Rainy Days & Silver Linings", description: "Depression & Hope" },
-  { id: 2, name: "Calm in the Storm", description: "Anxiety & Stress Relief" },
-  { id: 3, name: "Fluff Therapy", description: "Self-Care & Comfort" },
-  { id: 4, name: "Cloud Nine Creations", description: "Hobbies & Creativity" },
-  { id: 5, name: "Cumulus Care", description: "Physical & Mental Health Tips" },
-  { id: 6, name: "Rainbows", description: "For the good days. The victories, big and small. You deserve to feel good about yourself."}
-];
+import communities from "@/utils/communities.ts";
 
 export default function Navbar({ onSelectCategory }: { onSelectCategory: (categoryId: number | null) => void }) {
   const navigate = useNavigate();
@@ -29,7 +21,7 @@ export default function Navbar({ onSelectCategory }: { onSelectCategory: (catego
           <li>
             <details>
               <summary className="text-base-content">Community</summary>
-              <ul className="p-2 min-w-[9rem] z-10">
+              <ul className="p-2 min-w-[9rem] z-10 bg-base-100/80">
                 {communities.map((category) => (
                     <li key={category.id}>
                       <Link

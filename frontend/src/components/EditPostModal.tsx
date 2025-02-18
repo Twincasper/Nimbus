@@ -3,6 +3,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Button } from '@/components/ui/button';
 import { updatePost } from '@/adapters/postAdapter';
+import communities from "@/utils/communities.ts";
 import CurrentUserContext from '@/context/current-user-context';
 
 interface EditPostModalProps {
@@ -16,14 +17,6 @@ interface EditPostModalProps {
     onSave: (updatedPost: any) => void;
 }
 
-const communities = [
-    { id: 1, name: "Rainy Days & Silver Linings", description: "Depression & Hope" },
-    { id: 2, name: "Calm in the Storm", description: "Anxiety & Stress Relief" },
-    { id: 3, name: "Fluff Therapy", description: "Self-Care & Comfort" },
-    { id: 4, name: "Cloud Nine Creations", description: "Hobbies & Creativity" },
-    { id: 5, name: "Cumulus Care", description: "Physical & Mental Health Tips" },
-    { id: 6, name: "Rainbows", description: "For the good days. The victories, big and small. You deserve to feel good about yourself."}
-];
 
 const EditPostModal: React.FC<EditPostModalProps> = ({ post, onClose, onSave }) => {
     const { currentUser } = useContext((CurrentUserContext));
@@ -57,7 +50,7 @@ const EditPostModal: React.FC<EditPostModalProps> = ({ post, onClose, onSave }) 
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg w-full max-w-2xl p-6">
+            <div className="bg-white text-black rounded-lg w-full max-w-2xl p-6">
                 <h2 className="text-2xl font-bold mb-4">Edit Post</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
@@ -92,7 +85,7 @@ const EditPostModal: React.FC<EditPostModalProps> = ({ post, onClose, onSave }) 
                             theme="snow"
                             value={content}
                             onChange={setContent}
-                            className="bg-white rounded-md"
+                            className="bg-white rounded-md text-black"
                             modules={{
                                 toolbar: [
                                     ['bold', 'italic', 'underline', 'strike'],
