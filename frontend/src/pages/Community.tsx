@@ -16,6 +16,7 @@ import {
 import NewPostButton from "@/components/NewPostButton.tsx";
 import CurrentUserContext from "@/context/current-user-context.ts";
 import EditPostModal from "@/components/EditPostModal.tsx";
+import toast from "react-hot-toast";
 
 interface Post {
     id: number;
@@ -51,8 +52,17 @@ const Community: React.FC = () => {
         try {
             await deletePost(postId);
             setPosts(prev => prev.filter(post => post.id !== postId));
+            toast.success('Post deleted!', {
+                duration: 3000,
+                style: {
+                    background: 'oklch(var(--in))',
+                    color: 'oklch(var(--inc))'
+                }
+            });
         } catch (error) {
             console.error('There was an issue deleting your post!: ', error);
+            toast.error('Failed to update post. Please try again.', {
+            });
         }
     };
 
@@ -60,6 +70,13 @@ const Community: React.FC = () => {
         setPosts(prev => prev.map(post =>
             post.id === updatedPost.id ? updatedPost : post
         ));
+        toast.success('Post updated successfully!', {
+            duration: 3000,
+            style: {
+                background: 'oklch(var(--in))',
+                color: 'oklch(var(--inc))'
+            }
+        });
     };
 
     useEffect(() => {

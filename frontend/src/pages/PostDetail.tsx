@@ -69,6 +69,10 @@ const PostDetail = () => {
             await deletePost(postId);
             toast.success('Post deleted successfully!', {
                 duration: 3000,
+                style: {
+                    background: 'oklch(var(--in))',
+                    color: 'oklch(var(--inc))'
+                }
             });
             navigate('/');
         } catch (error) {

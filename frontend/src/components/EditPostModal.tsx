@@ -17,7 +17,6 @@ interface EditPostModalProps {
     onSave: (updatedPost: any) => void;
 }
 
-
 const EditPostModal: React.FC<EditPostModalProps> = ({ post, onClose, onSave }) => {
     const { currentUser } = useContext((CurrentUserContext));
     const [title, setTitle] = useState(post.title);
