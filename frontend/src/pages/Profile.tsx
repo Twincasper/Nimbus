@@ -3,7 +3,7 @@ import { toast } from 'react-hot-toast'; // Import toast from react-hot-toast
 import { useNavigate } from 'react-router-dom';
 import {UploadWidget} from "@/components/UploadWidget.tsx";
 import CurrentUserContext from "@/context/current-user-context.ts";
-import {deleteUser, updateUser} from "@/adapters/userAdapter.ts";
+import {changePassword, deleteUser, updateUser} from "@/adapters/userAdapter.ts";
 
 export default function Profile() {
 const { currentUser } = useContext(CurrentUserContext);
@@ -48,24 +48,42 @@ const navigate = useNavigate();
         e.preventDefault();
         const formData = new FormData(e.target);
 
-        let pronouns = formData.get('pronouns');
+        // Handle password change if any password fields are filled
+        const currentPassword = formData.get('current-password');
+        const newPassword = formData.get('new-password');
+        const confirmPassword = formData.get('confirm-password');
 
-        if (pronouns === "other") {
-            pronouns = formData.get('customPronouns');
-        }
+        // Wrap the entire update logic in toast.promise
+        await toast.promise(
+            (async () => {
+                // Regular profile update
+                const pronouns = formData.get('pronouns') === "other"
+                    ? formData.get('customPronouns')
+                    : formData.get('pronouns');
 
-        const data = {
-            username: formData.get('username'),
-            pronouns: pronouns,
-            profilePicture: profileUrl,
-            bio: formData.get('bio')
-        };
+                const data = {
+                    username: formData.get('username'),
+                    pronouns: pronouns,
+                    profilePicture: profileUrl,
+                    bio: formData.get('bio')
+                };
 
-        try {
-            await updateUser(currentUser.id, data);
-        } catch (error) {
-            console.error('Update failed:', error);
-        }
+                await updateUser(currentUser.id, data);
+
+                // Handle password change if passwords are provided
+                if (currentPassword || newPassword || confirmPassword) {
+                    if (newPassword !== confirmPassword) {
+                        throw new Error('New passwords do not match');
+                    }
+                    await changePassword(currentUser.id, currentPassword, newPassword, confirmPassword);
+                }
+            })(),
+            {
+                loading: 'Saving changes...', // Loading message
+                success: <b>Profile updated successfully!</b>, // Success message
+                error: (err) => <b>{err.message || 'Failed to update profile.'}</b>, // Error message
+            }
+        );
     };
 
 
@@ -96,7 +114,7 @@ const navigate = useNavigate();
                         name="profilePicture"
                         value={profileUrl}
                     />
-                    <p id="file-restrictions" className="mt-2 text-xs leading-5 text-primary opacity-75">
+                    <p id="file-restrictions" className="mt-2 text-sm leading-5 text-neutral-content opacity-75">
                         JPG, GIF or PNG. 1MB max.
                     </p>
                 </div>
@@ -106,13 +124,13 @@ const navigate = useNavigate();
             <div className="space-y-1">
                 <div>
                     <h2 className="text-lg font-semibold text-base-content">Profile Details</h2>
-                    <p className="mt-1 text-sm leading-6 text-primary">
+                    <p className="mt-1 text-sm leading-6 text-neutral-content font-semibold">
                         Update your account's profile information
                     </p>
 
                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div className="sm:col-span-4">
-                            <label htmlFor="username" className="block text-sm font-medium text-base-content">
+                            <label htmlFor="username" className="block text-sm font-semibold text-base-content">
                                 Username
                             </label>
                             <div className="mt-2">
@@ -132,7 +150,7 @@ const navigate = useNavigate();
                         </div>
 
                         <div className="col-span-full">
-                            <label htmlFor="bio" className="block text-sm font-medium text-base-content">
+                            <label htmlFor="bio" className="block text-sm font-semibold text-base-content">
                                 Bio
                             </label>
                             <div className="mt-2">
@@ -144,7 +162,7 @@ const navigate = useNavigate();
                                 defaultValue={currentUser?.bio}
                             />
                             </div>
-                            <p className="mt-3 text-sm text-primary">
+                            <p className="mt-3 text-sm text-neutral-content font-mediukm">
                                 Write a few sentences about yourself.
                             </p>
                         </div>
@@ -191,14 +209,14 @@ const navigate = useNavigate();
             {/* Password Section */}
             <div>
                 <h2 className="text-lg font-semibold text-base-content">Change password</h2>
-                <p className="mt-1 text-sm leading-6 text-primary">
+                <p className="mt-1 text-sm leading-6 text-neutral-content">
                     Update your password associated with your account.
                 </p>
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="sm:col-span-3">
-                    <label htmlFor="current-password" className="block text-sm/6 font-medium text-primary">
+                    <label htmlFor="current-password" className="block text-sm/6 font-medium text-neutral-content">
                         Current password
                     </label>
                     <div className="mt-2">
@@ -213,7 +231,7 @@ const navigate = useNavigate();
                 </div>
 
                 <div className="sm:col-span-3">
-                    <label htmlFor="new-password" className="block text-sm/6 font-medium text-primary">
+                    <label htmlFor="new-password" className="block text-sm/6 font-medium text-neutral-content">
                         New password
                     </label>
                     <div className="mt-2">
@@ -228,7 +246,7 @@ const navigate = useNavigate();
                 </div>
 
                 <div className="sm:col-span-3">
-                    <label htmlFor="confirm-password" className="block text-sm/6 font-medium text-primary">
+                    <label htmlFor="confirm-password" className="block text-sm/6 font-medium text-neutral-content">
                         Confirm password
                     </label>
                     <div className="mt-2">
@@ -244,7 +262,7 @@ const navigate = useNavigate();
             </div>
 
             {/* Buttons */}
-            <div className="flex gap-4 mt-8">
+            <div className="flex gap-4 my-8">
                 <button
                     type="submit"
                     className="btn btn-primary"

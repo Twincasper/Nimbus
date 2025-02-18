@@ -19,5 +19,7 @@ public interface UserService {
 
     User updateUser(Integer id, UpdateUserDTO userDetails);
 
+    void changePassword(Integer userId, String currentPassword, String newPassword);
+
     void deleteUser(Integer id);
 }

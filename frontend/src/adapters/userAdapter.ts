@@ -25,3 +25,11 @@ export const checkUsername = async (username: string): Promise<boolean> => {
     const [available] = await fetchHandler(`${baseUrl}/users/check/${username}`);
     return Boolean(available);
 };
+
+export const changePassword = async (userId: number, currentPassword: string, newPassword: string, confirmPassword: string) => {
+    return fetchHandler(`${baseUrl}/api/users/${userId}/change-password`, postOptions({
+        currentPassword,
+        newPassword,
+        confirmPassword
+    }));
+};

@@ -99,6 +99,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
+    public void changePassword(Integer userId, String currentPassword, String newPassword) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+
+        if (!passwordEncoder.matches(currentPassword, user.getPasswordHash())) {
+            throw new IllegalArgumentException("Current password is incorrect");
+        }
+
+        if (!newPassword.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")) {
+            throw new IllegalArgumentException("Password must be at least 8 characters with letters and numbers");
+        }
+
+        user.setPasswordHash(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+    }
+
+    @Override
     public void deleteUser(Integer id) {
         userRepository.deleteById(id);
     }
