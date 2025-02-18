@@ -96,7 +96,7 @@ const navigate = useNavigate();
                         name="profilePicture"
                         value={profileUrl}
                     />
-                    <p id="file-restrictions" className="mt-2 text-xs leading-5 text-primary opacity-75">
+                    <p id="file-restrictions" className="mt-2 text-sm leading-5 text-neutral-content opacity-75">
                         JPG, GIF or PNG. 1MB max.
                     </p>
                 </div>
@@ -106,13 +106,13 @@ const navigate = useNavigate();
             <div className="space-y-1">
                 <div>
                     <h2 className="text-lg font-semibold text-base-content">Profile Details</h2>
-                    <p className="mt-1 text-sm leading-6 text-primary">
+                    <p className="mt-1 text-sm leading-6 text-neutral-content font-semibold">
                         Update your account's profile information
                     </p>
 
                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div className="sm:col-span-4">
-                            <label htmlFor="username" className="block text-sm font-medium text-base-content">
+                            <label htmlFor="username" className="block text-sm font-semibold text-base-content">
                                 Username
                             </label>
                             <div className="mt-2">
@@ -132,7 +132,7 @@ const navigate = useNavigate();
                         </div>
 
                         <div className="col-span-full">
-                            <label htmlFor="bio" className="block text-sm font-medium text-base-content">
+                            <label htmlFor="bio" className="block text-sm font-semibold text-base-content">
                                 Bio
                             </label>
                             <div className="mt-2">
@@ -144,7 +144,7 @@ const navigate = useNavigate();
                                 defaultValue={currentUser?.bio}
                             />
                             </div>
-                            <p className="mt-3 text-sm text-primary">
+                            <p className="mt-3 text-sm text-neutral-content font-mediukm">
                                 Write a few sentences about yourself.
                             </p>
                         </div>
@@ -191,14 +191,14 @@ const navigate = useNavigate();
             {/* Password Section */}
             <div>
                 <h2 className="text-lg font-semibold text-base-content">Change password</h2>
-                <p className="mt-1 text-sm leading-6 text-primary">
+                <p className="mt-1 text-sm leading-6 text-neutral-content">
                     Update your password associated with your account.
                 </p>
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="sm:col-span-3">
-                    <label htmlFor="current-password" className="block text-sm/6 font-medium text-primary">
+                    <label htmlFor="current-password" className="block text-sm/6 font-medium text-neutral-content">
                         Current password
                     </label>
                     <div className="mt-2">
@@ -213,7 +213,7 @@ const navigate = useNavigate();
                 </div>
 
                 <div className="sm:col-span-3">
-                    <label htmlFor="new-password" className="block text-sm/6 font-medium text-primary">
+                    <label htmlFor="new-password" className="block text-sm/6 font-medium text-neutral-content">
                         New password
                     </label>
                     <div className="mt-2">
@@ -228,7 +228,7 @@ const navigate = useNavigate();
                 </div>
 
                 <div className="sm:col-span-3">
-                    <label htmlFor="confirm-password" className="block text-sm/6 font-medium text-primary">
+                    <label htmlFor="confirm-password" className="block text-sm/6 font-medium text-neutral-content">
                         Confirm password
                     </label>
                     <div className="mt-2">

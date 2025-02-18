@@ -20,20 +20,6 @@ export default function App() {
  const location = useLocation();
  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
 
-    // style={{
-    //     background: `
-    //       linear-gradient(
-    //         rgba(0, 0, 0, 0.5),   /* top color with 50% opacity */
-    //         rgba(0, 0, 0, 0.5)    /* bottom color with 50% opacity */
-    //       ),
-    //       url("/adobe-cloud.png")
-    //     `,
-    //     backgroundSize: 'cover',
-    //     backgroundPosition: 'center',
-    //     backgroundRepeat: 'no-repeat',
-    //     backgroundAttachment: 'fixed',
-    //   }}
-
     return (
     <div className='flex flex-col min-h-screen bg-base-100' style={{
         backgroundImage: `
