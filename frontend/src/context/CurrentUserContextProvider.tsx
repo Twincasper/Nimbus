@@ -1,6 +1,7 @@
 import React, { useState, useEffect, ReactNode } from 'react';
 import CurrentUserContext, { CurrentUser, CurrentUserContextType } from './current-user-context';
 import {getCurrentUser, login as loginAdapter, register as registerAdapter} from '@/adapters/authAdapter';
+import { updateUser as updateUserAdapter } from '@/adapters/userAdapter';
 
 interface UserContextProviderProps {
   children: ReactNode;
@@ -52,11 +53,26 @@ export default function CurrentUserContextProvider({ children }: UserContextProv
     setCurrentUser(user);
   };
 
+  const refreshUser = async () => {
+    try {
+      const user = await getCurrentUser();
+      setCurrentUser(user);
+    } catch (error) {
+      console.error('Failed to refresh user:', error);
+    }
+  };
+
   const contextValue: CurrentUserContextType = {
     currentUser,
     login,
     register,
     logout,
+    updateUser: async (id: number, updates: Partial<CurrentUser>) => {
+        const [updatedUser, error] = await updateUserAdapter(id, updates);
+        if (error) throw error;
+        setCurrentUser(updatedUser as CurrentUser);
+    },
+    refreshUser,
   };
 
   return (

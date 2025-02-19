@@ -33,3 +33,7 @@ export const changePassword = async (userId: number, currentPassword: string, ne
         confirmPassword
     }));
 };
+
+export const getUserById = async (id: number) => {
+    return fetchHandler(`${baseUrl}/users/${id}`);
+};

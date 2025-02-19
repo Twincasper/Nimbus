@@ -6,7 +6,8 @@ import { Toaster } from 'react-hot-toast'
 // Components and Pages
 import Home from '@/pages/Home';
 import LoginPage from '@/pages/LoginPage';
-import Profile from '@/pages/Profile'
+import Settings from '@/pages/Settings.tsx'
+import UserProfile from '@/pages/UserProfile'
 
 import NotFoundPage from '@/pages/NotFoundPage';
 
@@ -61,7 +62,7 @@ export default function App() {
         />
 
       {location.pathname !== '/login' &&  <Navbar onSelectCategory={setSelectedCategoryId} />}
-      <main className={location.pathname === '/profile' ? 'mx-auto' : 'flex-grow'}>
+      <main className={location.pathname === '/settings' ? 'mx-auto' : 'flex-grow'}>
           <Routes>
               {/* Public Routes */}
               <Route path="/" element={<Home />} />
@@ -69,9 +70,14 @@ export default function App() {
               <Route path="/palette" element={<ThemePalettePage />} />
 
               {/* Protected Routes */}
-              <Route path="/profile" element={
+              <Route path="/settings" element={
                   <RequireAuth>
-                      <Profile />
+                      <Settings />
+                  </RequireAuth>
+              } />
+              <Route path="/user/:userId" element={
+                  <RequireAuth>
+                      <UserProfile />
                   </RequireAuth>
               } />
               <Route path="/community" element={
@@ -86,7 +92,7 @@ export default function App() {
               } />
               <Route path="/posts/:id" element={
                   <RequireAuth>
-                      <PostDetail />f
+                      <PostDetail />
                   </RequireAuth>
               } />
 

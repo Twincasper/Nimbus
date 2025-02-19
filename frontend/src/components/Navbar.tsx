@@ -113,10 +113,10 @@ export default function Navbar({ onSelectCategory }: { onSelectCategory: (catego
                 >
                   <li>
                     <Link
-                        to="/profile"
+                        to="/settings"
                         className="justify-between text-base-content"
                     >
-                      Profile
+                      Settings
                     </Link>
                   </li>
                   <li>

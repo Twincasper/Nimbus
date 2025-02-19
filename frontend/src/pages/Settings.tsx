@@ -4,13 +4,22 @@ import { useNavigate } from 'react-router-dom';
 import {UploadWidget} from "@/components/UploadWidget.tsx";
 import CurrentUserContext from "@/context/current-user-context.ts";
 import {changePassword, deleteUser, updateUser} from "@/adapters/userAdapter.ts";
+import { getCurrentUser } from '@/adapters/authAdapter';
 
-export default function Profile() {
-const { currentUser } = useContext(CurrentUserContext);
+export default function Settings() {
+const { currentUser, refreshUser } = useContext(CurrentUserContext);
 const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
 const [selectedPronouns, setSelectedPronouns] = useState(currentUser?.pronouns || "");
 const navigate = useNavigate();
 
+
+useEffect(() => {
+    const fetchCurrentUser = async () => {
+        const user = await getCurrentUser();
+        console.log("This is the current user just simply invoking getCurrentUser", user);
+    };
+    fetchCurrentUser();
+}, []);
 
     useEffect(() => {
         if (currentUser?.pronouns === "other") {
@@ -53,7 +62,6 @@ const navigate = useNavigate();
         const newPassword = formData.get('new-password');
         const confirmPassword = formData.get('confirm-password');
 
-        // Wrap the entire update logic in toast.promise
         await toast.promise(
             (async () => {
                 // Regular profile update
@@ -70,7 +78,6 @@ const navigate = useNavigate();
 
                 await updateUser(currentUser.id, data);
 
-                // Handle password change if passwords are provided
                 if (currentPassword || newPassword || confirmPassword) {
                     if (newPassword !== confirmPassword) {
                         throw new Error('New passwords do not match');
@@ -79,11 +86,13 @@ const navigate = useNavigate();
                 }
             })(),
             {
-                loading: 'Saving changes...', // Loading message
-                success: <b>Profile updated successfully!</b>, // Success message
-                error: (err) => <b>{err.message || 'Failed to update profile.'}</b>, // Error message
+                loading: 'Saving changes...',
+                success: <b>Profile updated successfully!</b>,
+                error: (err) => <b>{err.message || 'Failed to update profile.'}</b>,
             }
         );
+
+        refreshUser();
     };
 
 

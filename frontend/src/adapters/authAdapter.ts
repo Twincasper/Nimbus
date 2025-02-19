@@ -52,6 +52,8 @@ export const register = async (
 export const getCurrentUser = async (): Promise<CurrentUser | null> => {
     const [data, error] = await fetchHandler<CurrentUser>(`${baseUrl}/me`, getOptions);
 
+    console.log("This is the data fetched from getCurrentUser",data);
+
     if (error) {
         console.error('Failed to fetch current user:', error);
         return null; // Return null if there's an error
