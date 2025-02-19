@@ -7,19 +7,11 @@ import {changePassword, deleteUser, updateUser} from "@/adapters/userAdapter.ts"
 import { getCurrentUser } from '@/adapters/authAdapter';
 
 export default function Settings() {
-const { currentUser, refreshUser } = useContext(CurrentUserContext);
+const { currentUser } = useContext(CurrentUserContext);
 const [profileUrl, setProfileUrl] = useState(currentUser?.profilePicture || "");
 const [selectedPronouns, setSelectedPronouns] = useState(currentUser?.pronouns || "");
 const navigate = useNavigate();
 
-
-useEffect(() => {
-    const fetchCurrentUser = async () => {
-        const user = await getCurrentUser();
-        console.log("This is the current user just simply invoking getCurrentUser", user);
-    };
-    fetchCurrentUser();
-}, []);
 
     useEffect(() => {
         if (currentUser?.pronouns === "other") {
@@ -91,8 +83,6 @@ useEffect(() => {
                 error: (err) => <b>{err.message || 'Failed to update profile.'}</b>,
             }
         );
-
-        refreshUser();
     };
 
 

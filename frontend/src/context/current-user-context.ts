@@ -20,7 +20,6 @@ export interface CurrentUserContextType {
   ) => Promise<void>;
   logout: () => void;
   updateUser: (id: number, updates: Partial<CurrentUser>) => Promise<void>;
-  refreshUser: () => Promise<void>;
 }
 
 const CurrentUserContext = createContext<CurrentUserContextType>({
@@ -40,7 +39,6 @@ const CurrentUserContext = createContext<CurrentUserContextType>({
   updateUser: (id: number, updates: Partial<CurrentUser>): Promise<void> => {
     return Promise.resolve();
   },
-  refreshUser: () => Promise.resolve(),
 });
 
 export default CurrentUserContext;

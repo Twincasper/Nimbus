@@ -53,15 +53,6 @@ export default function CurrentUserContextProvider({ children }: UserContextProv
     setCurrentUser(user);
   };
 
-  const refreshUser = async () => {
-    try {
-      const user = await getCurrentUser();
-      setCurrentUser(user);
-    } catch (error) {
-      console.error('Failed to refresh user:', error);
-    }
-  };
-
   const contextValue: CurrentUserContextType = {
     currentUser,
     login,
@@ -72,7 +63,6 @@ export default function CurrentUserContextProvider({ children }: UserContextProv
         if (error) throw error;
         setCurrentUser(updatedUser as CurrentUser);
     },
-    refreshUser,
   };
 
   return (
