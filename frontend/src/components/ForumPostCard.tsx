@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DOMPurify from "dompurify";
 import { Link } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar.tsx"
 import { Button } from "./ui/button.tsx"
 import { Card, CardContent, CardFooter, CardHeader } from "./ui/card.tsx"
 import { ThumbsUp, MessageCircle, Share2, Edit, Trash2 } from 'lucide-react';
+import { likePost, unlikePost } from "@/adapters/postAdapter";
 
 interface ForumPostCardProps {
+  postId: number;
   userId?: number;
   username: string;
   avatarUrl: string;
@@ -21,9 +23,11 @@ interface ForumPostCardProps {
   onEdit?: () => void;
   onDelete?: () => void;
   isDetailView?: boolean;
+  initiallyLiked?: boolean;
 }
 
 const ForumPostCard: React.FC<ForumPostCardProps> = ({
+  postId,
   userId,
   username,
   avatarUrl,
@@ -37,7 +41,8 @@ const ForumPostCard: React.FC<ForumPostCardProps> = ({
   currentUserUsername,
   onEdit,
   onDelete,
-  isDetailView = false
+  isDetailView = false,
+  initiallyLiked = false
 }) => {
   const sanitizedContent = DOMPurify.sanitize(content);
 
@@ -48,6 +53,26 @@ const ForumPostCard: React.FC<ForumPostCardProps> = ({
   const displayContent = isDetailView ? sanitizedContent : truncatedContent;
 
   const showActions = currentUserUsername === username;
+
+  const [liked, setLiked] = useState<boolean>(initiallyLiked);
+  const [likeCount, setLikeCount] = useState<number>(likes);
+
+  const handleLikeToggle = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    try {
+      if (liked) {
+        await unlikePost(postId);
+        setLiked(false);
+        setLikeCount(likeCount - 1);
+      } else {
+        await likePost(postId);
+        setLiked(true);
+        setLikeCount(likeCount + 1);
+      }
+    } catch (error) {
+      console.error('Error toggling like:', error);
+    }
+  };
 
   return (
       <Card className="w-full max-w-2xl mx-auto my-4 bg-neutral hover:bg-neutral-focus transition-colors duration-200 cursor-pointer shadow-md" onClick={onClick}>
@@ -79,9 +104,9 @@ const ForumPostCard: React.FC<ForumPostCardProps> = ({
         </CardContent>
         <CardFooter className="flex justify-between items-center">
           <div className="flex gap-4">
-            <Button variant="ghost" size="sm" className="flex items-center gap-1 text-neutral-content hover:bg-accent/10">
-              <ThumbsUp className="w-4 h-4 text-accent" />
-              <span className="text-neutral-content">{likes}</span>
+            <Button variant="ghost" size="sm" className="flex items-center gap-1 text-neutral-content hover:bg-accent/10" onClick={handleLikeToggle}>
+              <ThumbsUp className={`w-4 h-4 ${liked ? "text-accent" : "text-gray-400"}`} />
+              <span className="text-neutral-content">{likeCount}</span>
             </Button>
             <Button variant="ghost" size="sm" className="flex items-center gap-1 text-neutral-content hover:bg-accent/10">
               <MessageCircle className="w-4 h-4 text-accent" />
