@@ -106,11 +106,19 @@ const Community: React.FC = () => {
         <div className="flex min-h-screen bg-base-100/80 max-w-7xl mx-auto">
             <Sidebar onSelectCategory={setSelectedCategoryId} />
             <div className="flex-1 p-4">
-                <h1 className="text-2xl font-bold mb-4">
-                    {selectedCategoryId
-                        ? `${communities.find(c => c.id === selectedCategoryId)?.name || ''} Community`
-                        : "All Communities"}
-                </h1>
+                <div className="py-8 mb-6 rounded-lg">
+                    <h1 className="text-2xl font-bold text-base-content text-center">
+                        {selectedCategoryId
+                            ? `${communities.find((c) => c.id === selectedCategoryId)?.name || ""}`
+                            : "All Communities"}
+                    </h1>
+
+                    {selectedCategoryId && (
+                        <p className="text-sm font-semibold text-base-content text-center mt-2 max-w-2xl mx-auto">
+                            {communities.find((c) => c.id === selectedCategoryId)?.description}
+                        </p>
+                    )}
+                </div>
                 <div className="space-y-4">
                     {posts.map((post) => (
                         <div key={post.id}>

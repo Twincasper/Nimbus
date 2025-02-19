@@ -4,6 +4,7 @@ import {logout} from "@/adapters/authAdapter.ts";
 import CurrentUserContext from "@/context/current-user-context.ts";
 import ThemeDropdown from "@/components/ThemeDropdown.tsx";
 import communities from "@/utils/communities.ts";
+import toast from "react-hot-toast";
 
 export default function Navbar({ onSelectCategory }: { onSelectCategory: (categoryId: number | null) => void }) {
   const navigate = useNavigate();
@@ -17,48 +18,59 @@ export default function Navbar({ onSelectCategory }: { onSelectCategory: (catego
 
       {/* Middle section, may want to recolor this list's li's later */}
       <div className="flex-1 justify-center navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <details>
-              <summary className="text-base-content">Community</summary>
-              <ul className="p-2 min-w-[9rem] z-10 bg-base-100/80">
-                {communities.map((category) => (
-                    <li key={category.id}>
-                      <Link
-                          to={`/community/${category.id}`} // Navigate to the community page for this category
-                          onClick={() => onSelectCategory(category.id)} // Update the selected category state
-                      >
-                        {category.name}
-                      </Link>
-                    </li>
-                ))}
-              </ul>
-            </details>
-          </li>
-        </ul>
+        <div className="dropdown dropdown-hover dropdown-end">
+          <div tabIndex={0} role="button" className="btn m-1">
+            Community
+            <svg
+                width="12px"
+                height="12px"
+                className="inline-block h-2 w-2 fill-current opacity-60"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 2048 2048"
+            >
+              <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+            </svg>
+          </div>
+          <ul
+              tabIndex={0}
+              className="dropdown-content bg-base-100/80 rounded-box z-10 menu p-2 shadow-2xl min-w-[9rem]"
+          >
+            {communities.map((category) => (
+                <li key={category.id}>
+                  <Link
+                      to={`/community/${category.id}`}
+                      onClick={() => onSelectCategory(category.id)}
+                      className="text-base-content"
+                  >
+                    {category.name}
+                  </Link>
+                </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* Mobile menu (visible on small screens) */}
       <div className="dropdown lg:hidden">
         <div tabIndex={0} role="button" className="btn btn-ghost">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
           >
             <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h8m-8 6h16"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
             />
           </svg>
         </div>
         <ul
-          tabIndex={0}
-          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-30 mt-3 w-52 p-2 shadow"
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-30 mt-3 w-52 p-2 shadow"
         >
           <li>
             <a>Community</a>
@@ -111,6 +123,7 @@ export default function Navbar({ onSelectCategory }: { onSelectCategory: (catego
                     <button
                         onClick={() => {
                           logout();
+                          toast('Take care!', { icon: '👋' });
                           navigate('/login');
                         }}
                         className="w-full text-left bg-transparent text-base-content"

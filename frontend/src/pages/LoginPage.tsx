@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import CurrentUserContext from '@/context/current-user-context';
 import { UploadWidget } from '@/components/UploadWidget';
 import {useNavigate} from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
     const { currentUser, login, register } = useContext(CurrentUserContext);
@@ -27,8 +28,10 @@ export default function LoginPage() {
             if (isSignUp) {
                 // Call register with the extra data.
                 await register(username, password, pronouns, avatarUrl);
+                toast('Welcome to Nimbus! We\'re glad to have you.', { icon: '🌈☁️💫' });
             } else {
                 await login(username, password);
+                toast('Welcome back!', { icon: '🌈☁️💫' });
             }
             navigate('/community');
             // After a successful call, the context’s currentUser is updated.
