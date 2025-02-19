@@ -41,3 +41,11 @@ export const deletePost = async(id: number) => {
 export const getRecentPosts = async () => {
     return fetchHandler(`${baseUrl}/posts/recent`);
 }
+
+export const likePost = async (postId: number) => {
+    return fetchHandler(`${baseUrl}/posts/${postId}/like`, postOptions({}));
+};
+
+export const unlikePost = async (postId: number) => {
+    return fetchHandler(`${baseUrl}/posts/${postId}/like`, deleteOptions);
+};

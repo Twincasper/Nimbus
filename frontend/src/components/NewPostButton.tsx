@@ -41,7 +41,6 @@ const NewPostButton = () => {
             }
         } catch (error) {
             console.error("Error creating post:", error);
-            // Error toast
             toast.error("Failed to create post. Please try again.", {
                 className: "bg-error text-light",
             });
