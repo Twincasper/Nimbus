@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/api/users")
@@ -67,9 +68,19 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public UserResponseDTO updateUser(@PathVariable Integer id, @RequestBody UpdateUserDTO userDTO) {
-        User updatingUser = userService.updateUser(id, userDTO);
-        return convertToDTO(updatingUser);
+    public UserResponseDTO updateUser(
+            @PathVariable Integer id,
+            @RequestBody UpdateUserDTO userDTO,
+            HttpSession session
+    ) {
+        User updatedUser = userService.updateUser(id, userDTO);
+
+
+        User sessionUser = (User) session.getAttribute("currentUser");
+        if (sessionUser != null && sessionUser.getId().equals(updatedUser.getId())) {
+            session.setAttribute("currentUser", updatedUser);
+        }
+        return convertToDTO(updatedUser);
     }
 
     @DeleteMapping("/{id}")

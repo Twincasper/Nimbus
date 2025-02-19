@@ -113,6 +113,14 @@ export default function Navbar({ onSelectCategory }: { onSelectCategory: (catego
                 >
                   <li>
                     <Link
+                        to={`/user/${currentUser.id}`}
+                        className="justify-between text-base-content"
+                    >
+                      Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                         to="/settings"
                         className="justify-between text-base-content"
                     >

@@ -3,8 +3,10 @@ import DOMPurify from 'dompurify';
 import {Edit, Trash2} from "lucide-react";
 import {Button} from "@/components/ui/button.tsx";
 import {Avatar, AvatarImage} from "@radix-ui/react-avatar";
+import { Link } from 'react-router-dom';
 
 interface CommentCardProps {
+    userId?: number;
     username: string;
     avatarUrl: string;
     content: string;
@@ -18,6 +20,7 @@ interface CommentCardProps {
 }
 
 const CommentCard: React.FC<CommentCardProps> = ({
+    userId,
     username,
     avatarUrl,
     content,
@@ -35,16 +38,22 @@ const CommentCard: React.FC<CommentCardProps> = ({
     return (
         <div className="bg-neutral rounded-xl shadow-sm p-4 mb-4 border border-neutral-focus">
             <div className="flex items-start gap-4">
-                <Avatar className="w-10 h-10 border-2 border-accent rounded-full box-border overflow-visible">
-                    <AvatarImage
-                        className="rounded-full w-full h-full aspect-square"
-                        src={avatarUrl}
-                        alt={username}
-                    />
-                </Avatar>
+              <Avatar className="w-10 h-10 border-2 border-accent rounded-full box-border overflow-visible">
+                <AvatarImage className="rounded-full w-full h-full aspect-square" src={avatarUrl} alt={username} />
+              </Avatar>
                 <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                        <h3 className="font-medium text-neutral-content">{username}</h3>
+                        {userId ? (
+                            <Link
+                                to={`/user/${userId}`}
+                                onClick={(e) => e.stopPropagation()}
+                                className="inline-block font-medium text-neutral-content"
+                            >
+                                {username}
+                            </Link>
+                        ) : (
+                            <h3 className="font-medium text-neutral-content">{username}</h3>
+                        )}
                         {pronouns && <span className="text-sm text-neutral-content/70">({pronouns})</span>}
                         <span className="text-sm text-neutral-content/70">{date}</span>
                     </div>

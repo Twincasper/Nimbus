@@ -20,6 +20,7 @@ import toast from "react-hot-toast";
 
 interface Post {
     id: number;
+    userId: number;
     title: string;
     body: string;
     createdAt: string;
@@ -123,6 +124,7 @@ const Community: React.FC = () => {
                     {posts.map((post) => (
                         <div key={post.id}>
                             <ForumPostCard
+                                userId={post.userId}
                                 username={post.username || "Anonymous"}
                                 pronouns={post.pronouns}
                                 avatarUrl={post.profilePicture || "/default-avatar.png"}

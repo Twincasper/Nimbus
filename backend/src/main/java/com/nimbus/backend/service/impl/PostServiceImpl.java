@@ -83,8 +83,9 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> getPostsByUser(Integer userId) {
-        User searchedUser = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-        return postRepository.findByUser(searchedUser);
+        User searchedUser = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return postRepository.findByUserOrderByCreatedAtDesc(searchedUser);
     }
 
     @Override

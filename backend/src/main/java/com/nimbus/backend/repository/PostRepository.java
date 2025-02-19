@@ -13,6 +13,8 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<Post, Integer> {
     List<Post> findByUser(User user);
 
+    List<Post> findByUserOrderByCreatedAtDesc(User user);
+
     List<Post> findByTitleContainingIgnoreCase(String title); // Custom query method
 
     List<Post> findByCategoryOrderByCreatedAtDesc(Category category);

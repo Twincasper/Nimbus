@@ -14,8 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
-// AuthController.java
-@RestController
+    @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 
@@ -56,7 +55,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<UserResponseDTO> register(
             @RequestBody RegisterRequestDTO request,
-            HttpSession session // Add session parameter
+            HttpSession session
     ) {
         if (userService.usernameExists(request.username())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already exists");

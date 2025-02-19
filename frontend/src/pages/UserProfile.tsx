@@ -84,13 +84,13 @@ const UserProfilePage: React.FC = () => {
           {user.username} {user.pronouns && <span className="text-xl text-accent">({user.pronouns})</span>}
         </h1>
         {user.bio && (
-          <p className="mt-4 text-base-content text-center max-w-xl">
+          <p className="mt-4 text-neutral-content text-center max-w-xl">
             {user.bio}
           </p>
         )}
       </div>
       <div>
-        <h2 className="text-2xl font-semibold text-neutral-content mb-4">Posts</h2>
+        <h2 className="text-2xl font-semibold text-neutral-content mb-4 text-center">Posts</h2>
         {posts.length === 0 ? (
           <p className="text-neutral-content">No posts available.</p>
         ) : (

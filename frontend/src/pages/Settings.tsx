@@ -1,10 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { toast } from 'react-hot-toast'; // Import toast from react-hot-toast
+import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import {UploadWidget} from "@/components/UploadWidget.tsx";
 import CurrentUserContext from "@/context/current-user-context.ts";
 import {changePassword, deleteUser, updateUser} from "@/adapters/userAdapter.ts";
-import { getCurrentUser } from '@/adapters/authAdapter';
 
 export default function Settings() {
 const { currentUser } = useContext(CurrentUserContext);

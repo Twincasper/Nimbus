@@ -1,11 +1,13 @@
 import React from 'react';
 import DOMPurify from "dompurify";
+import { Link } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar.tsx"
 import { Button } from "./ui/button.tsx"
 import { Card, CardContent, CardFooter, CardHeader } from "./ui/card.tsx"
 import { ThumbsUp, MessageCircle, Share2, Edit, Trash2 } from 'lucide-react';
 
 interface ForumPostCardProps {
+  userId?: number;
   username: string;
   avatarUrl: string;
   title: string;
@@ -21,7 +23,8 @@ interface ForumPostCardProps {
   isDetailView?: boolean;
 }
 
-const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = ({
+const ForumPostCard: React.FC<ForumPostCardProps> = ({
+  userId,
   username,
   avatarUrl,
   title,
@@ -49,10 +52,17 @@ const ForumPostCard: React.FC<ForumPostCardProps & { onClick?: () => void }> = (
   return (
       <Card className="w-full max-w-2xl mx-auto my-4 bg-neutral hover:bg-neutral-focus transition-colors duration-200 cursor-pointer shadow-md" onClick={onClick}>
         <CardHeader className="flex flex-row items-center gap-4">
-          <Avatar className="border-2 border-accent">
-            <AvatarImage src={avatarUrl} alt={username} />
-            {/*<AvatarFallback className="bg-neutral text-neutral-content">{username[0].toUpperCase()}</AvatarFallback>*/}
-          </Avatar>
+          {userId ? (
+            <Link to={`/user/${userId}`} onClick={(e) => e.stopPropagation()}>
+              <Avatar className="border-2 border-accent">
+                <AvatarImage src={avatarUrl} alt={username} />
+              </Avatar>
+            </Link>
+          ) : (
+            <Avatar className="border-2 border-accent">
+              <AvatarImage src={avatarUrl} alt={username} />
+            </Avatar>
+          )}
           <div>
             <h2 className="text-lg font-semibold text-neutral-content">
               {username} {pronouns && <span className="text-accent">({pronouns})</span>}
