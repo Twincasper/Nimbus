@@ -123,7 +123,7 @@ const navigate = useNavigate();
                 <div>
                     <h2 className="text-lg font-semibold text-base-content">Profile Details</h2>
                     <p className="mt-1 text-sm leading-6 text-neutral-content font-semibold">
-                        Update your account's profile information
+                        Update your account&#39;s profile information
                     </p>
 
                     <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">

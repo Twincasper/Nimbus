@@ -1,9 +1,9 @@
-import React from 'react';
-import DOMPurify from 'dompurify';
-import {Edit, Trash2} from "lucide-react";
-import {Button} from "@/components/ui/button.tsx";
-import {Avatar, AvatarImage} from "@radix-ui/react-avatar";
-import { Link } from 'react-router-dom';
+import React from "react";
+import DOMPurify from "dompurify";
+import { Edit, Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button.tsx";
+import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
+import { Link } from "react-router-dom";
 
 interface CommentCardProps {
     userId?: number;
@@ -30,17 +30,21 @@ const CommentCard: React.FC<CommentCardProps> = ({
     currentUserUsername,
     onEdit,
     onDelete,
-    isDetailView = false
-    }) => {
+    isDetailView = false,
+}) => {
     const sanitizedContent = DOMPurify.sanitize(content);
     const showActions = currentUserUsername === username;
 
     return (
         <div className="bg-neutral rounded-xl shadow-sm p-4 mb-4 border border-neutral-focus">
             <div className="flex items-start gap-4">
-              <Avatar className="w-10 h-10 border-2 border-accent rounded-full box-border overflow-visible">
-                <AvatarImage className="rounded-full w-full h-full aspect-square" src={avatarUrl} alt={username} />
-              </Avatar>
+                <Avatar className="w-10 h-10 border-2 border-accent rounded-full box-border overflow-visible">
+                    <AvatarImage
+                        className="rounded-full w-full h-full aspect-square"
+                        src={avatarUrl}
+                        alt={username}
+                    />
+                </Avatar>
                 <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                         {userId ? (
@@ -54,7 +58,11 @@ const CommentCard: React.FC<CommentCardProps> = ({
                         ) : (
                             <h3 className="font-medium text-neutral-content">{username}</h3>
                         )}
-                        {pronouns && <span className="text-sm text-neutral-content/70">({pronouns})</span>}
+                        {pronouns && (
+                            <span className="text-sm text-neutral-content/70">
+                ({pronouns})
+              </span>
+                        )}
                         <span className="text-sm text-neutral-content/70">{date}</span>
                     </div>
                     <div
