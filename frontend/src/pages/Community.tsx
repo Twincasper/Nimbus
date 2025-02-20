@@ -124,6 +124,7 @@ const Community: React.FC = () => {
                     {posts.map((post) => (
                         <div key={post.id}>
                             <ForumPostCard
+                                postId={post.id}
                                 userId={post.userId}
                                 username={post.username || "Anonymous"}
                                 pronouns={post.pronouns}

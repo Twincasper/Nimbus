@@ -45,4 +45,13 @@ public class LikeServiceImpl implements LikeService {
 
         likeRepository.save(like);
     }
+
+    @Override
+    public void unlikePost(Integer postId, Integer userId) {
+        // Optionally, check if the like exists
+        if (!likeRepository.existsByUserIdAndPostId(userId, postId)) {
+            throw new RuntimeException("Post not liked by user");
+        }
+        likeRepository.deleteByUserIdAndPostId(userId, postId);
+    }
 } 

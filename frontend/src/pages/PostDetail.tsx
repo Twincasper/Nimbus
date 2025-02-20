@@ -24,6 +24,7 @@ interface Comment {
 
 interface Post {
     id: number;
+    postId: number;
     userId: number;
     title: string;
     body: string;
@@ -177,6 +178,7 @@ const PostDetail = () => {
                 <ForumPostCard
                     username={post.username}
                     userId={post.userId}
+                    postId={post.id}
                     pronouns={post.pronouns}
                     avatarUrl={post.profilePicture}
                     title={post.title}

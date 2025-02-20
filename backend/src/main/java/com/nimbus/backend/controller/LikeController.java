@@ -20,7 +20,6 @@ public class LikeController {
 
     @PostMapping("/{postId}/like")
     public ResponseEntity<?> likePost(@PathVariable Integer postId, HttpSession session) {
-        // Retrieve the current user from the session (adjust based on your security setup)
         User currentUser = (User) session.getAttribute("currentUser");
         if (currentUser == null) {
             return ResponseEntity.status(401).body("User not authenticated");
@@ -28,6 +27,21 @@ public class LikeController {
 
         try {
             likeService.likePost(postId, currentUser.getId());
+            return ResponseEntity.ok().build();
+        } catch (RuntimeException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
+    
+    @DeleteMapping("/{postId}/like")
+    public ResponseEntity<?> unlikePost(@PathVariable Integer postId, HttpSession session) {
+        User currentUser = (User) session.getAttribute("currentUser");
+        if (currentUser == null) {
+            return ResponseEntity.status(401).body("User not authenticated");
+        }
+        
+        try {
+            likeService.unlikePost(postId, currentUser.getId());
             return ResponseEntity.ok().build();
         } catch (RuntimeException ex) {
             return ResponseEntity.badRequest().body(ex.getMessage());
