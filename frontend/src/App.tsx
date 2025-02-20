@@ -27,16 +27,19 @@ export default function App() {
         <div
             className="flex flex-col min-h-screen bg-base-100"
             style={{
-                backgroundImage: `
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5)),
-        url("/adobe-cloud.png")
-    `,
-                /* Note how each background-size is separated by a comma */
-                backgroundSize: "cover, cover",
-                backgroundPosition: "center, center",
-                backgroundRepeat: "no-repeat, no-repeat",
-                /* Attach both layers if you still want them fixed */
-                backgroundAttachment: "fixed, fixed",
+                ...(location.pathname !== "/" && {
+                    backgroundImage: `
+                        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5)),
+                        url("/adobe-cloud.png")
+                    `,
+                    backgroundSize: "cover, cover",
+                    backgroundPosition: "center, center",
+                    backgroundRepeat: "no-repeat, no-repeat",
+                    backgroundAttachment: "fixed, fixed",
+                }),
+                ...(location.pathname === "/" && {
+                    backgroundColor: "black",
+                }),
             }}
         >
             <Toaster

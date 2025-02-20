@@ -6,7 +6,7 @@ import communities from "@/utils/communities.ts";
 import CurrentUserContext from "@/context/current-user-context";
 import { createPost } from "@/adapters/postAdapter";
 import toast from "react-hot-toast";
-
+import StarBorder from "./StarBorder";
 const NewPostButton = () => {
     const { currentUser } = useContext(CurrentUserContext);
     const navigate = useNavigate();
@@ -49,19 +49,20 @@ const NewPostButton = () => {
         }
     };
 
+//     <StarBorder as="button" className="custom-class" color="cyan" speed="5s">
+
+//   // content
+
+// </StarBorder>
+
     return (
         <>
-            {/* Floating Action Button */}
-            <button
-                onClick={() => setShowModal(true)}
-                className="fixed bottom-4 right-4 bg-primary text-white p-4 rounded-full shadow-lg hover:bg-neutral transition-colors"
-            >
+            <button className="bg-primary text-white p-4 rounded-full shadow-lg hover:bg-neutral transition-colors">
                 New Post +
             </button>
-
             {/* Modal */}
             {showModal && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
                     <div className="bg-white rounded-lg w-full max-w-2xl p-6 text-black">
                         <h2 className="text-2xl font-bold mb-4">Create New Post</h2>
 

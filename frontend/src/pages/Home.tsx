@@ -1,22 +1,23 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import GridDistortion from '@/components/GridDistortion';
 
 export default function Home() {
     const navigate = useNavigate();
 
     return (
         <div className="relative min-h-screen">
-            {/* Background Image takes up the full viewport */}
             <div className="absolute inset-0">
-                <img
-                    src="/altinay-dinc-LluELtL5mK4-unsplash.jpg"
-                    alt="Background"
+                <GridDistortion
+                    imageSrc="/cloud-bg-adobe.jpeg"
+                    grid={10}
+                    mouse={0.1}
+                    strength={0.15}
+                    relaxation={0.9}
                     className="w-full h-full object-cover filter brightness-75"
                 />
             </div>
 
-            {/* Transparent Navbar on top of the background image */}
             <div className="relative z-20">
                 <Navbar onSelectCategory={() => {}} />
             </div>
@@ -27,11 +28,8 @@ export default function Home() {
                     <h1 className="text-6xl font-bold mb-6 leading-tight">
                       Clear Skies Start Here 🌤️
                     </h1>
-                    <p className="text-xl mb-8 opacity-90">
-                        Find your peace, share your journey, and connect with others who understand.
-                    </p>
                     <button
-                        className="btn btn-lg px-8 py-6 rounded-2xl"
+                        className="btn btn-lg px-8 py-6 rounded-2xl bg-sky-400 hover:bg-sky-300 text-white"
                         onClick={() => navigate('/login')}
                     >
                         Join Our Community

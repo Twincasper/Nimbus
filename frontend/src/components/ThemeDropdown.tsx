@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const ThemeDropdown = () => {
+    const location = useLocation();
     const themes = [
         'nimbus', 'light', 'dark', 'cupcake', 'valentine',
         'bumblebee', 'emerald', 'corporate', 'synthwave',
@@ -22,7 +24,15 @@ const ThemeDropdown = () => {
 
     return (
         <div className="dropdown dropdown-end dropdown-hover">
-            <div tabIndex={0} role="button" className="btn m-1">
+            <div
+                tabIndex={0} 
+                role="button" 
+                className={`btn m-1 ${
+                    location.pathname === "/" 
+                        ? "bg-sky-400 hover:bg-sky-300 text-white border border-black" 
+                        : ""
+                }`}
+            >
                 Theme
                 <svg
                     width="12px"

@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { logout } from "@/adapters/authAdapter.ts";
 import CurrentUserContext from "@/context/current-user-context.ts";
 import ThemeDropdown from "@/components/ThemeDropdown.tsx";
@@ -10,6 +10,7 @@ export default function Navbar({onSelectCategory}: {
   onSelectCategory: (categoryId: number | null) => void;
 }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
@@ -26,13 +27,16 @@ export default function Navbar({onSelectCategory}: {
 </a>
         </div>
 
-        {/* Middle section, may want to recolor this list's li's later */}
         <div className="flex-1 justify-center navbar-center hidden lg:flex">
           <div className="dropdown dropdown-hover dropdown-end">
-            <div
+            <button
                 tabIndex={0}
                 role="button"
-                className="btn m-1"
+                className={`btn m-1 ${
+                  location.pathname === "/" 
+                    ? "bg-sky-400 hover:bg-sky-300 text-white" 
+                    : ""
+                }`}
                 onClick={() => navigate("/community")}
             >
               Community
@@ -45,7 +49,7 @@ export default function Navbar({onSelectCategory}: {
               >
                 <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
               </svg>
-            </div>
+            </button>
             <ul
                 tabIndex={0}
                 className="dropdown-content bg-base-100/80 rounded-box z-10 menu p-2 shadow-2xl min-w-[9rem]"
@@ -65,7 +69,6 @@ export default function Navbar({onSelectCategory}: {
           </div>
         </div>
 
-        {/* Mobile menu (visible on small screens) */}
         <div className="dropdown lg:hidden">
           <div tabIndex={0} role="button" className="btn btn-ghost">
             <svg
@@ -118,11 +121,6 @@ export default function Navbar({onSelectCategory}: {
           {currentUser ? (
               <div className="flex items-center gap-2">
                 <div className="form-control">
-                  {/*<input*/}
-                  {/*    type="text"*/}
-                  {/*    placeholder="Search"*/}
-                  {/*    className="input input-bordered w-24 md:w-auto"*/}
-                  {/*/>*/}
                   <ThemeDropdown />
                 </div>
                 <div className="dropdown dropdown-end z-20">
@@ -169,7 +167,7 @@ export default function Navbar({onSelectCategory}: {
           ) : (
               <button
                   onClick={() => navigate("/login")}
-                  className="btn bg-sky-200 hover:bg-sky-300 text-sky-800"
+                  className="btn bg-sky-400 hover:bg-sky-300 text-white"
               >
                 Login
               </button>

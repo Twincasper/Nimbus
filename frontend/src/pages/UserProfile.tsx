@@ -28,7 +28,6 @@ interface Post {
 
 const UserProfilePage: React.FC = () => {
   const { userId } = useParams<{ userId: string }>();
-  console.log("This is the user id",userId);
   const navigate = useNavigate();
 
   const [user, setUser] = useState<UserProfile | null>(null);

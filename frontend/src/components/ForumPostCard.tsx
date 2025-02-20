@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import DOMPurify from "dompurify";
 import { Link } from 'react-router-dom';
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar.tsx"
+import { Avatar, AvatarImage } from "./ui/avatar.tsx"
 import { Button } from "./ui/button.tsx"
 import { Card, CardContent, CardFooter, CardHeader } from "./ui/card.tsx"
-import { ThumbsUp, MessageCircle, Share2, Edit, Trash2 } from 'lucide-react';
+import { ThumbsUp, MessageCircle, Edit, Trash2 } from 'lucide-react';
 import { likePost, unlikePost } from "@/adapters/postAdapter";
 import SpotlightCard from './SpotlightCard.tsx';
 
@@ -77,11 +77,6 @@ const ForumPostCard: React.FC<ForumPostCardProps> = ({
     }
   };
 
-  // <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
-
-  // Content goes here
-
-// </SpotlightCard>
 
   return (
     <SpotlightCard className="custom-spotlight-card">

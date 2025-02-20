@@ -4,7 +4,7 @@ import { Edit, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button.tsx";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 import { Link } from "react-router-dom";
-
+import SpotlightCard from "./SpotlightCard.tsx";
 interface CommentCardProps {
     userId?: number;
     username: string;
@@ -36,6 +36,7 @@ const CommentCard: React.FC<CommentCardProps> = ({
     const showActions = currentUserUsername === username;
 
     return (
+        <SpotlightCard className="custom-spotlight-card">
         <div className="bg-neutral rounded-xl shadow-sm p-4 mb-4 border border-neutral-focus">
             <div className="flex items-start gap-4">
                 <Avatar className="w-10 h-10 border-2 border-accent rounded-full box-border overflow-visible">
@@ -98,6 +99,7 @@ const CommentCard: React.FC<CommentCardProps> = ({
                 </div>
             </div>
         </div>
+        </SpotlightCard>
     );
 };
 

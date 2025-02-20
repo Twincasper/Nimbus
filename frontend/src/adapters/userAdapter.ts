@@ -1,6 +1,6 @@
 // src/adapters/userAdapter.ts
 import { fetchHandler } from '@/utils/fetchHandler'
-import {patchOptions, postOptions, putOptions, deleteOptions} from '@/utils/requestOptions';
+import {postOptions, putOptions, deleteOptions} from '@/utils/requestOptions';
 
 const baseUrl = "http://localhost:8080/api";
 
