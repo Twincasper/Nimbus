@@ -112,7 +112,7 @@ const navigate = useNavigate();
                         name="profilePicture"
                         value={profileUrl}
                     />
-                    <p id="file-restrictions" className="mt-2 text-sm leading-5 text-neutral-content opacity-75">
+                    <p id="file-restrictions" className="mt-2 text-sm leading-5 text-accent opacity-75">
                         JPG, GIF or PNG. 1MB max.
                     </p>
                 </div>
@@ -122,7 +122,7 @@ const navigate = useNavigate();
             <div className="space-y-1">
                 <div>
                     <h2 className="text-lg font-semibold text-base-content">Profile Details</h2>
-                    <p className="mt-1 text-sm leading-6 text-neutral-content font-semibold">
+                    <p className="mt-1 text-sm leading-6 text-accent font-semibold">
                         Update your account&#39;s profile information
                     </p>
 
@@ -160,7 +160,7 @@ const navigate = useNavigate();
                                 defaultValue={currentUser?.bio}
                             />
                             </div>
-                            <p className="mt-3 text-sm text-neutral-content font-mediukm">
+                            <p className="mt-3 text-sm text-accent font-mediukm">
                                 Write a few sentences about yourself.
                             </p>
                         </div>
@@ -207,14 +207,14 @@ const navigate = useNavigate();
             {/* Password Section */}
             <div>
                 <h2 className="text-lg font-semibold text-base-content">Change password</h2>
-                <p className="mt-1 text-sm leading-6 text-neutral-content">
+                <p className="mt-1 text-sm leading-6 text-accent">
                     Update your password associated with your account.
                 </p>
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="sm:col-span-3">
-                    <label htmlFor="current-password" className="block text-sm/6 font-medium text-neutral-content">
+                    <label htmlFor="current-password" className="block text-sm/6 font-medium text-accent">
                         Current password
                     </label>
                     <div className="mt-2">
@@ -229,7 +229,7 @@ const navigate = useNavigate();
                 </div>
 
                 <div className="sm:col-span-3">
-                    <label htmlFor="new-password" className="block text-sm/6 font-medium text-neutral-content">
+                    <label htmlFor="new-password" className="block text-sm/6 font-medium text-accent">
                         New password
                     </label>
                     <div className="mt-2">
@@ -244,7 +244,7 @@ const navigate = useNavigate();
                 </div>
 
                 <div className="sm:col-span-3">
-                    <label htmlFor="confirm-password" className="block text-sm/6 font-medium text-neutral-content">
+                    <label htmlFor="confirm-password" className="block text-sm/6 font-medium text-accent">
                         Confirm password
                     </label>
                     <div className="mt-2">

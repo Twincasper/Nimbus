@@ -18,6 +18,7 @@ interface ForumPostCardProps {
   date: string;
   likes: number;
   comments: number;
+  categoryName: string;
   onClick?: () => void
   currentUserUsername?: string;
   onEdit?: () => void;
@@ -37,6 +38,7 @@ const ForumPostCard: React.FC<ForumPostCardProps> = ({
   date,
   likes,
   comments,
+  categoryName,
   onClick,
   currentUserUsername,
   onEdit,
@@ -92,6 +94,7 @@ const ForumPostCard: React.FC<ForumPostCardProps> = ({
             <h2 className="text-lg font-semibold text-neutral-content">
               {username} {pronouns && <span className="text-accent">({pronouns})</span>}
             </h2>
+            <p className="text-sm text-neutral-content/70">{`${categoryName}`}</p>
             <p className="text-sm text-neutral-content/70">{date}</p>
           </div>
         </CardHeader>

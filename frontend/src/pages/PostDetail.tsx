@@ -35,6 +35,7 @@ interface Post {
     profilePicture: string;
     categoryId: number;
     pronouns?: string;
+    categoryName: string;
 }
 
 const PostDetail = () => {
@@ -180,6 +181,7 @@ const PostDetail = () => {
                     userId={post.userId}
                     postId={post.id}
                     pronouns={post.pronouns}
+                    categoryName={post.categoryName}
                     avatarUrl={post.profilePicture}
                     title={post.title}
                     content={DOMPurify.sanitize(post.body)}

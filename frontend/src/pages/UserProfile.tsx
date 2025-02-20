@@ -23,6 +23,7 @@ interface Post {
   createdAt: string;
   likes: number;
   comments: number;
+  categoryName: string;
 }
 
 const UserProfilePage: React.FC = () => {
@@ -80,24 +81,25 @@ const UserProfilePage: React.FC = () => {
           alt={user.username} 
           className="w-32 h-32 rounded-full border-2 border-accent object-cover mb-4" 
         />
-        <h1 className="text-3xl font-bold text-neutral-content">
+        <h1 className="text-3xl font-bold text-accent">
           {user.username} {user.pronouns && <span className="text-xl text-accent">({user.pronouns})</span>}
         </h1>
         {user.bio && (
-          <p className="mt-4 text-neutral-content text-center max-w-xl">
+          <p className="mt-4 text-accent text-center max-w-xl">
             {user.bio}
           </p>
         )}
       </div>
       <div>
-        <h2 className="text-2xl font-semibold text-neutral-content mb-4 text-center">Posts</h2>
+        <h2 className="text-2xl font-semibold text-accent mb-4 text-center">Posts</h2>
         {posts.length === 0 ? (
-          <p className="text-neutral-content">No posts available.</p>
+          <p className="text-accent">No posts available.</p>
         ) : (
           posts.map((post) => (
             <div key={post.id} onClick={() => navigate(`/posts/${post.id}`)}>
               <ForumPostCard
                 username={post.username}
+                postId={post.id}
                 pronouns={post.pronouns}
                 avatarUrl={post.profilePicture || '/default-avatar.png'}
                 title={post.title}
@@ -111,6 +113,7 @@ const UserProfilePage: React.FC = () => {
                 })}
                 likes={post.likes}
                 comments={post.comments}
+                categoryName={post.categoryName}
               />
             </div>
           ))

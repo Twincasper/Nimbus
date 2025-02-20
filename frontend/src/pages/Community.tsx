@@ -30,6 +30,7 @@ interface Post {
     username: string;
     profilePicture: string;
     pronouns: string;
+    categoryName: string;
 }
 
 const Community: React.FC = () => {
@@ -91,7 +92,6 @@ const Community: React.FC = () => {
                 }
                 console.log("Fetched data:", data);
                 setPosts(data[0]);
-                console.log("First post object", posts[0]);
             } catch (error) {
                 console.error("Error fetching posts:", error);
             } finally {
@@ -127,6 +127,7 @@ const Community: React.FC = () => {
                                 postId={post.id}
                                 userId={post.userId}
                                 username={post.username || "Anonymous"}
+                                categoryName={post.categoryName}
                                 pronouns={post.pronouns}
                                 avatarUrl={post.profilePicture || "/default-avatar.png"}
                                 title={post.title || "No Title"}

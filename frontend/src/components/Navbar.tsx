@@ -89,7 +89,7 @@ export default function Navbar({onSelectCategory}: {
                   <a>Fluff Therapy</a>
                 </li>
                 <li>
-                  <a>Cloud Nine Creations</a>
+                  <a>Nimbus Nook</a>
                 </li>
                 <li>
                   <a>Cumulus Care</a>
