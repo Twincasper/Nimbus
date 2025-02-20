@@ -6,12 +6,9 @@ import ForumPostCard from "../components/ForumPostCard";
 import Sidebar from "../components/Sidebar";
 import RecentPosts from "../components/RecentPosts";
 import {
-    createPost,
     deletePost,
-    getPostByUser,
     getPostsByCategory,
     getRecentPosts,
-    updatePost
 } from "@/adapters/postAdapter.ts";
 import NewPostButton from "@/components/NewPostButton.tsx";
 import CurrentUserContext from "@/context/current-user-context.ts";

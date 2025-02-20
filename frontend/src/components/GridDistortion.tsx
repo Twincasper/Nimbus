@@ -36,13 +36,13 @@ void main() {
 `;
 
 const GridDistortion: React.FC<GridDistortionProps> = ({
-                                                           grid = 15,
-                                                           mouse = 0.1,
-                                                           strength = 0.15,
-                                                           relaxation = 0.9,
-                                                           imageSrc,
-                                                           className = "",
-                                                       }) => {
+    grid = 15,
+    mouse = 0.1,
+    strength = 0.15,
+    relaxation = 0.9,
+    imageSrc,
+    className = "",
+}) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const imageAspectRef = useRef<number>(1);
     const cameraRef = useRef<THREE.OrthographicCamera | null>(null);
