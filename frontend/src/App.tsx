@@ -65,7 +65,7 @@ export default function App() {
                 }}
             />
 
-            {location.pathname !== "/login" && (
+            {location.pathname !== "/login" && location.pathname !== "/" && (
                 <Navbar onSelectCategory={setSelectedCategoryId} />
             )}
             <main

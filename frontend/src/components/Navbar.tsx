@@ -13,17 +13,28 @@ export default function Navbar({onSelectCategory}: {
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
-      <div className="navbar mr-auto z-20">
+      <div className="navbar mr-auto z-20 p-0">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl" onClick={() => navigate("/")}>
-            Nimbus
-          </a>
+        <a className="cursor-pointer" onClick={() => navigate("/")}>
+  <div className="h-32 w-auto overflow-hidden flex items-center justify-center">
+    <img
+      src="/Nimbus.svg"
+      alt="Nimbus Logo"
+      className="h-32 w-auto transform scale-125" // Added scale transform
+    />
+  </div>
+</a>
         </div>
 
         {/* Middle section, may want to recolor this list's li's later */}
         <div className="flex-1 justify-center navbar-center hidden lg:flex">
           <div className="dropdown dropdown-hover dropdown-end">
-            <div tabIndex={0} role="button" className="btn m-1">
+            <div
+                tabIndex={0}
+                role="button"
+                className="btn m-1"
+                onClick={() => navigate("/community")}
+            >
               Community
               <svg
                   width="12px"

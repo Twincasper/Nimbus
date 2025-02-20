@@ -6,6 +6,7 @@ import { Button } from "./ui/button.tsx"
 import { Card, CardContent, CardFooter, CardHeader } from "./ui/card.tsx"
 import { ThumbsUp, MessageCircle, Share2, Edit, Trash2 } from 'lucide-react';
 import { likePost, unlikePost } from "@/adapters/postAdapter";
+import SpotlightCard from './SpotlightCard.tsx';
 
 interface ForumPostCardProps {
   postId: number;
@@ -76,7 +77,14 @@ const ForumPostCard: React.FC<ForumPostCardProps> = ({
     }
   };
 
+  // <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
+
+  // Content goes here
+
+// </SpotlightCard>
+
   return (
+    <SpotlightCard className="custom-spotlight-card">
       <Card className="w-full max-w-2xl mx-auto my-4 bg-neutral hover:bg-neutral-focus transition-colors duration-200 cursor-pointer shadow-md" onClick={onClick}>
         <CardHeader className="flex flex-row items-center gap-4">
           {userId ? (
@@ -144,6 +152,7 @@ const ForumPostCard: React.FC<ForumPostCardProps> = ({
           )}
         </CardFooter>
       </Card>
+    </SpotlightCard>
   );
 };
 
