@@ -12,7 +12,7 @@
 
 ## 🌟 About Nimbus
 
-**Nimbus** (derived from the Latin word for *"cloud"*) is a safe, inclusive social platform designed to connect individuals navigating mental health challenges. Users can share experiences, seek advice, and find solidarity by posting to themed communities such as **Depression**, **Anxiety**, **Physical Health**, and more. The platform emphasizes empathy, anonymity, and peer support, acting as a digital "cloud" to uplift users through shared understanding and community-driven care.
+**Nimbus** (derived from the Latin word for *"cloud"*) is a safe, inclusive social platform designed to connect individuals navigating mental health challenges. Users can share experiences, seek advice, and find solidarity by posting to themed communities such as **🌧️ Rainy Days (Depression)**, **🌸 Calm in the Storm (Anxiety)**, **🧸 Cloud Comfort (Self Care)**, and more. The platform emphasizes empathy, anonymity, and peer support, acting as a digital "cloud" to uplift users through shared understanding and community-driven care.
 
   
 
