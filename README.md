@@ -39,11 +39,14 @@
 ### Home Page
 ![Home Page](https://imgur.com/datNYZ7.png)
 
-### Themes
-![Themes](./public/theme_showcase.gif)
+### Community Page
+![Community Page](https://imgur.com/CIR4Uk3.png)
 
 ### Post Page
-![Post Page](./public/post_showcase.gif)
+![Post Page](https://imgur.com/hPB7VYX.png)
+
+### Profile Page
+![Profile Page](https://imgur.com/ntexCfz.png)
 
 
 ## 🛠️ How It's Made
