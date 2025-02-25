@@ -26,7 +26,9 @@ const navigate = useNavigate();
         if (!window.confirm('Are you sure you want to delete your account?')) return;
 
         try {
-            await deleteUser(currentUser.id);
+            if (currentUser) {
+                await deleteUser(currentUser.id);
+            }
 
             toast.success('Account deleted successfully!', {
                 duration: 3000,
@@ -67,11 +69,16 @@ const navigate = useNavigate();
                     bio: formData.get('bio')
                 };
 
-                await updateUser(currentUser.id, data);
+                if (currentUser) {
+                    await updateUser(currentUser.id, data as { username: string; pronouns: string; profilePicture: string; bio: string });
+                }
 
                 if (currentPassword || newPassword || confirmPassword) {
                     if (newPassword !== confirmPassword) {
                         throw new Error('New passwords do not match');
+                    }
+                    if (!currentUser) {
+                        throw new Error('User not found');
                     }
                     await changePassword(currentUser.id, currentPassword, newPassword, confirmPassword);
                 }
