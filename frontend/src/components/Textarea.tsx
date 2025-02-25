@@ -11,11 +11,12 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         return (
             <div className="w-full">
                 {label && (
-                    <label className="block text-sm font-medium mb-1">
+                    <label htmlFor={props.id || "textarea-id"} className="block text-sm font-medium mb-1">
                         {label}
                     </label>
                 )}
                 <textarea
+                    id={props.id || "textarea-id"}
                     ref={ref}
                     className={`
             w-full p-2 border rounded-md

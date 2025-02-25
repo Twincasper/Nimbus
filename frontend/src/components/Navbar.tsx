@@ -20,8 +20,8 @@ export default function Navbar({onSelectCategory}: {
   <div className="h-32 w-auto overflow-hidden flex items-center justify-center">
     <img
       src="/Nimbus.svg"
-      alt="Nimbus Logo"
-      className="h-32 w-auto transform scale-125" // Added scale transform
+      alt="Nimbus Community Forum Logo depicting a cloud with the word 'Nimbus' written above it"
+      className="h-32 w-auto transform scale-125"
     />
   </div>
 </a>

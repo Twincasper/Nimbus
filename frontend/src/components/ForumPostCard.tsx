@@ -110,7 +110,7 @@ const ForumPostCard: React.FC<ForumPostCardProps> = ({
         </CardContent>
         <CardFooter className="flex justify-between items-center">
           <div className="flex gap-4">
-            <Button variant="ghost" size="sm" className="flex items-center gap-1 text-neutral-content hover:bg-accent/10" onClick={handleLikeToggle}>
+            <Button variant="ghost" size="sm" className="flex items-center gap-1 text-neutral-content hover:bg-accent/10" onClick={handleLikeToggle} aria-label={liked ? "Unlike this post" : "Like this post"} aria-pressed={liked}>
               <ThumbsUp className={`w-4 h-4 ${liked ? "text-accent" : "text-gray-400"}`} />
               <span className="text-neutral-content">{likeCount}</span>
             </Button>

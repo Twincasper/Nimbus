@@ -61,8 +61,8 @@ const CommentCard: React.FC<CommentCardProps> = ({
                         )}
                         {pronouns && (
                             <span className="text-sm text-neutral-content/70">
-                ({pronouns})
-              </span>
+                              ({pronouns})
+                            </span>
                         )}
                         <span className="text-sm text-neutral-content/70">{date}</span>
                     </div>
