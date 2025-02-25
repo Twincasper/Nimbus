@@ -1,9 +1,7 @@
 package com.nimbus.backend.service.impl;
 
 import com.nimbus.backend.dto.UpdateUserDTO;
-import com.nimbus.backend.model.Post;
 import com.nimbus.backend.model.User;
-import com.nimbus.backend.repository.PostRepository;
 import com.nimbus.backend.repository.UserRepository;
 import com.nimbus.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +15,11 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
-    private final PostRepository postRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, PostRepository postRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.postRepository = postRepository;
         this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
@@ -72,13 +68,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> getUserById(Integer id) {
         return userRepository.findById(id);
-    }
-
-    @Transactional(readOnly = true)
-    @Override
-    public List<Post> getPostsByUser(Integer userId) {
-        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("User not found"));
-        return postRepository.findByUser(user);
     }
 
     @Override

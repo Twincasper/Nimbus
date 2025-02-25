@@ -37,7 +37,12 @@ const CommentCard: React.FC<CommentCardProps> = ({
 
     return (
         <SpotlightCard className="custom-spotlight-card">
-        <div className="bg-neutral rounded-xl shadow-sm p-4 mb-4 border border-neutral-focus">
+        <div 
+            className={`bg-neutral rounded-xl shadow-sm p-4 mb-4 border border-neutral-focus ${isDetailView ? 'p-6' : 'p-4'}`}
+            onClick={onClick}
+            role={onClick ? "button" : undefined}
+            tabIndex={onClick ? 0 : undefined}
+        >
             <div className="flex items-start gap-4">
                 <Avatar className="w-10 h-10 border-2 border-accent rounded-full box-border overflow-visible">
                     <AvatarImage

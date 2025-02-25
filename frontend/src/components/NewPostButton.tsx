@@ -29,8 +29,7 @@ const NewPostButton = () => {
                 categoryId,
             });
 
-            if (newPost) {
-                // Success toast
+            if (newPost && Array.isArray(newPost) && newPost[0]?.id) {
                 toast.success("Post created successfully!", {
                     duration: 3000,
                     position: "top-right",

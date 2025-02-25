@@ -24,19 +24,19 @@ export interface CurrentUserContextType {
 
 const CurrentUserContext = createContext<CurrentUserContextType>({
   currentUser: null,
-  login: (username: string, password: string): Promise<void> => {
+  login: (_username: string, _password: string): Promise<void> => {
     return Promise.resolve();
   },
   register: (
-      username: string,
-      password: string,
-      pronouns: string,
-      profilePicture: string
+      _username: string,
+      _password: string,
+      _pronouns: string,
+      _profilePicture: string
   ): Promise<void> => {
     return Promise.resolve();
   },
   logout: () => {},
-  updateUser: (id: number, updates: Partial<CurrentUser>): Promise<void> => {
+  updateUser: (_id: number, _updates: Partial<CurrentUser>): Promise<void> => {
     return Promise.resolve();
   },
 });

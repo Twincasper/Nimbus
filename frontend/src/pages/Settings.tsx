@@ -18,7 +18,7 @@ const navigate = useNavigate();
         }
     }, [currentUser]);
 
-    const handlePronounsChange = (e) => {
+    const handlePronounsChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedPronouns(e.target.value);
     };
 
@@ -46,9 +46,9 @@ const navigate = useNavigate();
         }
     };
 
-    const onSubmit = async (e) => {
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const formData = new FormData(e.target);
+        const formData = new FormData(e.currentTarget);
 
         // Handle password change if any password fields are filled
         const currentPassword = formData.get('current-password');
