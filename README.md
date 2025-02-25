@@ -34,7 +34,17 @@
 
 ---
 
-  
+## 📸 Screenshots
+
+### Home Page
+![Home Page](https://imgur.com/datNYZ7.png)
+
+### Themes
+![Themes](https://imgur.com/UJkZ83Q.png)
+
+### Post Page
+![Post Page](https://imgur.com/kvexNSr.png)
+
 
 ## 🛠️ How It's Made
 

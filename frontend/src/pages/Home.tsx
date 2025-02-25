@@ -24,7 +24,7 @@ export default function Home() {
 
             {/* Main Content */}
             <div className="relative z-10 flex items-center justify-start h-screen px-16">
-                <div className="max-w-xl text-white">
+                <div className="max-w-xl text-white mb-10">
                     <h1 className="text-6xl font-bold mb-6 leading-tight">
                       Clear Skies Start Here 🌤️
                     </h1>
