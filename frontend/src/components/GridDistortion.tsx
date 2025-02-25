@@ -73,7 +73,7 @@ const GridDistortion: React.FC<GridDistortionProps> = ({
         };
 
         const textureLoader = new THREE.TextureLoader();
-        textureLoader.load(imageSrc, (texture) => {
+        textureLoader.load(imageSrc, (texture: THREE.Texture) => {
             texture.minFilter = THREE.LinearFilter;
             imageAspectRef.current = texture.image.width / texture.image.height;
             uniforms.uTexture.value = texture;

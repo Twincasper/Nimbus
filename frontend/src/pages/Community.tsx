@@ -88,7 +88,9 @@ const Community: React.FC = () => {
                     data = await getRecentPosts();
                 }
                 console.log("Fetched data:", data);
-                setPosts(data[0]);
+                if (data && Array.isArray(data) && data.length > 0) {
+                    setPosts(data[0] as Post[]);
+                }
             } catch (error) {
                 console.error("Error fetching posts:", error);
             } finally {

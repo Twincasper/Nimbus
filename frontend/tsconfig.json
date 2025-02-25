@@ -12,7 +12,6 @@
     "jsx": "react-jsx", // or "preserve" depending on your setup
     "allowJs": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
-    "include": ["src/**/*.ts", "src/**/*.tsx"]
+    "moduleResolution": "node"
   }
 }

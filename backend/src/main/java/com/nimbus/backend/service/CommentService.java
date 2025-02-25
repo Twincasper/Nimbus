@@ -1,7 +1,6 @@
 package com.nimbus.backend.service;
 
 import com.nimbus.backend.model.Comment;
-import com.nimbus.backend.model.Post;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,8 +1,5 @@
-import React from "react";
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-
-// <UploadWidget onUpload={(url: string) => setProfileUrl(url)} /> is the general flow of how we could this, to set the User.profileUrl to the user
 
 interface UploadWidgetProps {
     onUpload: (url: string) => void;
