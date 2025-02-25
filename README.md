@@ -40,10 +40,10 @@
 ![Home Page](https://imgur.com/datNYZ7.png)
 
 ### Themes
-![Themes](https://imgur.com/UJkZ83Q.png)
+![Themes](./public/theme_showcase.gif)
 
 ### Post Page
-![Post Page](https://imgur.com/kvexNSr.png)
+![Post Page](./public/post_showcase.gif)
 
 
 ## 🛠️ How It's Made
