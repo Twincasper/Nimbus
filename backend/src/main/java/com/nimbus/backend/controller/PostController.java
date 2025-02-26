@@ -7,10 +7,9 @@ import com.nimbus.backend.model.Category;
 import com.nimbus.backend.repository.CommentRepository;
 import com.nimbus.backend.repository.LikeRepository;
 import com.nimbus.backend.service.CategoryService;
-import com.nimbus.backend.service.UserService;
+import com.nimbus.backend.service.PostService;
 import org.springframework.web.bind.annotation.*;
 import com.nimbus.backend.model.Post;
-import com.nimbus.backend.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -21,17 +20,14 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/posts")
 public class PostController {
     private final PostService postService;
-    private final UserService userService;
     private final CategoryService categoryService;
-
     private final LikeRepository likeRepository;
     private final CommentRepository commentRepository;
 
-
     @Autowired
-    public PostController(PostService postService, UserService userService, CategoryService categoryService, LikeRepository likeRepository, CommentRepository commentRepository) {
+    public PostController(PostService postService, CategoryService categoryService, 
+            LikeRepository likeRepository, CommentRepository commentRepository) {
         this.postService = postService;
-        this.userService = userService;
         this.categoryService = categoryService;
         this.likeRepository = likeRepository;
         this.commentRepository = commentRepository;
