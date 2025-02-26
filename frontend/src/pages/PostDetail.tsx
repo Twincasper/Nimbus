@@ -52,12 +52,21 @@ const PostDetail = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const postData = await getPost(Number(id));
-                const commentsData = await getCommentsByPost(Number(id));
-                setPost(postData[0]);
-                setComments(commentsData[0]);
+                const [postData, error] = await getPost(Number(id));
+                if (postData && Array.isArray(postData)) {
+                    setPost(postData[0] as Post);
+                } else {
+                    console.error('Error fetching post:', error);
+                }
+
+                const [commentsData, commentsError] = await getCommentsByPost(Number(id));
+                if (commentsData && Array.isArray(commentsData)) {
+                    setComments(commentsData[0] as Comment[]);
+                } else {
+                    console.error('Error fetching comments:', commentsError);
+                }
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching data, both post and comments:', error);
                 navigate('/not-found');
             }
         };

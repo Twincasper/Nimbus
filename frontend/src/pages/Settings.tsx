@@ -51,9 +51,9 @@ const navigate = useNavigate();
         const formData = new FormData(e.currentTarget);
 
         // Handle password change if any password fields are filled
-        const currentPassword = formData.get('current-password');
-        const newPassword = formData.get('new-password');
-        const confirmPassword = formData.get('confirm-password');
+        const currentPassword = formData.get('current-password')?.toString() || '';
+        const newPassword = formData.get('new-password')?.toString() || '';
+        const confirmPassword = formData.get('confirm-password')?.toString() || '';
 
         await toast.promise(
             (async () => {
@@ -80,12 +80,7 @@ const navigate = useNavigate();
                     if (!currentUser) {
                         throw new Error('User not found');
                     }
-                    await changePassword(
-                        currentUser.id,
-                        currentPassword as string,
-                        newPassword as string,
-                        confirmPassword as string
-                    );
+                    await changePassword(currentUser.id, currentPassword, newPassword, confirmPassword);
                 }
             })(),
             {
