@@ -27,7 +27,7 @@ const UserProfilePage: React.FC = () => {
         try {
           const userData = await getUserById(parseInt(userId));
           console.log("This is the user's data",userData);
-          setUser(userData[0]);
+          setUser(userData[0] as UserProfile);
         } catch (error) {
           console.error('Error fetching user:', error);
         }
@@ -39,7 +39,7 @@ const UserProfilePage: React.FC = () => {
         try {
           const postsData = await getPostByUser(parseInt(userId));
           console.log("This is the posts data",postsData);
-          setPosts(postsData[0]);
+          setPosts(postsData[0] as Post[]);
         } catch (error) {
           console.error('Error fetching user posts:', error);
         }

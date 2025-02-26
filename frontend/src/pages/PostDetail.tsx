@@ -30,9 +30,8 @@ const PostDetail = () => {
     const [post, setPost] = useState<Post | null>(null);
     const [comments, setComments] = useState<Comment[]>([]);
     const [newComment, setNewComment] = useState('');
-    const [commentLoading, setCommentLoading] = useState(false);
     const [editingPost, setEditingPost] = useState<Post | null>(null);
-    const [editingComment, setEditingComment] = useState<Comment | null>(null); // State for editing comment
+    const [editingComment, setEditingComment] = useState<Comment | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -221,9 +220,9 @@ const PostDetail = () => {
                         />
                         <Button
                             onClick={handleCommentSubmit}
-                            disabled={commentLoading || !newComment.trim()}
+                            disabled={!newComment.trim()}
                         >
-                            {commentLoading ? 'Posting...' : 'Post Comment'}
+                            Post Comment
                         </Button>
                     </div>
                 )}
