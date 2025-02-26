@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ForumPostCard from '@/components/ForumPostCard';
 import { getPostByUser } from '@/adapters/postAdapter';
 import { getUserById } from '@/adapters/userAdapter';
+import { Post } from '@/types/post';
 
 interface UserProfile {
   id: number;
@@ -10,20 +11,6 @@ interface UserProfile {
   pronouns?: string;
   bio?: string;
   profilePicture?: string;
-}
-
-interface Post {
-  id: number;
-  title: string;
-  body: string;
-  userId: number;
-  username: string;
-  profilePicture: string;
-  pronouns?: string;
-  createdAt: string;
-  likes: number;
-  comments: number;
-  categoryName: string;
 }
 
 const UserProfilePage: React.FC = () => {

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button.tsx";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 import { Link } from "react-router-dom";
 import SpotlightCard from "./SpotlightCard.tsx";
+
 interface CommentCardProps {
     userId?: number;
     username: string;

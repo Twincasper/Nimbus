@@ -11,6 +11,7 @@ import ReactQuill from 'react-quill';
 import toast from 'react-hot-toast';
 import EditPostModal from '@/components/EditPostModal';
 import EditCommentModal from '@/components/EditCommentModal';
+import { Post } from '@/types/post';
 
 interface Comment {
     id: number;
@@ -20,22 +21,6 @@ interface Comment {
     profilePicture: string;
     pronouns?: string;
     userId: number;
-}
-
-interface Post {
-    id: number;
-    postId: number;
-    userId: number;
-    title: string;
-    body: string;
-    createdAt: string;
-    likes: number;
-    comments: number;
-    username: string;
-    profilePicture: string;
-    categoryId: number;
-    pronouns?: string;
-    categoryName: string;
 }
 
 const PostDetail = () => {
@@ -94,7 +79,7 @@ const PostDetail = () => {
         }
     };
 
-    const handleSavePost = async (updatedPost: Post) => {
+    const handleSavePost = async (updatedPost: Post[]) => {
         try {
             console.log('Updated post', updatedPost);
             setPost(updatedPost[0]);
@@ -124,7 +109,7 @@ const PostDetail = () => {
             });
 
             const updatedComments = await getCommentsByPost(Number(id));
-            setComments(updatedComments[0]);
+            setComments((updatedComments[0] as Comment[]));
             setNewComment('');
             toast.success('Comment submitted successfully!', {
                 duration: 3000,
@@ -142,7 +127,7 @@ const PostDetail = () => {
         try {
             await deleteComment(commentId);
             const updatedComments = await getCommentsByPost(Number(id));
-            setComments(updatedComments[0]);
+            setComments((updatedComments[0] as Comment[]));
             toast.success('Comment deleted successfully!', {
                 duration: 3000,
             });
@@ -162,7 +147,7 @@ const PostDetail = () => {
             );
 
             const refreshedComments = await getCommentsByPost(Number(id));
-            setComments(refreshedComments[0]);
+            setComments((refreshedComments[0] as Comment[]));
 
             setEditingComment(null);
             toast.success('Comment updated successfully!', {

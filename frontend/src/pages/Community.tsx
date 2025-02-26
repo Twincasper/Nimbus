@@ -14,21 +14,7 @@ import NewPostButton from "@/components/NewPostButton.tsx";
 import CurrentUserContext from "@/context/current-user-context.ts";
 import EditPostModal from "@/components/EditPostModal.tsx";
 import toast from "react-hot-toast";
-
-interface Post {
-    id: number;
-    userId: number;
-    title: string;
-    body: string;
-    createdAt: string;
-    likes: number;
-    comments: number;
-    categoryId: number;
-    username: string;
-    profilePicture: string;
-    pronouns: string;
-    categoryName: string;
-}
+import { Post } from '@/types/post';
 
 const Community: React.FC = () => {
     const { currentUser } = useContext(CurrentUserContext);
