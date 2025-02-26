@@ -81,13 +81,10 @@ const Community: React.FC = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                let data;
-                if (selectedCategoryId) {
-                    data = await getPostsByCategory(selectedCategoryId);
-                } else {
-                    data = await getRecentPosts();
-                }
-                console.log("Fetched data:", data);
+                const data = categoryId 
+                    ? await getPostsByCategory(Number(categoryId))
+                    : await getRecentPosts();
+                
                 if (data && Array.isArray(data) && data.length > 0) {
                     setPosts(data[0] as Post[]);
                 }
@@ -98,13 +95,15 @@ const Community: React.FC = () => {
             }
         };
         fetchPosts();
-    }, [selectedCategoryId]);
+    }, [categoryId]);
 
     if (loading) return <div>Loading...</div>;
 
     return (
         <div className="flex min-h-screen bg-base-100/80 max-w-7xl mx-auto">
-            <Sidebar onSelectCategory={setSelectedCategoryId} />
+            <Sidebar onSelectCategory={(id) => {
+                navigate(id ? `/community/${id}` : '/community');
+            }} />
             <div className="flex-1 p-4">
                 <div className="flex justify-between items-center">
                     <div className="py-8 mb-6 rounded-lg flex-1">

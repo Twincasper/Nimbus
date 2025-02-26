@@ -1,7 +1,6 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import React, { useState } from "react";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { Toaster } from "react-hot-toast";
-// Need to import checkForLoggedInUser function here from auth adapter or some other way to check if user is logged in
 
 // Components and Pages
 import Home from "@/pages/Home";
@@ -19,9 +18,13 @@ import ThemePalettePage from "@/pages/ThemePalettePage.tsx";
 
 export default function App() {
     const location = useLocation();
-    const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(
-        null
-    );
+    const navigate = useNavigate();
+
+    const handleCategorySelect = (categoryId: number | null) => {
+        if (location.pathname !== '/community') {
+            navigate(categoryId ? `/community/${categoryId}` : '/community');
+        }
+    };
 
     return (
         <div
@@ -69,7 +72,7 @@ export default function App() {
             />
 
             {location.pathname !== "/login" && location.pathname !== "/" && (
-                <Navbar onSelectCategory={setSelectedCategoryId} />
+                <Navbar onSelectCategory={handleCategorySelect} />
             )}
             <main
                 className={location.pathname === "/settings" ? "mx-auto" : "flex-grow"}
