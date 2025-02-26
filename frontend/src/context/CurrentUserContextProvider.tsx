@@ -53,16 +53,25 @@ export default function CurrentUserContextProvider({ children }: UserContextProv
     setCurrentUser(user);
   };
 
+  const updateUser = async (id: number, updates: Partial<CurrentUser>) => {
+    const requiredUpdates = {
+        username: updates.username || '',
+        pronouns: updates.pronouns || '',
+        profilePicture: updates.profilePicture || '',
+        bio: updates.bio || ''
+    };
+    
+    const [updatedUser, error] = await updateUserAdapter(id, requiredUpdates);
+    if (error) throw error;
+    setCurrentUser(updatedUser as CurrentUser);
+  };
+
   const contextValue: CurrentUserContextType = {
     currentUser,
     login,
     register,
     logout,
-    updateUser: async (id: number, updates: Partial<CurrentUser>) => {
-        const [updatedUser, error] = await updateUserAdapter(id, updates);
-        if (error) throw error;
-        setCurrentUser(updatedUser as CurrentUser);
-    },
+    updateUser,
   };
 
   return (

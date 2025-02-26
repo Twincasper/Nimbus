@@ -5,7 +5,7 @@ export type CommonOptions = {
 
 export type HttpMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE' | 'PUT';
 
-export type RequestOptions<T = void> = CommonOptions & {
+export type RequestOptions = CommonOptions & {
     method: HttpMethod;
     body?: string;
 };
