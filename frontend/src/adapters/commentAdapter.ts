@@ -1,9 +1,9 @@
 import {fetchHandler} from "@/utils/fetchHandler.ts";
-import {postOptions, patchOptions, deleteOptions, putOptions} from "@/utils/requestOptions.ts";
+import {postOptions, deleteOptions, putOptions} from "@/utils/requestOptions.ts";
 
 const baseUrl = "http://localhost:8080/api";
 
-interface Comment {
+interface Comment extends Record<string, unknown> {
     body: string;
     userId: number;
     postId: number;

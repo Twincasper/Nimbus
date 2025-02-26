@@ -80,7 +80,12 @@ const navigate = useNavigate();
                     if (!currentUser) {
                         throw new Error('User not found');
                     }
-                    await changePassword(currentUser.id, currentPassword, newPassword, confirmPassword);
+                    await changePassword(
+                        currentUser.id,
+                        currentPassword as string,
+                        newPassword as string,
+                        confirmPassword as string
+                    );
                 }
             })(),
             {

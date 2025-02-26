@@ -3,7 +3,7 @@ import {postOptions, deleteOptions, putOptions} from "@/utils/requestOptions.ts"
 
 const baseUrl = "http://localhost:8080/api";
 
-interface Post {
+interface Post extends Record<string, unknown> {
     title: string;
     body: string;
     userId: number;
