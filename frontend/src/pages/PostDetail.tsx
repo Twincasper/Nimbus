@@ -37,15 +37,15 @@ const PostDetail = () => {
         const fetchData = async () => {
             try {
                 const [postData, error] = await getPost(Number(id));
-                if (postData && Array.isArray(postData)) {
-                    setPost(postData[0] as Post);
+                if (postData) {
+                    setPost(postData as Post);
                 } else {
                     console.error('Error fetching post:', error);
                 }
 
                 const [commentsData, commentsError] = await getCommentsByPost(Number(id));
-                if (commentsData && Array.isArray(commentsData)) {
-                    setComments(commentsData[0] as Comment[]);
+                if (commentsData) {
+                    setComments(commentsData as Comment[]);
                 } else {
                     console.error('Error fetching comments:', commentsError);
                 }

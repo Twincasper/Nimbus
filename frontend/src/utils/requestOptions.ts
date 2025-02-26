@@ -10,16 +10,16 @@ export const deleteOptions: RequestOptions = {
   credentials: 'include',
 };
 
-export function postOptions<T extends RequestBody>(body?: T): RequestOptions<T> {
+export function postOptions<T extends RequestBody>(body?: T): RequestOptions {
   return {
     method: 'POST',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
+    body: body ? JSON.stringify(body) : undefined,
   };
 }
 
-export function putOptions<T extends RequestBody>(body: T): RequestOptions<T> {
+export function putOptions<T extends RequestBody>(body: T): RequestOptions {
   return {
     method: 'PUT',
     credentials: 'include',
@@ -28,7 +28,7 @@ export function putOptions<T extends RequestBody>(body: T): RequestOptions<T> {
   };
 }
 
-export function patchOptions<T extends RequestBody>(body: T): RequestOptions<T> {
+export function patchOptions<T extends RequestBody>(body: T): RequestOptions {
   return {
     method: 'PATCH',
     credentials: 'include',

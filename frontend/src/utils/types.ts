@@ -5,11 +5,13 @@ export type CommonOptions = {
 
 export type HttpMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE' | 'PUT';
 
-export type RequestOptions = CommonOptions & {
-    method: HttpMethod;
-    body?: string;
-};
-
 export type RequestBody = Record<string, unknown>;
+
+export interface RequestOptions {
+  method: string;
+  credentials: RequestCredentials;
+  headers?: Record<string, string>;
+  body?: string;
+}
 
 export type FetchResponse<T> = Promise<[T | null, Error | null]>;
