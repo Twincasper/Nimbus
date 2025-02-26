@@ -70,7 +70,7 @@ const PostDetail = () => {
                     color: 'oklch(var(--inc))'
                 }
             });
-            navigate('/');
+            navigate('/community');
         } catch (error) {
             console.error('Error deleting post:', error);
             toast.error('Failed to delete post. Please try again.', {
