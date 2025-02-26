@@ -1,5 +1,4 @@
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 
 // Components and Pages

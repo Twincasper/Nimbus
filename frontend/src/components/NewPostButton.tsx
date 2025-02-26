@@ -6,6 +6,7 @@ import communities from "@/utils/communities.ts";
 import CurrentUserContext from "@/context/current-user-context";
 import { createPost } from "@/adapters/postAdapter";
 import toast from "react-hot-toast";
+import { Post } from '@/types/post';
 
 const NewPostButton = () => {
     const { currentUser } = useContext(CurrentUserContext);
@@ -27,9 +28,9 @@ const NewPostButton = () => {
                 body: content,
                 userId: currentUser.id,
                 categoryId,
-            });
+            }) as Post[];
 
-            if (newPost && Array.isArray(newPost) && newPost[0]?.id) {
+            if (newPost?.[0]?.id) {
                 toast.success("Post created successfully!", {
                     duration: 3000,
                     position: "top-right",
